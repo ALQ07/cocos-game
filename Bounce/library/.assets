@@ -1,0 +1,14 @@
+{
+    "version": "1.0.1",
+    "data": {
+        "paths": [
+            "resources",
+            "assets",
+            "scripts",
+            "assets\\UI",
+            "scene",
+            "scene\\game.scene",
+            "assets\\UI\\bg.png"
+        ]
+    }
+}
