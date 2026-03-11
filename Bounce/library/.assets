@@ -2,13 +2,31 @@
     "version": "1.0.1",
     "data": {
         "paths": [
-            "resources",
-            "assets",
-            "scripts",
-            "assets\\UI",
             "scene",
-            "scene\\game.scene",
-            "assets\\UI\\bg.png"
+            "scripts",
+            "scripts\\Utils",
+            "scripts\\Utils\\index.ts",
+            "scripts\\Stage",
+            "scripts\\Stage\\ShootMgr.ts",
+            "scripts\\Base",
+            "scripts\\Golbal",
+            "scripts\\Base\\Singleton.ts",
+            "GM",
+            "GM\\GM.ts",
+            "res",
+            "res\\Prefabs",
+            "res\\Prefabs\\ball.prefab",
+            "static",
+            "static\\UI",
+            "static\\UI\\Game",
+            "static\\UI\\Game\\ball.png",
+            "static\\UI\\Game\\bg.png",
+            "static\\UI\\Game\\shooter.png",
+            "GM\\ResMgr",
+            "GM\\UIMgr",
+            "GM\\ResMgr\\ResMgr.ts",
+            "GM\\UIMgr\\UIMgr.ts",
+            "scene\\GM.scene"
         ]
     }
 }

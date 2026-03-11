@@ -1,17 +1,16 @@
-2026-3-5 17:00:00 - log: Load engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine
-2026-3-5 17:00:00 - log: Register native engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\native
-2026-3-5 17:00:01 - log: Request namespace: device-list
-2026-3-5 17:00:06 - warn: [Window] Message does not exist: scene.editor-preview-call-methodError: [Window] Message does not exist: scene.editor-preview-call-method
-    at console.warn (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\app.asar\node_modules\@sentry\core\build\cjs\utils-hoist\instrument\console.js:38:14)
-    at EventEmitter.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\app.asar\node_modules\@editor\panel\lib\element.ccc:1:4978)
-    at EventEmitter.emit (node:events:519:28)
-    at IpcRenderer.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\app.asar\node_modules\@base\electron-base-ipc\dist\renderer.ccc:1:3858)
-    at IpcRenderer.emit (node:events:519:28)
-    at Object.onMessage (node:electron/js2c/renderer_init:2:8837)
-2026-3-5 17:00:24 - log: [Scene] [box2d]:box2d wasm lib loaded.
-2026-3-5 17:00:24 - log: [Scene] meshopt wasm decoder initialized
-2026-3-5 17:00:24 - log: [Scene] [bullet]:bullet wasm lib loaded.
-2026-3-5 17:00:24 - log: [Scene] [PHYSICS]: using builtin.
-2026-3-5 17:00:24 - log: [Scene] Cocos Creator v3.8.8
-2026-3-5 17:00:24 - log: [Scene] Using custom pipeline: Builtin
-2026-3-5 17:00:24 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
+2026-3-11 10:06:25 - log: Load engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine
+2026-3-11 10:06:26 - log: Register native engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\native
+2026-3-11 10:06:27 - log: Request namespace: device-list
+2026-3-11 10:06:35 - log: [Scene] meshopt wasm decoder initialized
+2026-3-11 10:06:35 - log: [Scene] [box2d]:box2d wasm lib loaded.
+2026-3-11 10:06:35 - log: [Scene] [bullet]:bullet wasm lib loaded.
+2026-3-11 10:06:36 - log: [Scene] [PHYSICS]: using builtin.
+2026-3-11 10:06:36 - log: [Scene] Cocos Creator v3.8.8
+2026-3-11 10:06:36 - log: [Scene] Using custom pipeline: Builtin
+2026-3-11 10:06:36 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
+2026-3-11 17:27:26 - error: [Window] 名字 "resources" 是保留关键字，请更换其它名称。Error: [Window] 名字 "resources" 是保留关键字，请更换其它名称。
+    at console.error (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\app.asar\node_modules\@sentry\core\build\cjs\utils-hoist\instrument\console.js:38:14)
+    at Vue.apply (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\app.asar\builtin\builder\dist\contributions\inspector\directory\index.ccc:203:3513)
+    at Object.apply (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\app.asar\builtin\builder\dist\contributions\inspector\directory\index.ccc:203:5218)
+    at _o.callMethod (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\app.asar\node_modules\@editor\creator-ui-kit\dist\renderer.ccc:291:2087)
+    at Object.save (C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\editor\inspector\contributions\asset.js:525:69)

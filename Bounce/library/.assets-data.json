@@ -1,11 +1,11 @@
 {
   "beeefd96-d70e-4157-8a53-03722f02d758": {
-    "url": "db://assets/resources",
+    "url": "db://assets/res",
     "value": {},
     "versionCode": 1
   },
   "94f2061b-6fa5-4c7c-b581-7f6899e1ee6e": {
-    "url": "db://assets/assets",
+    "url": "db://assets/static",
     "value": {},
     "versionCode": 1
   },
@@ -15,17 +15,23 @@
     "versionCode": 1
   },
   "a98456b5-95d3-438f-9d83-5bbd6fac0980": {
-    "url": "db://assets/assets/UI",
+    "url": "db://assets/static/UI",
     "value": {},
     "versionCode": 1
   },
   "2b49be7a-12c8-4327-b216-5c54ff73290d": {
-    "url": "db://assets/scene/game.scene",
+    "url": "db://assets/scene/GM.scene",
     "value": {
       "depends": [
-        "116ff456-7974-4a69-993b-39645293debc@f9941"
+        "116ff456-7974-4a69-993b-39645293debc@f9941",
+        "93dd7e33-1fcd-41a2-a6db-2424840f3e5c@f9941",
+        "62a3f1fe-72bc-42ed-9f8c-895174354b40"
       ],
-      "dependScripts": []
+      "dependScripts": [
+        "CC3eba29-7abb-723a-f7ab-ae275e2277e8",
+        "36d2b8e6-885a-4970-b644-ca4d25a48904",
+        "33d0da2d-e816-4867-bbe4-bc9a474f5efe"
+      ]
     },
     "versionCode": 2
   },
@@ -35,14 +41,14 @@
     "versionCode": 1
   },
   "116ff456-7974-4a69-993b-39645293debc": {
-    "url": "db://assets/assets/UI/bg.png",
+    "url": "db://assets/static/UI/Game/bg.png",
     "value": {
       "depends": []
     },
     "versionCode": 1
   },
   "116ff456-7974-4a69-993b-39645293debc@6c48a": {
-    "url": "db://assets/assets/UI/bg.png@6c48a",
+    "url": "db://assets/static/UI/Game/bg.png@6c48a",
     "value": {
       "depends": [
         "116ff456-7974-4a69-993b-39645293debc"
@@ -51,12 +57,152 @@
     "versionCode": 1
   },
   "116ff456-7974-4a69-993b-39645293debc@f9941": {
-    "url": "db://assets/assets/UI/bg.png@f9941",
+    "url": "db://assets/static/UI/Game/bg.png@f9941",
     "value": {
       "depends": [
         "116ff456-7974-4a69-993b-39645293debc@6c48a"
       ]
     },
+    "versionCode": 1
+  },
+  "16b7072c-4018-4be9-bd61-324c9fbcf334": {
+    "url": "db://assets/static/UI/Game",
+    "value": {},
+    "versionCode": 1
+  },
+  "93dd7e33-1fcd-41a2-a6db-2424840f3e5c": {
+    "url": "db://assets/static/UI/Game/shooter.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "93dd7e33-1fcd-41a2-a6db-2424840f3e5c@6c48a": {
+    "url": "db://assets/static/UI/Game/shooter.png@6c48a",
+    "value": {
+      "depends": [
+        "93dd7e33-1fcd-41a2-a6db-2424840f3e5c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "93dd7e33-1fcd-41a2-a6db-2424840f3e5c@f9941": {
+    "url": "db://assets/static/UI/Game/shooter.png@f9941",
+    "value": {
+      "depends": [
+        "93dd7e33-1fcd-41a2-a6db-2424840f3e5c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "59537cda-7b3b-477a-9fc5-5d4fd5b5a57b": {
+    "url": "db://assets/scripts/Battle",
+    "value": {},
+    "versionCode": 1
+  },
+  "36d2b8e6-885a-4970-b644-ca4d25a48904": {
+    "url": "db://assets/scripts/Stage/ShootMgr.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "ab8e09cf-36f9-452d-8d12-57cb4d54d1ed": {
+    "url": "db://assets/scripts/Utils/index.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "81eaabb3-752e-4755-8ce1-f6125c643717": {
+    "url": "db://assets/scripts/Utils",
+    "value": {},
+    "versionCode": 1
+  },
+  "684a3638-7d9d-494e-918b-a3af6fc7dec6": {
+    "url": "db://assets/static/UI/Game/ball.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "684a3638-7d9d-494e-918b-a3af6fc7dec6@6c48a": {
+    "url": "db://assets/static/UI/Game/ball.png@6c48a",
+    "value": {
+      "depends": [
+        "684a3638-7d9d-494e-918b-a3af6fc7dec6"
+      ]
+    },
+    "versionCode": 1
+  },
+  "684a3638-7d9d-494e-918b-a3af6fc7dec6@f9941": {
+    "url": "db://assets/static/UI/Game/ball.png@f9941",
+    "value": {
+      "depends": [
+        "684a3638-7d9d-494e-918b-a3af6fc7dec6@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "7efcd054-484b-48ed-9711-15da6ebc414b": {
+    "url": "db://assets/scripts/Stage",
+    "value": {},
+    "versionCode": 1
+  },
+  "ca3cf74b-1aee-4659-afe7-26c1bbd9cc93": {
+    "url": "db://assets/res/Prefabs",
+    "value": {},
+    "versionCode": 1
+  },
+  "62a3f1fe-72bc-42ed-9f8c-895174354b40": {
+    "url": "db://assets/res/Prefabs/ball.prefab",
+    "value": {
+      "depends": [
+        "684a3638-7d9d-494e-918b-a3af6fc7dec6@f9941"
+      ],
+      "dependScripts": []
+    },
+    "versionCode": 2
+  },
+  "0889bf41-f685-484b-bbd4-c5b4d36d1e67": {
+    "url": "db://assets/scripts/Base/Singleton.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "bc209eb7-b236-440b-b4d2-97b6c93fb742": {
+    "url": "db://assets/scripts/Base",
+    "value": {},
+    "versionCode": 1
+  },
+  "8ee4f042-902a-463e-837e-b69cb6ea10fa": {
+    "url": "db://assets/scripts/Golbal",
+    "value": {},
+    "versionCode": 1
+  },
+  "7f7e1e91-a52c-4d2a-8573-770954fb428d": {
+    "url": "db://assets/GM",
+    "value": {},
+    "versionCode": 1
+  },
+  "33d0da2d-e816-4867-bbe4-bc9a474f5efe": {
+    "url": "db://assets/GM/GM.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "62114d66-f8c4-4a0b-b9ca-7fcd5f69d324": {
+    "url": "db://assets/GM/ResMgr/ResMgr.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c7e590b7-d1ec-4fa3-97e1-211b72c64f23": {
+    "url": "db://assets/GM/ResMgr",
+    "value": {},
+    "versionCode": 1
+  },
+  "0da98680-7408-418b-898b-fa58959cefa5": {
+    "url": "db://assets/GM/UIMgr",
+    "value": {},
+    "versionCode": 1
+  },
+  "f702bf3b-c4e1-40c4-9334-781878ff7a3a": {
+    "url": "db://assets/GM/UIMgr/UIMgr.ts",
+    "value": {},
     "versionCode": 1
   }
 }

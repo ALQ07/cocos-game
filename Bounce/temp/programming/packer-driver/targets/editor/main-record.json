@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 19006.7734,
+      "mTimestamp": 7018.5705,
       "chunkId": "93ba276ea7b26ffcdc433fab14afc1ed6f05647b",
       "imports": [
         {
@@ -997,7 +997,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 22707.7404,
+      "mTimestamp": 29311311.7004,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
@@ -1083,6 +1083,90 @@
               "column": 962
             }
           }
+        },
+        {
+          "value": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts",
+          "resolved": "__unresolved_6",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 978
+            },
+            "end": {
+              "line": 5,
+              "column": 1031
+            }
+          }
+        },
+        {
+          "value": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts",
+          "resolved": "__unresolved_7",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 1047
+            },
+            "end": {
+              "line": 5,
+              "column": 1111
+            }
+          }
+        },
+        {
+          "value": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts",
+          "resolved": "__unresolved_8",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 1127
+            },
+            "end": {
+              "line": 5,
+              "column": 1189
+            }
+          }
+        },
+        {
+          "value": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts",
+          "resolved": "__unresolved_9",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 1205
+            },
+            "end": {
+              "line": 5,
+              "column": 1275
+            }
+          }
+        },
+        {
+          "value": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts",
+          "resolved": "__unresolved_10",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 1291
+            },
+            "end": {
+              "line": 5,
+              "column": 1361
+            }
+          }
+        },
+        {
+          "value": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts",
+          "resolved": "__unresolved_11",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 1377
+            },
+            "end": {
+              "line": 5,
+              "column": 1444
+            }
+          }
         }
       ],
       "type": "esm",
@@ -1126,6 +1210,48 @@
           "resolved": {
             "type": "module",
             "url": "file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts"
           },
           "messages": []
         }
@@ -1694,11 +1820,474 @@
       ]
     },
     "cce:/internal/code-quality/cr.mjs": {
-      "mTimestamp": 1772701201363,
+      "mTimestamp": 1773194786632,
       "chunkId": "6a5019a719a9014c047e67aa1cf34453ab8392ce",
       "imports": [],
       "type": "esm",
       "resolutions": []
+    },
+    "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Battle/ShootMgr.ts": {
+      "mTimestamp": {
+        "mtime": 1773216909211.1104,
+        "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
+      },
+      "chunkId": "6f9db154868ca92367bcca7c59140c9874184b5a",
+      "imports": [
+        {
+          "value": "cce:/internal/code-quality/cr.mjs",
+          "resolved": "__unresolved_0"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 80
+            },
+            "end": {
+              "line": 1,
+              "column": 84
+            }
+          }
+        },
+        {
+          "value": "../Utils",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 30
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/code-quality/cr.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts": {
+      "mTimestamp": {
+        "mtime": 1773214177332.4114,
+        "uuid": "ab8e09cf-36f9-452d-8d12-57cb4d54d1ed"
+      },
+      "chunkId": "40e3d4928a9e4a68a0df9dee9e37479da51b6261",
+      "imports": [
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 21
+            },
+            "end": {
+              "line": 1,
+              "column": 25
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts": {
+      "mTimestamp": {
+        "mtime": 1773216909211.1104,
+        "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
+      },
+      "chunkId": "8b2148fd20fb88ad6207913d799111fdfdae8c87",
+      "imports": [
+        {
+          "value": "cce:/internal/code-quality/cr.mjs",
+          "resolved": "__unresolved_0"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 80
+            },
+            "end": {
+              "line": 1,
+              "column": 84
+            }
+          }
+        },
+        {
+          "value": "../Utils",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 30
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/code-quality/cr.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts": {
+      "mTimestamp": {
+        "mtime": 1773217963241.1487,
+        "uuid": "0889bf41-f685-484b-bbd4-c5b4d36d1e67"
+      },
+      "chunkId": "8809b1c500ea535f8f90270f5f64d08666dd550c",
+      "imports": [
+        {
+          "value": "cc"
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts": {
+      "mTimestamp": {
+        "mtime": 1773224047573.408,
+        "uuid": "33d0da2d-e816-4867-bbe4-bc9a474f5efe"
+      },
+      "chunkId": "6a7101b6fe3f7c66905ddb918eb136f047d101a8",
+      "imports": [
+        {
+          "value": "cce:/internal/code-quality/cr.mjs",
+          "resolved": "__unresolved_0"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 115
+            },
+            "end": {
+              "line": 1,
+              "column": 119
+            }
+          }
+        },
+        {
+          "value": "./ResMgr/ResMgr",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 23
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        },
+        {
+          "value": "./UIMgr/UIMgr",
+          "resolved": "__unresolved_2",
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 18
+            },
+            "end": {
+              "line": 3,
+              "column": 33
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/code-quality/cr.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts": {
+      "mTimestamp": {
+        "mtime": 1773222648487.1753,
+        "uuid": "62114d66-f8c4-4a0b-b9ca-7fcd5f69d324"
+      },
+      "chunkId": "5042fe5e00b8992ad7b03abb8eef326ecb320032",
+      "imports": [
+        {
+          "value": "cce:/internal/code-quality/cr.mjs",
+          "resolved": "__unresolved_0"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "../GM",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 15
+            },
+            "end": {
+              "line": 2,
+              "column": 22
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/code-quality/cr.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts": {
+      "mTimestamp": {
+        "mtime": 1773224036676.4358,
+        "uuid": "f702bf3b-c4e1-40c4-9334-781878ff7a3a"
+      },
+      "chunkId": "30ccde88ca98acbb6602685533ff598d460383e1",
+      "imports": [
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 33
+            },
+            "end": {
+              "line": 1,
+              "column": 37
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        }
+      ]
     }
   }
 }
