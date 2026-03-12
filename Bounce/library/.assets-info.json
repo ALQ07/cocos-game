@@ -12,7 +12,7 @@
       "time": 1772703338010.7258
     },
     "scene": {
-      "time": 1773224108688.774,
+      "time": 1773305184252.207,
       "uuid": "f254a0f5-11c7-4000-9344-c9af4b483d98"
     },
     "scripts\\Utils.meta": {
@@ -22,11 +22,11 @@
       "time": 1773213968141.6567
     },
     "scripts\\Utils": {
-      "time": 1773213968139.617,
+      "time": 1773224734385.6409,
       "uuid": "81eaabb3-752e-4755-8ce1-f6125c643717"
     },
     "scripts\\Utils\\index.ts": {
-      "time": 1773214177332.4114,
+      "time": 1773224756887.3574,
       "uuid": "ab8e09cf-36f9-452d-8d12-57cb4d54d1ed"
     },
     "scripts\\Stage.meta": {
@@ -36,11 +36,11 @@
       "time": 1773200358412.5347
     },
     "scripts\\Stage": {
-      "time": 1773200358411.535,
+      "time": 1773224801483.0383,
       "uuid": "7efcd054-484b-48ed-9711-15da6ebc414b"
     },
     "scripts\\Stage\\ShootMgr.ts": {
-      "time": 1773216909211.1104,
+      "time": 1773280464662.6147,
       "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
     },
     "scripts\\Base.meta": {
@@ -53,7 +53,7 @@
       "time": 1773218668962.5378
     },
     "scripts\\Base": {
-      "time": 1773218668959.5557,
+      "time": 1773224829519.8442,
       "uuid": "bc209eb7-b236-440b-b4d2-97b6c93fb742"
     },
     "scripts\\Golbal": {
@@ -61,21 +61,21 @@
       "uuid": "8ee4f042-902a-463e-837e-b69cb6ea10fa"
     },
     "scripts\\Base\\Singleton.ts": {
-      "time": 1773217963241.1487,
+      "time": 1773224831964.9697,
       "uuid": "0889bf41-f685-484b-bbd4-c5b4d36d1e67"
     },
     "GM.meta": {
       "time": 1773222863343.691
     },
     "GM": {
-      "time": 1773222711490.641,
+      "time": 1773305184252.207,
       "uuid": "7f7e1e91-a52c-4d2a-8573-770954fb428d"
     },
     "GM\\GM.ts.meta": {
       "time": 1773219671007.0854
     },
     "GM\\GM.ts": {
-      "time": 1773224047573.408,
+      "time": 1773306577647.2493,
       "uuid": "33d0da2d-e816-4867-bbe4-bc9a474f5efe"
     },
     "res.meta": {
@@ -89,7 +89,7 @@
       "uuid": "beeefd96-d70e-4157-8a53-03722f02d758"
     },
     "res\\Prefabs": {
-      "time": 1773217777719.5334,
+      "time": 1773280566123.3965,
       "uuid": "ca3cf74b-1aee-4659-afe7-26c1bbd9cc93"
     },
     "res\\Prefabs\\ball.prefab.meta": {
@@ -151,29 +151,57 @@
       "time": 1773222711506.3389
     },
     "GM\\ResMgr": {
-      "time": 1773222711493.5935,
+      "time": 1773224943538.7935,
       "uuid": "c7e590b7-d1ec-4fa3-97e1-211b72c64f23"
     },
     "GM\\UIMgr": {
-      "time": 1773222949723.4233,
+      "time": 1773304984247.6514,
       "uuid": "0da98680-7408-418b-898b-fa58959cefa5"
     },
     "GM\\ResMgr\\ResMgr.ts": {
-      "time": 1773222648487.1753,
+      "time": 1773301948651.706,
       "uuid": "62114d66-f8c4-4a0b-b9ca-7fcd5f69d324"
     },
     "GM\\UIMgr\\UIMgr.ts.meta": {
       "time": 1773222949724.7512
     },
     "GM\\UIMgr\\UIMgr.ts": {
-      "time": 1773224036676.4358,
+      "time": 1773305827663.655,
       "uuid": "f702bf3b-c4e1-40c4-9334-781878ff7a3a"
     },
-    "scene\\GM.scene.meta": {
+    "res\\Prefabs\\pages.meta": {
+      "time": 1773280566124.3967
+    },
+    "res\\Prefabs\\pages": {
+      "time": 1773305027059.0566,
+      "uuid": "2d5db6f3-f25e-456d-8a51-c6b20be3640b"
+    },
+    "GM\\UIMgr\\UIComponent.ts.meta": {
+      "time": 1773304889193.508
+    },
+    "GM\\UIMgr\\UIComponent.ts": {
+      "time": 1773305107050.7468,
+      "uuid": "347394e0-1c13-423f-87f2-c81fef1bed1f"
+    },
+    "GM\\UIMgr\\UIList.ts.meta": {
+      "time": 1773304984250.2437
+    },
+    "GM\\UIMgr\\UIList.ts": {
+      "time": 1773305264560.3738,
+      "uuid": "f1b2c20a-68a9-40d9-94e8-e0f794476ba3"
+    },
+    "res\\Prefabs\\pages\\UIGame.prefab.meta": {
+      "time": 1773305027064.6404
+    },
+    "res\\Prefabs\\pages\\UIGame.prefab": {
+      "time": 1773305120504.042,
+      "uuid": "db39b92b-e96a-4190-8bd9-f2d8b4607632"
+    },
+    "GM\\GM.scene.meta": {
       "time": 1772703338012.7256
     },
-    "scene\\GM.scene": {
-      "time": 1773224183248.4766,
+    "GM\\GM.scene": {
+      "time": 1773305992152.6892,
       "uuid": "2b49be7a-12c8-4327-b216-5c54ff73290d"
     }
   },

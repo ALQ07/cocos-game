@@ -26,7 +26,11 @@
             "GM\\UIMgr",
             "GM\\ResMgr\\ResMgr.ts",
             "GM\\UIMgr\\UIMgr.ts",
-            "scene\\GM.scene"
+            "res\\Prefabs\\pages",
+            "GM\\UIMgr\\UIComponent.ts",
+            "GM\\UIMgr\\UIList.ts",
+            "res\\Prefabs\\pages\\UIGame.prefab",
+            "GM\\GM.scene"
         ]
     }
 }

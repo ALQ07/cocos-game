@@ -1,6 +1,7 @@
 import { _decorator, assetManager, AssetManager, Component, director, DynamicAtlasManager, log, macro, Node } from 'cc';
-import UIMgr from './UIMgr/UIMgr';
+import { UIMgr } from './UIMgr/UIMgr';
 import { ResMgr } from './ResMgr/ResMgr';
+import { UIEnum } from './UIMgr/UIList';
 const { ccclass, property } = _decorator;
 
 @ccclass('GM')
@@ -19,16 +20,21 @@ export default class GM extends Component {
     // static PlayerPM: PlayerPrefsMgr;
     // static RPM: RedPointMgr;
 
+    onload
+
     protected async start(): Promise<void> {
 
         // 初始化插件plugin
         // initExcel(excel);
 
+        // 先加载 res bundle
+        const bundle = await this.LoadAssetsBundle('res');
+
         //初始化框架
-        GM.Init(this.node, assetManager.getBundle("resources"));
+        GM.Init(this.node, bundle);
 
         //加载第一个UI
-        // await GM.UIMgr.Open(UIEnum.UILogin);
+        await GM.UIMgr.Open(UIEnum.UIGame);
 
     }
 
@@ -66,6 +72,18 @@ export default class GM extends Component {
         // GM.AudioMgr.SetButtonSound();
     }
 
+
+    LoadAssetsBundle(bundleName: string): Promise<AssetManager.Bundle> {
+        return new Promise((resolve, reject) => {
+            assetManager.loadBundle(bundleName, (err, bundle: AssetManager.Bundle) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(bundle);
+                }
+            })
+        });
+    }
 }
 
 

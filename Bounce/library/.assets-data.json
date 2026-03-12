@@ -20,16 +20,10 @@
     "versionCode": 1
   },
   "2b49be7a-12c8-4327-b216-5c54ff73290d": {
-    "url": "db://assets/scene/GM.scene",
+    "url": "db://assets/GM/GM.scene",
     "value": {
-      "depends": [
-        "116ff456-7974-4a69-993b-39645293debc@f9941",
-        "93dd7e33-1fcd-41a2-a6db-2424840f3e5c@f9941",
-        "62a3f1fe-72bc-42ed-9f8c-895174354b40"
-      ],
+      "depends": [],
       "dependScripts": [
-        "CC3eba29-7abb-723a-f7ab-ae275e2277e8",
-        "36d2b8e6-885a-4970-b644-ca4d25a48904",
         "33d0da2d-e816-4867-bbe4-bc9a474f5efe"
       ]
     },
@@ -202,6 +196,37 @@
   },
   "f702bf3b-c4e1-40c4-9334-781878ff7a3a": {
     "url": "db://assets/GM/UIMgr/UIMgr.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "2d5db6f3-f25e-456d-8a51-c6b20be3640b": {
+    "url": "db://assets/res/Prefabs/pages",
+    "value": {},
+    "versionCode": 1
+  },
+  "db39b92b-e96a-4190-8bd9-f2d8b4607632": {
+    "url": "db://assets/res/Prefabs/pages/UIGame.prefab",
+    "value": {
+      "depends": [
+        "116ff456-7974-4a69-993b-39645293debc@f9941",
+        "93dd7e33-1fcd-41a2-a6db-2424840f3e5c@f9941",
+        "62a3f1fe-72bc-42ed-9f8c-895174354b40"
+      ],
+      "dependScripts": [
+        "CC3eba29-7abb-723a-f7ab-ae275e2277e8",
+        "36d2b8e6-885a-4970-b644-ca4d25a48904",
+        "347394e0-1c13-423f-87f2-c81fef1bed1f"
+      ]
+    },
+    "versionCode": 2
+  },
+  "347394e0-1c13-423f-87f2-c81fef1bed1f": {
+    "url": "db://assets/GM/UIMgr/UIComponent.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f1b2c20a-68a9-40d9-94e8-e0f794476ba3": {
+    "url": "db://assets/GM/UIMgr/UIList.ts",
     "value": {},
     "versionCode": 1
   }

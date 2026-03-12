@@ -1,18 +1,22 @@
-System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], function (_export, _context) {
+System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__unresolved_3"], function (_export, _context) {
   "use strict";
 
-  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, assetManager, Component, director, DynamicAtlasManager, log, macro, ResMgr, UIMgr, _dec, _class, _class2, _crd, ccclass, property, GM;
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, assetManager, Component, director, DynamicAtlasManager, log, macro, UIMgr, ResMgr, UIEnum, _dec, _class, _class2, _crd, ccclass, property, GM;
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
   function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+  function _reportPossibleCrUseOfUIMgr(extras) {
+    _reporterNs.report("UIMgr", "./UIMgr/UIMgr", _context.meta, extras);
+  }
+
   function _reportPossibleCrUseOfResMgr(extras) {
     _reporterNs.report("ResMgr", "./ResMgr/ResMgr", _context.meta, extras);
   }
 
-  function _reportPossibleCrUseOfUIMgr(extras) {
-    _reporterNs.report("UIMgr", "./UIMgr/UIMgr", _context.meta, extras);
+  function _reportPossibleCrUseOfUIEnum(extras) {
+    _reporterNs.report("UIEnum", "./UIMgr/UIList", _context.meta, extras);
   }
 
   return {
@@ -30,9 +34,11 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
       log = _cc.log;
       macro = _cc.macro;
     }, function (_unresolved_2) {
-      ResMgr = _unresolved_2.ResMgr;
+      UIMgr = _unresolved_2.UIMgr;
     }, function (_unresolved_3) {
-      UIMgr = _unresolved_3.default;
+      ResMgr = _unresolved_3.ResMgr;
+    }, function (_unresolved_4) {
+      UIEnum = _unresolved_4.UIEnum;
     }],
     execute: function () {
       _crd = true;
@@ -47,19 +53,29 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
       } = _decorator);
 
       _export("default", GM = (_dec = ccclass('GM'), _dec(_class = (_class2 = class GM extends Component {
-        // static AudioMgr: AudioMgr;
-        // static GuideMgr: GuideMgr;
-        // static PlayerPM: PlayerPrefsMgr;
-        // static RPM: RedPointMgr;
+        constructor() {
+          super(...arguments);
+          // static AudioMgr: AudioMgr;
+          // static GuideMgr: GuideMgr;
+          // static PlayerPM: PlayerPrefsMgr;
+          // static RPM: RedPointMgr;
+          this.onload = void 0;
+        }
+
         start() {
           var _this = this;
 
           return _asyncToGenerator(function* () {
             // 初始化插件plugin
             // initExcel(excel);
-            //初始化框架
-            GM.Init(_this.node, assetManager.getBundle("resources")); //加载第一个UI
-            // await GM.UIMgr.Open(UIEnum.UILogin);
+            // 先加载 res bundle
+            var bundle = yield _this.LoadAssetsBundle('res'); //初始化框架
+
+            GM.Init(_this.node, bundle); //加载第一个UI
+
+            yield GM.UIMgr.Open((_crd && UIEnum === void 0 ? (_reportPossibleCrUseOfUIEnum({
+              error: Error()
+            }), UIEnum) : UIEnum).UIGame);
           })();
         }
         /**
@@ -96,6 +112,18 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
           // DataMgr.getInstance().TestToolMgr.init(mianNode);
 
           log("GM inited"); // GM.AudioMgr.SetButtonSound();
+        }
+
+        LoadAssetsBundle(bundleName) {
+          return new Promise((resolve, reject) => {
+            assetManager.loadBundle(bundleName, (err, bundle) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(bundle);
+              }
+            });
+          });
         }
 
       }, _class2.UIMgr = void 0, _class2.ResMgr = void 0, _class2)) || _class));

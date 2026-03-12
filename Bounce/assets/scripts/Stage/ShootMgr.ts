@@ -4,10 +4,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass('ShootMgr')
 export class ShootMgr extends Component {
-
-    @property(Node)
-    launcher: Node = null;
-
     private _dir = new Vec3();
 
     public get dir(): Vec3 {
@@ -35,13 +31,13 @@ export class ShootMgr extends Component {
 
     calculateAngle(event: EventTouch) {
         const uiLocation = event.getUILocation();
-        const originPos = this.launcher.worldPosition;
+        const originPos = this.node.worldPosition;
         const dx = uiLocation.x - originPos.x;
         const dy = uiLocation.y - originPos.y;
         const radians = Math.atan2(dx, -dy);
         const angle = radians * 180 / Math.PI;
         if (Math.abs(angle) > 80) return;
-        this.launcher.angle = angle;
+        this.node.angle = angle;
         this._dir = getUnitVector(originPos, v3(uiLocation.x, uiLocation.y, 0));
     }
 

@@ -17,15 +17,15 @@ export class ResMgr {
         return this._Res;
     };
 
-    public async asyncLoad(path, callBack: (finished: number, total: number) => void): Promise<Asset> {
-        return new Promise<Asset>((resolve, reject) => {
+    public async asyncLoad<T extends Asset>(path: string, callBack: (finished: number, total: number) => void): Promise<T> {
+        return new Promise<T>((resolve, reject) => {
             GM.ResMgr.Res.load(path, (finished: number, total: number) => {
                 callBack(finished, total);
             }, (error, asset) => {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(asset);
+                    resolve(asset as T);
                 }
             });
         });
