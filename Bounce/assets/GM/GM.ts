@@ -20,8 +20,6 @@ export default class GM extends Component {
     // static PlayerPM: PlayerPrefsMgr;
     // static RPM: RedPointMgr;
 
-    onload
-
     protected async start(): Promise<void> {
 
         // 初始化插件plugin

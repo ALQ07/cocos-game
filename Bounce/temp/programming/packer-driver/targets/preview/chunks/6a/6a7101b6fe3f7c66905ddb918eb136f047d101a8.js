@@ -53,15 +53,10 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
       } = _decorator);
 
       _export("default", GM = (_dec = ccclass('GM'), _dec(_class = (_class2 = class GM extends Component {
-        constructor() {
-          super(...arguments);
-          // static AudioMgr: AudioMgr;
-          // static GuideMgr: GuideMgr;
-          // static PlayerPM: PlayerPrefsMgr;
-          // static RPM: RedPointMgr;
-          this.onload = void 0;
-        }
-
+        // static AudioMgr: AudioMgr;
+        // static GuideMgr: GuideMgr;
+        // static PlayerPM: PlayerPrefsMgr;
+        // static RPM: RedPointMgr;
         start() {
           var _this = this;
 

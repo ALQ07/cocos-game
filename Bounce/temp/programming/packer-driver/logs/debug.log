@@ -2816,3 +2816,251 @@ Feature changed: false
 17:09:55.631 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
 17:09:55.632 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
 17:09:55.646 debug: Target(preview) ends with cost 70.34619998931885ms.
+17:12:47.733 debug: Dispatch build request for time accumulated 1 asset changes.
+17:12:47.735 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+17:12:47.735 debug: Target(editor) build started.
+17:12:47.737 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:03:28 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:06:21 GMT+0800 (中国标准时间)
+17:12:47.737 debug: Inspect cce:/internal/x/prerequisite-imports
+17:12:47.742 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 4.70 ms
+17:12:47.745 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:12:47.746 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:12:47.747 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:12:47.747 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:12:47.749 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:12:47.750 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:12:47.751 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:12:47.751 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:09:37 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:12:44 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:12:47.751 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:12:47.767 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 15.80 ms
+17:12:47.769 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:12:47.769 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:12:47.770 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:12:47.770 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:12:47.770 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:12:47.771 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:12:47.771 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:12:47.772 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:12:47.772 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:12:47.772 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:12:47.772 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:12:47.772 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:12:47.773 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:12:47.773 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:12:47.789 debug: Target(editor) ends with cost 54.03989998996258ms.
+17:12:47.789 debug: Target(preview) build started.
+17:12:47.792 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:03:28 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:06:21 GMT+0800 (中国标准时间)
+17:12:47.792 debug: Inspect cce:/internal/x/prerequisite-imports
+17:12:47.805 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 13.00 ms
+17:12:47.808 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:12:47.810 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:12:47.813 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:12:47.815 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:12:47.817 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:12:47.818 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:12:47.819 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:12:47.819 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:09:37 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:12:44 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:12:47.819 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:12:47.849 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 30.30 ms
+17:12:47.851 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:12:47.852 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:12:47.852 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:12:47.853 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:12:47.853 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:12:47.854 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:12:47.854 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:12:47.854 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:12:47.854 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:12:47.854 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:12:47.854 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:12:47.855 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:12:47.856 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:12:47.857 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:12:47.876 debug: Target(preview) ends with cost 86.68039999902248ms.
+17:13:06.831 debug: Dispatch build request for time accumulated 1 asset changes.
+17:13:06.832 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+17:13:06.832 debug: Target(editor) build started.
+17:13:06.834 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:06:21 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:06:40 GMT+0800 (中国标准时间)
+17:13:06.834 debug: Inspect cce:/internal/x/prerequisite-imports
+17:13:06.839 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 4.60 ms
+17:13:06.841 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:13:06.843 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:13:06.845 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:13:06.846 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:13:06.847 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:13:06.849 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:13:06.850 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:13:06.850 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:12:44 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:13:05 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:13:06.850 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:13:06.869 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 19.40 ms
+17:13:06.871 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:13:06.871 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:13:06.872 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:13:06.872 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:13:06.873 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:13:06.873 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:13:06.873 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:13:06.874 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:13:06.874 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:13:06.874 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:13:06.874 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:13:06.874 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:13:06.876 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:13:06.877 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:13:06.890 debug: Target(editor) ends with cost 57.35150000452995ms.
+17:13:06.890 debug: Target(preview) build started.
+17:13:06.892 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:06:21 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:06:40 GMT+0800 (中国标准时间)
+17:13:06.892 debug: Inspect cce:/internal/x/prerequisite-imports
+17:13:06.900 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 8.20 ms
+17:13:06.903 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:13:06.904 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:13:06.905 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:13:06.906 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:13:06.907 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:13:06.907 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:13:06.908 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:13:06.908 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:12:44 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:13:05 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:13:06.908 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:13:06.948 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 39.70 ms
+17:13:06.950 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:13:06.950 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:13:06.951 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:13:06.951 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:13:06.951 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:13:06.952 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:13:06.952 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:13:06.953 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:13:06.953 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:13:06.953 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:13:06.953 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:13:06.953 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:13:06.954 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:13:06.954 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:13:06.969 debug: Target(preview) ends with cost 79.37919999659061ms.
+17:16:52.395 debug: Dispatch build request for time accumulated 1 asset changes.
+17:16:52.396 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+17:16:52.397 debug: Target(editor) build started.
+17:16:52.398 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:06:40 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:10:25 GMT+0800 (中国标准时间)
+17:16:52.398 debug: Inspect cce:/internal/x/prerequisite-imports
+17:16:52.404 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 5.60 ms
+17:16:52.408 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:16:52.411 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:16:52.412 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:16:52.413 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:16:52.414 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:16:52.415 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:16:52.416 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:16:52.416 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:13:05 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:16:25 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:16:52.416 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:16:52.432 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 16.10 ms
+17:16:52.434 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:16:52.434 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:16:52.435 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:16:52.435 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:16:52.436 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:16:52.436 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:16:52.436 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:16:52.437 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:16:52.437 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:16:52.437 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:16:52.437 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:16:52.437 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:16:52.438 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:16:52.438 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:16:52.453 debug: Target(editor) ends with cost 56.82880000770092ms.
+17:16:52.454 debug: Target(preview) build started.
+17:16:52.456 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:06:40 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:10:25 GMT+0800 (中国标准时间)
+17:16:52.456 debug: Inspect cce:/internal/x/prerequisite-imports
+17:16:52.464 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 8.50 ms
+17:16:52.467 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:16:52.467 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:16:52.468 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:16:52.469 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:16:52.470 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:16:52.471 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:16:52.471 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:16:52.471 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:13:05 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:16:25 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:16:52.471 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:16:52.496 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 25.00 ms
+17:16:52.498 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:16:52.499 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:16:52.499 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:16:52.499 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:16:52.500 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:16:52.500 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:16:52.501 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:16:52.501 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:16:52.501 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:16:52.501 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:16:52.501 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:16:52.501 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:16:52.502 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:16:52.503 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:16:52.516 debug: Target(preview) ends with cost 62.85860000550747ms.
+17:19:17.720 debug: Dispatch build request for time accumulated 1 asset changes.
+17:19:17.721 debug: Build iteration starts.
+Number of accumulated asset changes: 1
+Feature changed: false
+17:19:17.721 debug: Target(editor) build started.
+17:19:17.723 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:10:25 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:12:51 GMT+0800 (中国标准时间)
+17:19:17.723 debug: Inspect cce:/internal/x/prerequisite-imports
+17:19:17.734 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 11.10 ms
+17:19:17.739 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:19:17.742 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:19:17.743 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:19:17.745 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:19:17.746 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:19:17.748 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:19:17.748 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:19:17.749 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:16:25 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:17:59 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:19:17.749 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:19:17.780 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 31.50 ms
+17:19:17.784 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:19:17.785 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:19:17.785 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:19:17.786 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:19:17.786 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:19:17.787 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:19:17.787 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:19:17.788 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:19:17.788 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:19:17.788 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:19:17.788 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:19:17.789 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:19:17.790 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:19:17.790 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:19:17.803 debug: Target(editor) ends with cost 81.29320000112057ms.
+17:19:17.803 debug: Target(preview) build started.
+17:19:17.805 debug: Detected change: cce:/internal/x/prerequisite-imports. Last mtime: Fri Jan 02 1970 15:10:25 GMT+0800 (中国标准时间), Current mtime: Fri Jan 02 1970 15:12:51 GMT+0800 (中国标准时间)
+17:19:17.805 debug: Inspect cce:/internal/x/prerequisite-imports
+17:19:17.811 debug: transform url: 'cce:/internal/x/prerequisite-imports' costs: 6.50 ms
+17:19:17.815 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-dof-pass.ts.
+17:19:17.817 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-pass.ts.
+17:19:17.818 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-settings.ts.
+17:19:17.819 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline-types.ts.
+17:19:17.820 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/default_renderpipeline/builtin-pipeline.ts.
+17:19:17.822 debug: Resolve file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts from cce:/internal/x/prerequisite-imports as file:///C:/ProgramData/cocos/editors/Creator/3.8.8/resources/resources/3d/engine/editor/assets/tools/debug-view-runtime-control.ts.
+17:19:17.822 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts.
+17:19:17.822 debug: Detected change: file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts. Last mtime: Thu Mar 12 2026 17:16:25 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe, Current mtime: Thu Mar 12 2026 17:17:59 GMT+0800 (中国标准时间)@33d0da2d-e816-4867-bbe4-bc9a474f5efe
+17:19:17.822 debug: Inspect file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts
+17:19:17.852 debug: transform url: 'file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts' costs: 29.70 ms
+17:19:17.854 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:19:17.854 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIComponent.ts.
+17:19:17.855 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:19:17.855 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:19:17.856 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Singleton.ts.
+17:19:17.856 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts.
+17:19:17.857 debug: Resolve file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts from cce:/internal/x/prerequisite-imports as file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Utils/index.ts.
+17:19:17.857 debug: Resolve cce:/internal/code-quality/cr.mjs from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/code-quality/cr.mjs.
+17:19:17.857 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:19:17.857 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:19:17.857 debug: Resolve cc from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as cce:/internal/x/cc.
+17:19:17.858 debug: Resolve ./UIMgr/UIMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIMgr.ts.
+17:19:17.858 debug: Resolve ./ResMgr/ResMgr from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/ResMgr/ResMgr.ts.
+17:19:17.859 debug: Resolve ./UIMgr/UIList from file:///E:/GitHub/cocos-game/Bounce/assets/GM/GM.ts as file:///E:/GitHub/cocos-game/Bounce/assets/GM/UIMgr/UIList.ts.
+17:19:17.871 debug: Target(preview) ends with cost 68.06679999828339ms.
