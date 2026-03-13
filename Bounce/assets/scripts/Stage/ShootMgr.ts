@@ -11,10 +11,10 @@ export class ShootMgr extends Component {
     }
 
     protected onLoad(): void {
-        input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
-        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
-        input.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
+        this.node.parent.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        this.node.parent.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        this.node.parent.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+        this.node.parent.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
     }
 
     onTouchEnd(event: EventTouch): void {

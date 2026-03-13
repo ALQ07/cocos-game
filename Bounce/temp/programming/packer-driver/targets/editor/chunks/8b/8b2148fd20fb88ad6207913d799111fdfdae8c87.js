@@ -1,7 +1,7 @@
 System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _context) {
   "use strict";
 
-  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, Component, Input, input, v3, Vec3, getUnitVector, _dec, _class, _crd, ccclass, property, ShootMgr;
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, Component, Input, v3, Vec3, getUnitVector, _dec, _class, _crd, ccclass, property, ShootMgr;
 
   function _reportPossibleCrUseOfgetUnitVector(extras) {
     _reporterNs.report("getUnitVector", "../Utils", _context.meta, extras);
@@ -17,7 +17,6 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
       _decorator = _cc._decorator;
       Component = _cc.Component;
       Input = _cc.Input;
-      input = _cc.input;
       v3 = _cc.v3;
       Vec3 = _cc.Vec3;
     }, function (_unresolved_2) {
@@ -46,10 +45,10 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
         }
 
         onLoad() {
-          input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
-          input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
-          input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
-          input.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
+          this.node.parent.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+          this.node.parent.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+          this.node.parent.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+          this.node.parent.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
         }
 
         onTouchEnd(event) {

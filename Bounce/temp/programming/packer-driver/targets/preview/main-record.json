@@ -514,7 +514,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 112371214.2802,
+      "mTimestamp": 198035812.9577,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
@@ -1523,7 +1523,7 @@
     },
     "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts": {
       "mTimestamp": {
-        "mtime": 1773280464662.6147,
+        "mtime": 1773392821390.2979,
         "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
       },
       "chunkId": "8b2148fd20fb88ad6207913d799111fdfdae8c87",
