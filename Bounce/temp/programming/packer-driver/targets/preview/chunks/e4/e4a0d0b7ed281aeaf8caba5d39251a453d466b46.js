@@ -1,0 +1,75 @@
+System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _context) {
+  "use strict";
+
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, Entity, BallEntity, _crd;
+
+  function _reportPossibleCrUseOfEntity(extras) {
+    _reporterNs.report("Entity", "../../Base/Entity", _context.meta, extras);
+  }
+
+  _export("BallEntity", void 0);
+
+  return {
+    setters: [function (_unresolved_) {
+      _reporterNs = _unresolved_;
+    }, function (_cc) {
+      _cclegacy = _cc.cclegacy;
+      __checkObsolete__ = _cc.__checkObsolete__;
+      __checkObsoleteInNamespace__ = _cc.__checkObsoleteInNamespace__;
+    }, function (_unresolved_2) {
+      Entity = _unresolved_2.Entity;
+    }],
+    execute: function () {
+      _crd = true;
+
+      _cclegacy._RF.push({}, "edd2dGMn7VBV6FumAw27TZP", "BallEntity", undefined);
+
+      __checkObsolete__(['Vec3']);
+
+      _export("BallEntity", BallEntity = class BallEntity extends (_crd && Entity === void 0 ? (_reportPossibleCrUseOfEntity({
+        error: Error()
+      }), Entity) : Entity) {
+        constructor() {
+          super(...arguments);
+          this._speed = 0;
+          this._dirPos = null;
+        }
+
+        set speed(v) {
+          this._speed = v;
+        }
+
+        get speed() {
+          return this._speed;
+        }
+
+        get dirPos() {
+          return this._dirPos;
+        }
+
+        set dirPos(value) {
+          this._dirPos = value;
+        }
+
+        init(params) {
+          this._speed = params.speed;
+          this._dirPos = params.dirPos;
+        }
+
+        update(dt) {
+          var currentPos = this.node.position.clone();
+
+          var delta = this._dirPos.clone().multiplyScalar(this._speed * dt);
+
+          this.node.position = currentPos.add(delta);
+        }
+
+      });
+
+      _cclegacy._RF.pop();
+
+      _crd = false;
+    }
+  };
+});
+//# sourceMappingURL=e4a0d0b7ed281aeaf8caba5d39251a453d466b46.js.map

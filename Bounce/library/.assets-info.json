@@ -5,7 +5,7 @@
       "time": 1772701631124.1394
     },
     "scripts": {
-      "time": 1773218668958.1191,
+      "time": 1773737677130.8943,
       "uuid": "b87d2201-ecfc-4130-8c0d-f21179f7593b"
     },
     "scene.meta": {
@@ -40,7 +40,7 @@
       "uuid": "7efcd054-484b-48ed-9711-15da6ebc414b"
     },
     "scripts\\Stage\\ShootMgr.ts": {
-      "time": 1773392821390.2979,
+      "time": 1773743180044.3699,
       "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
     },
     "scripts\\Base.meta": {
@@ -53,11 +53,11 @@
       "time": 1773218668962.5378
     },
     "scripts\\Base": {
-      "time": 1773224829519.8442,
+      "time": 1773737677145.882,
       "uuid": "bc209eb7-b236-440b-b4d2-97b6c93fb742"
     },
     "scripts\\Golbal": {
-      "time": 1773217879196.4492,
+      "time": 1773732105736.8286,
       "uuid": "8ee4f042-902a-463e-837e-b69cb6ea10fa"
     },
     "scripts\\Base\\Singleton.ts": {
@@ -89,15 +89,8 @@
       "uuid": "beeefd96-d70e-4157-8a53-03722f02d758"
     },
     "res\\Prefabs": {
-      "time": 1773280566123.3965,
+      "time": 1773735841351.252,
       "uuid": "ca3cf74b-1aee-4659-afe7-26c1bbd9cc93"
-    },
-    "res\\Prefabs\\ball.prefab.meta": {
-      "time": 1773217777722.5334
-    },
-    "res\\Prefabs\\ball.prefab": {
-      "time": 1773217777721.534,
-      "uuid": "62a3f1fe-72bc-42ed-9f8c-895174354b40"
     },
     "static.meta": {
       "time": 1772701621675.91
@@ -194,7 +187,7 @@
       "time": 1773305027064.6404
     },
     "res\\Prefabs\\pages\\UIGame.prefab": {
-      "time": 1773393050236.9597,
+      "time": 1773743134416.8103,
       "uuid": "db39b92b-e96a-4190-8bd9-f2d8b4607632"
     },
     "GM\\GM.scene.meta": {
@@ -203,6 +196,90 @@
     "GM\\GM.scene": {
       "time": 1773305992152.6892,
       "uuid": "2b49be7a-12c8-4327-b216-5c54ff73290d"
+    },
+    "scripts\\Golbal\\DataManager.ts.meta": {
+      "time": 1773732105738.3508
+    },
+    "scripts\\Golbal\\ObjectPoolManager.ts.meta": {
+      "time": 1773732105738.8645
+    },
+    "scripts\\Golbal\\DataManager.ts": {
+      "time": 1773740520238.034,
+      "uuid": "9e763b33-ab6b-41ef-9198-f2823cbd5886"
+    },
+    "scripts\\Golbal\\ObjectPoolManager.ts": {
+      "time": 1773738934825.5693,
+      "uuid": "6ea47ba2-9fde-4c2d-97b6-3a5a756b0050"
+    },
+    "scripts\\Enum.meta": {
+      "time": 1773735709679.99
+    },
+    "scripts\\Enum\\index.ts.meta": {
+      "time": 1773735709680.9897
+    },
+    "scripts\\Enum": {
+      "time": 1773735709678.9897,
+      "uuid": "9cb350e1-a437-46b1-9bf6-1c6836372364"
+    },
+    "scripts\\Enum\\index.ts": {
+      "time": 1773741880871.5457,
+      "uuid": "bdcdef1c-9f20-445c-880c-c64a774dedff"
+    },
+    "res\\Prefabs\\entity.meta": {
+      "time": 1773735739946.0679
+    },
+    "res\\Prefabs\\entity": {
+      "time": 1773735887431.6675,
+      "uuid": "a14030f2-13e5-478d-a092-ccb8ee646089"
+    },
+    "res\\Prefabs\\entity\\ball.meta": {
+      "time": 1773735884832.5962
+    },
+    "res\\Prefabs\\entity\\ball": {
+      "time": 1773735887431.6675,
+      "uuid": "cb061183-6f52-4ba4-9ba0-02a092519249"
+    },
+    "res\\Prefabs\\entity\\ball\\ball.prefab.meta": {
+      "time": 1773217777722.5334
+    },
+    "res\\Prefabs\\entity\\ball\\ball.prefab": {
+      "time": 1773217777721.534,
+      "uuid": "62a3f1fe-72bc-42ed-9f8c-895174354b40"
+    },
+    "scripts\\Entity.meta": {
+      "time": 1773737677150.8828
+    },
+    "scripts\\Base\\Entity.ts.meta": {
+      "time": 1773737677155.8823
+    },
+    "scripts\\Entity\\Ball.meta": {
+      "time": 1773737677150.8828
+    },
+    "scripts\\Entity\\Ball\\BallEntity.ts.meta": {
+      "time": 1773737677156.8818
+    },
+    "scripts\\Entity": {
+      "time": 1773737677146.8818,
+      "uuid": "a57bf7e8-0850-4170-9667-43a11a9f73f1"
+    },
+    "scripts\\Entity\\Ball": {
+      "time": 1773740293244.6233,
+      "uuid": "3ba4402e-006a-4bf2-ad25-e5832d32aead"
+    },
+    "scripts\\Base\\Entity.ts": {
+      "time": 1773741324399.11,
+      "uuid": "fa2e797e-e2af-4067-b6ca-dd8bba969092"
+    },
+    "scripts\\Entity\\Ball\\BallEntity.ts": {
+      "time": 1773743000299.5955,
+      "uuid": "edd2d18c-9fb5-4157-a16e-980c36ed364f"
+    },
+    "scripts\\Entity\\Ball\\UnitFactory.ts.meta": {
+      "time": 1773740293246.623
+    },
+    "scripts\\Entity\\Ball\\UnitFactory.ts": {
+      "time": 1773741752921.0547,
+      "uuid": "2471b093-bb8b-40f0-a58c-4252f01c981a"
     }
   },
   "missing": {}

@@ -145,7 +145,7 @@
     "versionCode": 1
   },
   "62a3f1fe-72bc-42ed-9f8c-895174354b40": {
-    "url": "db://assets/res/Prefabs/ball.prefab",
+    "url": "db://assets/res/Prefabs/entity/ball/ball.prefab",
     "value": {
       "depends": [
         "684a3638-7d9d-494e-918b-a3af6fc7dec6@f9941"
@@ -215,7 +215,8 @@
       "dependScripts": [
         "CC3eba29-7abb-723a-f7ab-ae275e2277e8",
         "36d2b8e6-885a-4970-b644-ca4d25a48904",
-        "347394e0-1c13-423f-87f2-c81fef1bed1f"
+        "347394e0-1c13-423f-87f2-c81fef1bed1f",
+        "9e763b33-ab6b-41ef-9198-f2823cbd5886"
       ]
     },
     "versionCode": 2
@@ -227,6 +228,61 @@
   },
   "f1b2c20a-68a9-40d9-94e8-e0f794476ba3": {
     "url": "db://assets/GM/UIMgr/UIList.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9e763b33-ab6b-41ef-9198-f2823cbd5886": {
+    "url": "db://assets/scripts/Golbal/DataManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "6ea47ba2-9fde-4c2d-97b6-3a5a756b0050": {
+    "url": "db://assets/scripts/Golbal/ObjectPoolManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "bdcdef1c-9f20-445c-880c-c64a774dedff": {
+    "url": "db://assets/scripts/Enum/index.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9cb350e1-a437-46b1-9bf6-1c6836372364": {
+    "url": "db://assets/scripts/Enum",
+    "value": {},
+    "versionCode": 1
+  },
+  "a14030f2-13e5-478d-a092-ccb8ee646089": {
+    "url": "db://assets/res/Prefabs/entity",
+    "value": {},
+    "versionCode": 1
+  },
+  "cb061183-6f52-4ba4-9ba0-02a092519249": {
+    "url": "db://assets/res/Prefabs/entity/ball",
+    "value": {},
+    "versionCode": 1
+  },
+  "fa2e797e-e2af-4067-b6ca-dd8bba969092": {
+    "url": "db://assets/scripts/Base/Entity.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "edd2d18c-9fb5-4157-a16e-980c36ed364f": {
+    "url": "db://assets/scripts/Entity/Ball/BallEntity.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a57bf7e8-0850-4170-9667-43a11a9f73f1": {
+    "url": "db://assets/scripts/Entity",
+    "value": {},
+    "versionCode": 1
+  },
+  "3ba4402e-006a-4bf2-ad25-e5832d32aead": {
+    "url": "db://assets/scripts/Entity/Ball",
+    "value": {},
+    "versionCode": 1
+  },
+  "2471b093-bb8b-40f0-a58c-4252f01c981a": {
+    "url": "db://assets/scripts/Entity/Ball/UnitFactory.ts",
     "value": {},
     "versionCode": 1
   }

@@ -3883,3 +3883,10 @@
 2026-3-13 19:09:54-debug: Run asset db hook engine-extends:afterRefresh ...
 2026-3-13 19:09:54-debug: asset-db:refresh-all-database (125ms)
 2026-3-13 19:09:54-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
+2026-3-13 19:13:23-debug: refresh db internal success
+2026-3-13 19:13:23-debug: refresh db assets success
+2026-3-13 19:13:23-debug: Run asset db hook engine-extends:afterRefresh ...
+2026-3-13 19:13:23-debug: Run asset db hook engine-extends:afterRefresh success!
+2026-3-13 19:13:23-debug: asset-db:refresh-all-database (122ms)
+2026-3-13 19:13:23-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
+2026-3-13 19:20:01-warn: 为更好地打开脚本，请在 {preferences} -> {program} -> {scriptEditor} 里配置打开脚本的应用程序

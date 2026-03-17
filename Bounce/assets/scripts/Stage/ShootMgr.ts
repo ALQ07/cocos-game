@@ -1,9 +1,13 @@
 import { _decorator, Component, EventTouch, Input, input, Node, v3, Vec3 } from 'cc';
 import { getUnitVector } from '../Utils';
+import { UnitFactory } from '../Entity/Ball/UnitFactory';
 const { ccclass, property } = _decorator;
 
 @ccclass('ShootMgr')
 export class ShootMgr extends Component {
+    @property(Node)
+    shootPoint: Node = null;
+
     private _dir = new Vec3();
 
     public get dir(): Vec3 {
@@ -41,8 +45,9 @@ export class ShootMgr extends Component {
         this._dir = getUnitVector(originPos, v3(uiLocation.x, uiLocation.y, 0));
     }
 
-    shoot() {
-
+    async shoot() {
+        const ball = await UnitFactory.Instance.CreateBall({ speed: 1500, dirPos: this._dir });
+        ball.worldPosition = this.shootPoint.worldPosition;
     }
 
     update(deltaTime: number) {
