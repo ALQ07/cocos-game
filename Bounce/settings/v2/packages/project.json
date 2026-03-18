@@ -29,7 +29,7 @@
       "3": 2
     },
     "gravity": {
-      "y": -40
+      "y": -100
     }
   },
   "custom_joint_texture_layouts": []
