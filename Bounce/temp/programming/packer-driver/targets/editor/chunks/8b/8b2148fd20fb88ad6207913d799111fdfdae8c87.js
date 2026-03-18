@@ -14,7 +14,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
   }
 
   function _reportPossibleCrUseOfUnitFactory(extras) {
-    _reporterNs.report("UnitFactory", "../Entity/Ball/UnitFactory", _context.meta, extras);
+    _reporterNs.report("UnitFactory", "../Entity/UnitFactory", _context.meta, extras);
   }
 
   return {

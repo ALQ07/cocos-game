@@ -36,11 +36,11 @@
       "time": 1773200358412.5347
     },
     "scripts\\Stage": {
-      "time": 1773224801483.0383,
+      "time": 1773825060346.7786,
       "uuid": "7efcd054-484b-48ed-9711-15da6ebc414b"
     },
     "scripts\\Stage\\ShootMgr.ts": {
-      "time": 1773743180044.3699,
+      "time": 1773822001898.419,
       "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
     },
     "scripts\\Base.meta": {
@@ -57,7 +57,7 @@
       "uuid": "bc209eb7-b236-440b-b4d2-97b6c93fb742"
     },
     "scripts\\Golbal": {
-      "time": 1773732105736.8286,
+      "time": 1773826393251.954,
       "uuid": "8ee4f042-902a-463e-837e-b69cb6ea10fa"
     },
     "scripts\\Base\\Singleton.ts": {
@@ -110,7 +110,7 @@
       "uuid": "a98456b5-95d3-438f-9d83-5bbd6fac0980"
     },
     "static\\UI\\Game": {
-      "time": 1773214710816.4336,
+      "time": 1773827238487.6985,
       "uuid": "16b7072c-4018-4be9-bd61-324c9fbcf334"
     },
     "static\\UI\\Game\\ball.png.meta": {
@@ -187,28 +187,21 @@
       "time": 1773305027064.6404
     },
     "res\\Prefabs\\pages\\UIGame.prefab": {
-      "time": 1773743134416.8103,
+      "time": 1773830708087.618,
       "uuid": "db39b92b-e96a-4190-8bd9-f2d8b4607632"
     },
     "GM\\GM.scene.meta": {
       "time": 1772703338012.7256
     },
     "GM\\GM.scene": {
-      "time": 1773305992152.6892,
+      "time": 1773805393870.2937,
       "uuid": "2b49be7a-12c8-4327-b216-5c54ff73290d"
-    },
-    "scripts\\Golbal\\DataManager.ts.meta": {
-      "time": 1773732105738.3508
     },
     "scripts\\Golbal\\ObjectPoolManager.ts.meta": {
       "time": 1773732105738.8645
     },
-    "scripts\\Golbal\\DataManager.ts": {
-      "time": 1773740520238.034,
-      "uuid": "9e763b33-ab6b-41ef-9198-f2823cbd5886"
-    },
     "scripts\\Golbal\\ObjectPoolManager.ts": {
-      "time": 1773738934825.5693,
+      "time": 1773824980445.2334,
       "uuid": "6ea47ba2-9fde-4c2d-97b6-3a5a756b0050"
     },
     "scripts\\Enum.meta": {
@@ -222,14 +215,14 @@
       "uuid": "9cb350e1-a437-46b1-9bf6-1c6836372364"
     },
     "scripts\\Enum\\index.ts": {
-      "time": 1773741880871.5457,
+      "time": 1773822525241.017,
       "uuid": "bdcdef1c-9f20-445c-880c-c64a774dedff"
     },
     "res\\Prefabs\\entity.meta": {
       "time": 1773735739946.0679
     },
     "res\\Prefabs\\entity": {
-      "time": 1773735887431.6675,
+      "time": 1773814996362.9138,
       "uuid": "a14030f2-13e5-478d-a092-ccb8ee646089"
     },
     "res\\Prefabs\\entity\\ball.meta": {
@@ -243,7 +236,7 @@
       "time": 1773217777722.5334
     },
     "res\\Prefabs\\entity\\ball\\ball.prefab": {
-      "time": 1773217777721.534,
+      "time": 1773830448817.723,
       "uuid": "62a3f1fe-72bc-42ed-9f8c-895174354b40"
     },
     "scripts\\Entity.meta": {
@@ -259,11 +252,11 @@
       "time": 1773737677156.8818
     },
     "scripts\\Entity": {
-      "time": 1773737677146.8818,
+      "time": 1773822271156.9404,
       "uuid": "a57bf7e8-0850-4170-9667-43a11a9f73f1"
     },
     "scripts\\Entity\\Ball": {
-      "time": 1773740293244.6233,
+      "time": 1773822271156.4343,
       "uuid": "3ba4402e-006a-4bf2-ad25-e5832d32aead"
     },
     "scripts\\Base\\Entity.ts": {
@@ -271,15 +264,78 @@
       "uuid": "fa2e797e-e2af-4067-b6ca-dd8bba969092"
     },
     "scripts\\Entity\\Ball\\BallEntity.ts": {
-      "time": 1773743000299.5955,
+      "time": 1773821929662.0635,
       "uuid": "edd2d18c-9fb5-4157-a16e-980c36ed364f"
     },
-    "scripts\\Entity\\Ball\\UnitFactory.ts.meta": {
-      "time": 1773740293246.623
+    "static\\UI\\Game\\block0.png.meta": {
+      "time": 1773814064653.2703
     },
-    "scripts\\Entity\\Ball\\UnitFactory.ts": {
-      "time": 1773741752921.0547,
-      "uuid": "2471b093-bb8b-40f0-a58c-4252f01c981a"
+    "static\\UI\\Game\\block0.png": {
+      "time": 1773814038346.3442,
+      "uuid": "e73b9a07-f305-4f9e-9266-5a02a9f4a29d"
+    },
+    "res\\Prefabs\\entity\\block.meta": {
+      "time": 1773814988867.1501
+    },
+    "res\\Prefabs\\entity\\block": {
+      "time": 1773828407624.1936,
+      "uuid": "32caa62a-8e0d-4ad3-9037-dc9729a331f3"
+    },
+    "scripts\\Entity\\Block.meta": {
+      "time": 1773822271161.005
+    },
+    "scripts\\Entity\\UnitFactory.ts.meta": {
+      "time": 1773822271162.005
+    },
+    "scripts\\Entity\\Block": {
+      "time": 1773828404938.2761,
+      "uuid": "c1e71237-4dd0-4997-9a4f-91d3a7d742d4"
+    },
+    "scripts\\Entity\\UnitFactory.ts": {
+      "time": 1773828135103.9023,
+      "uuid": "8796ccd2-8da5-4fe0-90e1-18df68731080"
+    },
+    "scripts\\Golbal\\DataManager.ts.meta": {
+      "time": 1773825009184.7642
+    },
+    "scripts\\Golbal\\DataManager.ts": {
+      "time": 1773827681954.1543,
+      "uuid": "143bcdb6-d0c3-4f08-b75c-6c5f6518c7e8"
+    },
+    "scripts\\Stage\\GameMgr.ts.meta": {
+      "time": 1773825060349.1482
+    },
+    "scripts\\Stage\\GameMgr.ts": {
+      "time": 1773829635414.8477,
+      "uuid": "bd807673-1690-47b9-a0f5-960d7877657e"
+    },
+    "scripts\\Golbal\\GameConfig.ts.meta": {
+      "time": 1773826393253.4756
+    },
+    "scripts\\Golbal\\GameConfig.ts": {
+      "time": 1773826392654.421,
+      "uuid": "072944d7-e1a4-4cf4-91fb-d155d5d5cd89"
+    },
+    "static\\UI\\Game\\block1.png.meta": {
+      "time": 1773827251646.2424
+    },
+    "static\\UI\\Game\\block1.png": {
+      "time": 1773827238485.6985,
+      "uuid": "002f7c5b-e8e9-44dc-bc8c-32fc901ad898"
+    },
+    "scripts\\Entity\\Block\\BlockEntity.ts.meta": {
+      "time": 1773828404939.268
+    },
+    "scripts\\Entity\\Block\\BlockEntity.ts": {
+      "time": 1773828131168.155,
+      "uuid": "02b6c11c-894f-43c9-be07-efb2c66f1810"
+    },
+    "res\\Prefabs\\entity\\block\\block.prefab.meta": {
+      "time": 1773828407629.207
+    },
+    "res\\Prefabs\\entity\\block\\block.prefab": {
+      "time": 1773830772446.2295,
+      "uuid": "0f60b24a-1eda-4ceb-a5f6-b9280fe26138"
     }
   },
   "missing": {}

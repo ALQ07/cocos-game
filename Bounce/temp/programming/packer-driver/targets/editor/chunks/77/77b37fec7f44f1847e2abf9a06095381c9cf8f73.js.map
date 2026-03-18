@@ -1,0 +1,1 @@
+{"version":3,"sources":["file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Golbal/GameConfig.ts"],"names":["GameConfig"],"mappings":";;;iBAAqBA,U;;;;;;;;;;;;;yBAAAA,U,GAAN,MAAMA,UAAN,CAAiB,E","sourcesContent":["export default class GameConfig {\r\n\r\n}"]}

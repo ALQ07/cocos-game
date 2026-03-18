@@ -66,7 +66,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           }
         }
 
-        async get(type) {
+        async get(type, name) {
           if (!this.objectPool) console.error('ObjectPool未成功初始化');
 
           if (!this.map.has(type)) {
@@ -77,24 +77,43 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
 
           const nodes = this.map.get(type);
 
-          if (!nodes.length) {
+          if (name && nodes.findIndex(i => i.name == name) === -1) {
+            const path = `Prefabs/entity/${type}/${name}`;
             const prefab = await (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
               error: Error()
-            }), GM) : GM).ResMgr.asyncLoad(`Prefabs/entity/${type}/${type}`, () => {});
+            }), GM) : GM).ResMgr.asyncLoad(path, () => {});
+            const parent = this.objectPool.getChildByName(type + 'Pool');
+            const node = instantiate(prefab);
+            node.name = name;
+            node.parent = parent;
+            node.active = true;
+
+            if (parent.getChildByName('name')) {
+              const nodeIndex = parent.getChildByName('name').getSiblingIndex();
+              node.setSiblingIndex(nodeIndex);
+            }
+
+            return node;
+          } else if (!nodes.length) {
+            const path = `Prefabs/entity/${type}/${type}`;
+            const prefab = await (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+              error: Error()
+            }), GM) : GM).ResMgr.asyncLoad(path, () => {});
             const node = instantiate(prefab);
             node.name = type;
             node.parent = this.objectPool.getChildByName(type + 'Pool');
             node.active = true;
             return node;
           } else {
-            const node = nodes.pop();
+            const node = name ? nodes.pop() : nodes.splice(nodes.findIndex(i => i.name == name), 1)[0];
             node.active = true;
             return node;
           }
         }
 
         ret(node) {
-          node.active = false;
+          node.active = false; // node.parent = null;
+
           this.map.get(node.name).push(node);
         }
 

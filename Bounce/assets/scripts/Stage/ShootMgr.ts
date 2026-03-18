@@ -1,6 +1,6 @@
 import { _decorator, Component, EventTouch, Input, input, Node, v3, Vec3 } from 'cc';
 import { getUnitVector } from '../Utils';
-import { UnitFactory } from '../Entity/Ball/UnitFactory';
+import { UnitFactory } from '../Entity/UnitFactory';
 const { ccclass, property } = _decorator;
 
 @ccclass('ShootMgr')

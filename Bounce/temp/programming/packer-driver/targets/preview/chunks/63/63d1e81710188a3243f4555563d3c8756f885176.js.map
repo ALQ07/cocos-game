@@ -1,1 +1,1 @@
-{"version":3,"sources":["file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Enum/index.ts"],"names":["EntityTypeEnum"],"mappings":";;;;;;;;;;;;;;gCAAYA,c,0BAAAA,c;AAAAA,QAAAA,c;eAAAA,c","sourcesContent":["export enum EntityTypeEnum {\r\n    Ball = 'ball'\r\n}"]}
+{"version":3,"sources":["file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Enum/index.ts"],"names":["EntityTypeEnum"],"mappings":";;;;;;;;;;;;;;gCAAYA,c,0BAAAA,c;AAAAA,QAAAA,c;AAAAA,QAAAA,c;eAAAA,c","sourcesContent":["export enum EntityTypeEnum {\r\n    Ball = 'ball',\r\n    Block = 'block'\r\n}"]}

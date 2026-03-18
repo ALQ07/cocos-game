@@ -1,3 +1,4 @@
 export enum EntityTypeEnum {
-    Ball = 'ball'
+    Ball = 'ball',
+    Block = 'block'
 }

@@ -30,7 +30,6 @@
             "static\\UI\\Game\\ball.png",
             "static\\UI\\Game\\bg.png",
             "static\\UI\\Game\\shooter.png",
-            "scripts\\Golbal\\DataManager.ts",
             "scripts\\Golbal\\ObjectPoolManager.ts",
             "scripts\\Enum",
             "scripts\\Enum\\index.ts",
@@ -41,7 +40,16 @@
             "scripts\\Base\\Entity.ts",
             "scripts\\Entity\\Ball",
             "scripts\\Entity\\Ball\\BallEntity.ts",
-            "scripts\\Entity\\Ball\\UnitFactory.ts"
+            "static\\UI\\Game\\block0.png",
+            "res\\Prefabs\\entity\\block",
+            "scripts\\Entity\\Block",
+            "scripts\\Entity\\UnitFactory.ts",
+            "scripts\\Golbal\\DataManager.ts",
+            "scripts\\Stage\\GameMgr.ts",
+            "scripts\\Golbal\\GameConfig.ts",
+            "static\\UI\\Game\\block1.png",
+            "scripts\\Entity\\Block\\BlockEntity.ts",
+            "res\\Prefabs\\entity\\block\\block.prefab"
         ]
     }
 }

@@ -2,6 +2,7 @@ import { _decorator, Component, Node } from "cc";
 import Singleton from "../Base/Singleton";
 import { ObjectPoolManager } from "./ObjectPoolManager";
 import { ShootMgr } from "../Stage/ShootMgr";
+import { GameMgr } from "../Stage/GameMgr";
 const { ccclass, property } = _decorator;
 
 @ccclass('DataManager')
@@ -22,15 +23,35 @@ export class DataManager extends Component {
     @property(ShootMgr)
     shootMgr: ShootMgr = null;
 
+    @property(GameMgr)
+    gameMgr: GameMgr = null;
+
     protected start(): void {
         this.init();
     }
 
     init() {
         ObjectPoolManager.Instance.init();
+        this.gameMgr.init();
     }
 
     public get shootDirPos() {
         return this.shootMgr.dir;
     }
+
+    /**弹球场景底部边界 */
+    public get stageBottomWorldPos() {
+        return this.stage.getChildByPath('WallCollider/bottom').worldPosition;
+    }
+
+    /**弹球场景左边界 */
+    public get stageLeftWorldPos() {
+        return this.stage.getChildByPath('WallCollider/left').worldPosition;
+    }
+
+    /**弹球场景右边界 */
+    public get stageRightWorldPos() {
+        return this.stage.getChildByPath('WallCollider/right').worldPosition;
+    }
+
 }

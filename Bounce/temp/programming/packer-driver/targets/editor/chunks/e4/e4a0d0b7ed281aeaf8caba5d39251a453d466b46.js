@@ -1,7 +1,7 @@
 System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _context) {
   "use strict";
 
-  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, Entity, BallEntity, _crd;
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, RigidBody2D, Vec2, Entity, BallEntity, _crd;
 
   function _reportPossibleCrUseOfEntity(extras) {
     _reporterNs.report("Entity", "../../Base/Entity", _context.meta, extras);
@@ -16,6 +16,8 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
       _cclegacy = _cc.cclegacy;
       __checkObsolete__ = _cc.__checkObsolete__;
       __checkObsoleteInNamespace__ = _cc.__checkObsoleteInNamespace__;
+      RigidBody2D = _cc.RigidBody2D;
+      Vec2 = _cc.Vec2;
     }, function (_unresolved_2) {
       Entity = _unresolved_2.Entity;
     }],
@@ -24,13 +26,14 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
 
       _cclegacy._RF.push({}, "edd2dGMn7VBV6FumAw27TZP", "BallEntity", undefined);
 
-      __checkObsolete__(['Vec3']);
+      __checkObsolete__(['RigidBody2D', 'Vec2', 'Vec3']);
 
       _export("BallEntity", BallEntity = class BallEntity extends (_crd && Entity === void 0 ? (_reportPossibleCrUseOfEntity({
         error: Error()
       }), Entity) : Entity) {
         constructor(...args) {
           super(...args);
+          this.rigidBody = null;
           this._speed = 0;
           this._dirPos = null;
         }
@@ -51,17 +54,22 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           this._dirPos = value;
         }
 
+        onLoad() {
+          this.rigidBody = this.node.getComponent(RigidBody2D);
+        }
+
         init(params) {
           this._speed = params.speed;
           this._dirPos = params.dirPos;
+
+          const delta = this._dirPos.clone().multiplyScalar(50);
+
+          this.rigidBody.linearVelocity = new Vec2(delta.x, delta.y);
         }
 
-        update(dt) {
-          const currentPos = this.node.position.clone();
-
-          const delta = this._dirPos.clone().multiplyScalar(this._speed * dt);
-
-          this.node.position = currentPos.add(delta);
+        update(dt) {// const currentPos = this.node.position.clone();
+          // const delta = this._dirPos.clone().multiplyScalar(this._speed * dt);
+          // this.node.position = currentPos.add(delta);
         }
 
       });

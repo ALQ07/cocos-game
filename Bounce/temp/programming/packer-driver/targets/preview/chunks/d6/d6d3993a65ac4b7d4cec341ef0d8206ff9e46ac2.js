@@ -70,7 +70,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           }
         }
 
-        get(type) {
+        get(type, name) {
           var _this = this;
 
           return _asyncToGenerator(function* () {
@@ -85,26 +85,50 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
 
             var nodes = _this.map.get(type);
 
-            if (!nodes.length) {
+            if (name && nodes.findIndex(i => i.name == name) === -1) {
+              var path = "Prefabs/entity/" + type + "/" + name;
               var prefab = yield (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
                 error: Error()
-              }), GM) : GM).ResMgr.asyncLoad("Prefabs/entity/" + type + "/" + type, () => {});
-              var node = instantiate(prefab);
-              node.name = type;
-              node.parent = _this.objectPool.getChildByName(type + 'Pool');
-              node.active = true;
-              return node;
-            } else {
-              var _node = nodes.pop();
+              }), GM) : GM).ResMgr.asyncLoad(path, () => {});
 
+              var parent = _this.objectPool.getChildByName(type + 'Pool');
+
+              var node = instantiate(prefab);
+              node.name = name;
+              node.parent = parent;
+              node.active = true;
+
+              if (parent.getChildByName('name')) {
+                var nodeIndex = parent.getChildByName('name').getSiblingIndex();
+                node.setSiblingIndex(nodeIndex);
+              }
+
+              return node;
+            } else if (!nodes.length) {
+              var _path = "Prefabs/entity/" + type + "/" + type;
+
+              var _prefab = yield (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+                error: Error()
+              }), GM) : GM).ResMgr.asyncLoad(_path, () => {});
+
+              var _node = instantiate(_prefab);
+
+              _node.name = type;
+              _node.parent = _this.objectPool.getChildByName(type + 'Pool');
               _node.active = true;
               return _node;
+            } else {
+              var _node2 = name ? nodes.pop() : nodes.splice(nodes.findIndex(i => i.name == name), 1)[0];
+
+              _node2.active = true;
+              return _node2;
             }
           })();
         }
 
         ret(node) {
-          node.active = false;
+          node.active = false; // node.parent = null;
+
           this.map.get(node.name).push(node);
         }
 

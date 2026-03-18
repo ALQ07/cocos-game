@@ -14,6 +14,7 @@ System.register(["cc"], function (_export, _context) {
 
       _export("EntityTypeEnum", EntityTypeEnum = /*#__PURE__*/function (EntityTypeEnum) {
         EntityTypeEnum["Ball"] = "ball";
+        EntityTypeEnum["Block"] = "block";
         return EntityTypeEnum;
       }({}));
 

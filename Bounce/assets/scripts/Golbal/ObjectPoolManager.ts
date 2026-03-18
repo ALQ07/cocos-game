@@ -19,7 +19,7 @@ export class ObjectPoolManager extends Singleton {
         }
     }
 
-    async get(type: EntityTypeEnum) {
+    async get(type: EntityTypeEnum, name?: string) {
         if (!this.objectPool) console.error('ObjectPool未成功初始化');
         if (!this.map.has(type)) {
             this.map.set(type, []);
@@ -28,15 +28,29 @@ export class ObjectPoolManager extends Singleton {
         }
 
         const nodes = this.map.get(type);
-        if (!nodes.length) {
-            const prefab = await GM.ResMgr.asyncLoad<Prefab>(`Prefabs/entity/${type}/${type}`, () => { });
+        if (name && nodes.findIndex(i => i.name == name) === -1) {
+            const path = `Prefabs/entity/${type}/${name}`;
+            const prefab = await GM.ResMgr.asyncLoad<Prefab>(path, () => { });
+            const parent = this.objectPool.getChildByName(type + 'Pool');
+            const node = instantiate(prefab);
+            node.name = name;
+            node.parent = parent;
+            node.active = true;
+            if (parent.getChildByName('name')) {
+                const nodeIndex = parent.getChildByName('name').getSiblingIndex();
+                node.setSiblingIndex(nodeIndex);
+            }
+            return node;
+        } else if (!nodes.length) {
+            const path = `Prefabs/entity/${type}/${type}`;
+            const prefab = await GM.ResMgr.asyncLoad<Prefab>(path, () => { });
             const node = instantiate(prefab);
             node.name = type;
             node.parent = this.objectPool.getChildByName(type + 'Pool');
             node.active = true;
             return node;
         } else {
-            const node = nodes.pop();
+            const node = name ? nodes.pop() : nodes.splice(nodes.findIndex(i => i.name == name), 1)[0];
             node.active = true;
             return node;
         }
@@ -44,6 +58,7 @@ export class ObjectPoolManager extends Singleton {
 
     ret(node: Node) {
         node.active = false;
+        // node.parent = null;
         this.map.get(node.name as EntityTypeEnum).push(node);
     }
 }
