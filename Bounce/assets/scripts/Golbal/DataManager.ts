@@ -17,6 +17,8 @@ export class DataManager extends Component {
         DataManager._instance = this;
     }
 
+    private _curBallNum: number = 5;
+
     @property(Node)
     stage: Node = null;
 
@@ -54,4 +56,12 @@ export class DataManager extends Component {
         return this.stage.getChildByPath('WallCollider/right').worldPosition;
     }
 
+    /**当前拥有的球的总数 */
+    public get curBallNum() {
+        return this._curBallNum;
+    }
+
+    public set curBallNum(value: number) {
+        this.curBallNum = value;
+    }
 }

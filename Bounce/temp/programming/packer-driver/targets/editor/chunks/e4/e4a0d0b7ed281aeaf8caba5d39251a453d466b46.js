@@ -62,7 +62,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           this._speed = params.speed;
           this._dirPos = params.dirPos;
 
-          const delta = this._dirPos.clone().multiplyScalar(50);
+          const delta = this._dirPos.clone().multiplyScalar(this._speed);
 
           this.rigidBody.linearVelocity = new Vec2(delta.x, delta.y);
         }

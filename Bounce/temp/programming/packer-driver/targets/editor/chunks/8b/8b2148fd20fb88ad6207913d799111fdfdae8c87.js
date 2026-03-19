@@ -1,7 +1,7 @@
-System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], function (_export, _context) {
+System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__unresolved_3"], function (_export, _context) {
   "use strict";
 
-  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, Component, Input, Node, v3, Vec3, getUnitVector, UnitFactory, _dec, _dec2, _class, _class2, _descriptor, _crd, ccclass, property, ShootMgr;
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, Component, Input, Node, v3, Vec3, getUnitVector, UnitFactory, DataManager, _dec, _dec2, _class, _class2, _descriptor, _crd, ccclass, property, ShootMgr;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -15,6 +15,10 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
 
   function _reportPossibleCrUseOfUnitFactory(extras) {
     _reporterNs.report("UnitFactory", "../Entity/UnitFactory", _context.meta, extras);
+  }
+
+  function _reportPossibleCrUseOfDataManager(extras) {
+    _reporterNs.report("DataManager", "../Golbal/DataManager", _context.meta, extras);
   }
 
   return {
@@ -34,6 +38,8 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
       getUnitVector = _unresolved_2.getUnitVector;
     }, function (_unresolved_3) {
       UnitFactory = _unresolved_3.UnitFactory;
+    }, function (_unresolved_4) {
+      DataManager = _unresolved_4.DataManager;
     }],
     execute: function () {
       _crd = true;
@@ -53,6 +59,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
 
           _initializerDefineProperty(this, "shootPoint", _descriptor, this);
 
+          this.isShooting = false;
           this._dir = new Vec3();
         }
 
@@ -94,13 +101,23 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
         }
 
         async shoot() {
-          const ball = await (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
+          if (this.isShooting) return;
+          this.isShooting = true;
+          const {
+            curBallNum
+          } = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
             error: Error()
-          }), UnitFactory) : UnitFactory).Instance.CreateBall({
-            speed: 1500,
-            dirPos: this._dir
-          });
-          ball.worldPosition = this.shootPoint.worldPosition;
+          }), DataManager) : DataManager).Instance;
+
+          for (let i = 0; i < curBallNum; i++) {
+            const ball = await (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
+              error: Error()
+            }), UnitFactory) : UnitFactory).Instance.CreateBall({
+              speed: 50,
+              dirPos: this._dir
+            });
+            ball.worldPosition = this.shootPoint.worldPosition;
+          }
         }
 
         update(deltaTime) {}

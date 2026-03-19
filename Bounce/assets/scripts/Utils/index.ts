@@ -11,4 +11,3 @@ export const getUnitVector = (p1: Vec3, p2: Vec3): Vec3 => {
     Vec3.subtract(dir, p2, p1);
     return dir.normalize();
 }
-

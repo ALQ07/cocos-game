@@ -1,12 +1,15 @@
 import { _decorator, Component, EventTouch, Input, input, Node, v3, Vec3 } from 'cc';
 import { getUnitVector } from '../Utils';
 import { UnitFactory } from '../Entity/UnitFactory';
+import { DataManager } from '../Golbal/DataManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('ShootMgr')
 export class ShootMgr extends Component {
     @property(Node)
     shootPoint: Node = null;
+
+    public isShooting: boolean = false;
 
     private _dir = new Vec3();
 
@@ -46,13 +49,19 @@ export class ShootMgr extends Component {
     }
 
     async shoot() {
-        const ball = await UnitFactory.Instance.CreateBall({ speed: 1500, dirPos: this._dir });
-        ball.worldPosition = this.shootPoint.worldPosition;
+        if (this.isShooting) return;
+        this.isShooting = true;
+        const { curBallNum } = DataManager.Instance;
+        for (let i = 0; i < curBallNum; i++) {
+            const ball = await UnitFactory.Instance.CreateBall({ speed: 50, dirPos: this._dir });
+            ball.worldPosition = this.shootPoint.worldPosition;
+        }
     }
 
     update(deltaTime: number) {
 
     }
 }
+
 
 

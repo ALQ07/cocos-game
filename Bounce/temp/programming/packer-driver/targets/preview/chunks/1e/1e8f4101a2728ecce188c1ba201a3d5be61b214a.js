@@ -57,6 +57,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
       }), GameMgr) : GameMgr), _dec(_class = (_class2 = (_class3 = class DataManager extends Component {
         constructor() {
           super(...arguments);
+          this._curBallNum = 5;
 
           _initializerDefineProperty(this, "stage", _descriptor, this);
 
@@ -104,6 +105,16 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
 
         get stageRightWorldPos() {
           return this.stage.getChildByPath('WallCollider/right').worldPosition;
+        }
+        /**当前拥有的球的总数 */
+
+
+        get curBallNum() {
+          return this._curBallNum;
+        }
+
+        set curBallNum(value) {
+          this.curBallNum = value;
         }
 
       }, _class3._instance = null, _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "stage", [_dec2], {
