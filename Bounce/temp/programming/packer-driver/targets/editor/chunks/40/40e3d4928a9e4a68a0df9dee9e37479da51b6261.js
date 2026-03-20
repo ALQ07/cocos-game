@@ -1,7 +1,9 @@
 System.register(["cc"], function (_export, _context) {
   "use strict";
 
-  var _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, Vec3, _crd, getUnitVector;
+  var _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, Vec3, Utils, _crd;
+
+  _export("default", void 0);
 
   return {
     setters: [function (_cc) {
@@ -15,19 +17,32 @@ System.register(["cc"], function (_export, _context) {
 
       _cclegacy._RF.push({}, "ab8e0nPNvlFLY0SV8tNVNHt", "index", undefined);
 
+      __checkObsolete__(['Vec3']);
+
+      _export("default", Utils = class Utils {});
+
       /**
        * 计算点到点的单位向量
        * @param p1 起点
        * @param p2 终点
        * @returns 单位向量
        */
-      __checkObsolete__(['Vec3']);
-
-      _export("getUnitVector", getUnitVector = (p1, p2) => {
+      Utils.getUnitVector = (p1, p2) => {
         const dir = new Vec3();
         Vec3.subtract(dir, p2, p1);
         return dir.normalize();
-      });
+      };
+
+      /**
+       * 延时等待
+       * @param time （秒）
+       * @returns 
+       */
+      Utils.delay = time => {
+        return new Promise(res => {
+          setTimeout(res, time * 1000);
+        });
+      };
 
       _cclegacy._RF.pop();
 

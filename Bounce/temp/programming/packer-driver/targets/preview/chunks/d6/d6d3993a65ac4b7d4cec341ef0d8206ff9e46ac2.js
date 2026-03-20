@@ -62,68 +62,86 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
         }
 
         init() {
-          if (!this.objectPool) {
-            this.objectPool = new Node("ObjectPool");
-            this.objectPool.parent = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
-              error: Error()
-            }), DataManager) : DataManager).Instance.stage;
-          }
-        }
-
-        get(type, name) {
           var _this = this;
 
           return _asyncToGenerator(function* () {
-            if (!_this.objectPool) console.error('ObjectPool未成功初始化');
-
-            if (!_this.map.has(type)) {
-              _this.map.set(type, []);
-
-              var container = new Node(type + 'Pool');
-              container.parent = _this.objectPool;
+            if (!_this.objectPool) {
+              _this.objectPool = new Node("ObjectPool");
+              _this.objectPool.parent = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+                error: Error()
+              }), DataManager) : DataManager).Instance.stage;
             }
 
-            var nodes = _this.map.get(type);
-
-            if (name && nodes.findIndex(i => i.name == name) === -1) {
-              var path = "Prefabs/entity/" + type + "/" + name;
-              var prefab = yield (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+            try {
+              yield Promise.all([(_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
                 error: Error()
-              }), GM) : GM).ResMgr.asyncLoad(path, () => {});
-
-              var parent = _this.objectPool.getChildByName(type + 'Pool');
-
-              var node = instantiate(prefab);
-              node.name = name;
-              node.parent = parent;
-              node.active = true;
-
-              if (parent.getChildByName('name')) {
-                var nodeIndex = parent.getChildByName('name').getSiblingIndex();
-                node.setSiblingIndex(nodeIndex);
-              }
-
-              return node;
-            } else if (!nodes.length) {
-              var _path = "Prefabs/entity/" + type + "/" + type;
-
-              var _prefab = yield (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+              }), GM) : GM).ResMgr.asyncLoadDir('Prefabs/entity/ball', () => {}), (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
                 error: Error()
-              }), GM) : GM).ResMgr.asyncLoad(_path, () => {});
-
-              var _node = instantiate(_prefab);
-
-              _node.name = type;
-              _node.parent = _this.objectPool.getChildByName(type + 'Pool');
-              _node.active = true;
-              return _node;
-            } else {
-              var _node2 = name ? nodes.pop() : nodes.splice(nodes.findIndex(i => i.name == name), 1)[0];
-
-              _node2.active = true;
-              return _node2;
+              }), GM) : GM).ResMgr.asyncLoadDir('Prefabs/entity/block', () => {})]);
+            } catch (error) {
+              console.error('预制体资源加载失败:', error);
             }
           })();
+        }
+
+        get(type, name) {
+          if (!this.objectPool) console.error('ObjectPool未成功初始化');
+
+          if (!this.map.has(type)) {
+            this.map.set(type, []);
+            var container = new Node(type + 'Pool');
+            container.parent = this.objectPool;
+          }
+
+          var nodes = this.map.get(type);
+
+          if (name && nodes.findIndex(i => i.name == name) === -1) {
+            var path = "Prefabs/entity/" + type + "/" + name;
+            var prefab = (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+              error: Error()
+            }), GM) : GM).ResMgr.Res.get(path);
+
+            if (!prefab) {
+              console.error("Prefab \u52A0\u8F7D\u5931\u8D25: " + path + ", name: " + name);
+              return null;
+            }
+
+            var parent = this.objectPool.getChildByName(type + 'Pool');
+            var node = instantiate(prefab);
+            node.name = name;
+            node.parent = parent;
+            node.active = true;
+
+            if (parent.getChildByName('name')) {
+              var nodeIndex = parent.getChildByName('name').getSiblingIndex();
+              node.setSiblingIndex(nodeIndex);
+            }
+
+            return node;
+          } else if (!nodes.length) {
+            var _path = "Prefabs/entity/" + type + "/" + type;
+
+            var _prefab = (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+              error: Error()
+            }), GM) : GM).ResMgr.Res.get(_path);
+
+            if (!_prefab) {
+              console.error("Prefab \u52A0\u8F7D\u5931\u8D25: " + _path + ", type: " + type);
+              return null;
+            }
+
+            var _node = instantiate(_prefab);
+
+            _node.name = type;
+            _node.parent = this.objectPool.getChildByName(type + 'Pool');
+            _node.active = true;
+            return _node;
+          } else {
+            var _node2 = name ? nodes.pop() : nodes.splice(nodes.findIndex(i => i.name == name), 1)[0];
+
+            _node2.active = true;
+            return _node2;
+          }
         }
 
         ret(node) {

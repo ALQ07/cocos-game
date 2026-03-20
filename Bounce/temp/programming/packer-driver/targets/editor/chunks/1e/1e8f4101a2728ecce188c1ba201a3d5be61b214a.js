@@ -78,8 +78,8 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           this.init();
         }
 
-        init() {
-          (_crd && ObjectPoolManager === void 0 ? (_reportPossibleCrUseOfObjectPoolManager({
+        async init() {
+          await (_crd && ObjectPoolManager === void 0 ? (_reportPossibleCrUseOfObjectPoolManager({
             error: Error()
           }), ObjectPoolManager) : ObjectPoolManager).Instance.init();
           this.gameMgr.init();

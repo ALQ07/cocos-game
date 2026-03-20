@@ -1,7 +1,7 @@
 System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__unresolved_3"], function (_export, _context) {
   "use strict";
 
-  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, Component, Input, Node, v3, Vec3, getUnitVector, UnitFactory, DataManager, _dec, _dec2, _class, _class2, _descriptor, _crd, ccclass, property, ShootMgr;
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, Component, Input, Node, v3, Vec3, UnitFactory, DataManager, Utils, _dec, _dec2, _class, _class2, _descriptor, _crd, ccclass, property, ShootMgr;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -9,16 +9,16 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
 
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
 
-  function _reportPossibleCrUseOfgetUnitVector(extras) {
-    _reporterNs.report("getUnitVector", "../Utils", _context.meta, extras);
-  }
-
   function _reportPossibleCrUseOfUnitFactory(extras) {
     _reporterNs.report("UnitFactory", "../Entity/UnitFactory", _context.meta, extras);
   }
 
   function _reportPossibleCrUseOfDataManager(extras) {
     _reporterNs.report("DataManager", "../Golbal/DataManager", _context.meta, extras);
+  }
+
+  function _reportPossibleCrUseOfUtils(extras) {
+    _reporterNs.report("Utils", "../Utils", _context.meta, extras);
   }
 
   return {
@@ -35,11 +35,11 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
       v3 = _cc.v3;
       Vec3 = _cc.Vec3;
     }, function (_unresolved_2) {
-      getUnitVector = _unresolved_2.getUnitVector;
+      UnitFactory = _unresolved_2.UnitFactory;
     }, function (_unresolved_3) {
-      UnitFactory = _unresolved_3.UnitFactory;
+      DataManager = _unresolved_3.DataManager;
     }, function (_unresolved_4) {
-      DataManager = _unresolved_4.DataManager;
+      Utils = _unresolved_4.default;
     }],
     execute: function () {
       _crd = true;
@@ -95,9 +95,9 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           const angle = radians * 180 / Math.PI;
           if (Math.abs(angle) > 80) return;
           this.node.angle = angle;
-          this._dir = (_crd && getUnitVector === void 0 ? (_reportPossibleCrUseOfgetUnitVector({
+          this._dir = (_crd && Utils === void 0 ? (_reportPossibleCrUseOfUtils({
             error: Error()
-          }), getUnitVector) : getUnitVector)(originPos, v3(uiLocation.x, uiLocation.y, 0));
+          }), Utils) : Utils).getUnitVector(originPos, v3(uiLocation.x, uiLocation.y, 0));
         }
 
         async shoot() {
@@ -110,13 +110,16 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           }), DataManager) : DataManager).Instance;
 
           for (let i = 0; i < curBallNum; i++) {
-            const ball = await (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
+            const ball = (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
               error: Error()
             }), UnitFactory) : UnitFactory).Instance.CreateBall({
               speed: 50,
               dirPos: this._dir
             });
             ball.worldPosition = this.shootPoint.worldPosition;
+            await (_crd && Utils === void 0 ? (_reportPossibleCrUseOfUtils({
+              error: Error()
+            }), Utils) : Utils).delay(0.2);
           }
         }
 

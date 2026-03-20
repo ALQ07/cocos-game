@@ -44,7 +44,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
           this.generateBlocks();
         }
 
-        async generateBlocks() {
+        generateBlocks() {
           const width = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
             error: Error()
           }), DataManager) : DataManager).Instance.stageRightWorldPos.x - (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
@@ -88,7 +88,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
 
 
           for (let i = 0; i < actualCount; i++) {
-            const block = await (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
+            const block = (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
               error: Error()
             }), UnitFactory) : UnitFactory).Instance.CreateBlock({});
             block.setWorldPosition(positions[i], baseY, baseZ);

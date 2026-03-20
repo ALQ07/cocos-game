@@ -57,8 +57,15 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           this.rigidBody = this.node.getComponent(RigidBody2D);
         }
 
-        init(params) {// this._speed = params.speed;
-          // this._dirPos = params.dirPos
+        init(params) {
+          var angle = Math.random() * 360;
+
+          if (this.node.children.length > 0) {
+            var graphic = this.node.children[0];
+            graphic.angle = angle;
+          } else {
+            this.node.angle = angle;
+          }
         }
 
         update(dt) {// const currentPos = this.node.position.clone();

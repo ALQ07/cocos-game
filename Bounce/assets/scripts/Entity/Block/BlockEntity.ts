@@ -33,9 +33,13 @@ export class BlockEntity extends Entity {
     }
 
     init(params: BlockParams): void {
-        // this._speed = params.speed;
-        // this._dirPos = params.dirPos
-
+        const angle = Math.random() * 360;
+        if (this.node.children.length > 0) {
+            const graphic = this.node.children[0];
+            graphic.angle = angle;
+        } else {
+            this.node.angle = angle;
+        }
     }
 
     protected update(dt: number): void {

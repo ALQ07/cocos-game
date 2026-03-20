@@ -1,7 +1,7 @@
 import { _decorator, Component, EventTouch, Input, input, Node, v3, Vec3 } from 'cc';
-import { getUnitVector } from '../Utils';
 import { UnitFactory } from '../Entity/UnitFactory';
 import { DataManager } from '../Golbal/DataManager';
+import Utils from '../Utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('ShootMgr')
@@ -45,7 +45,7 @@ export class ShootMgr extends Component {
         const angle = radians * 180 / Math.PI;
         if (Math.abs(angle) > 80) return;
         this.node.angle = angle;
-        this._dir = getUnitVector(originPos, v3(uiLocation.x, uiLocation.y, 0));
+        this._dir = Utils.getUnitVector(originPos, v3(uiLocation.x, uiLocation.y, 0));
     }
 
     async shoot() {
@@ -53,8 +53,9 @@ export class ShootMgr extends Component {
         this.isShooting = true;
         const { curBallNum } = DataManager.Instance;
         for (let i = 0; i < curBallNum; i++) {
-            const ball = await UnitFactory.Instance.CreateBall({ speed: 50, dirPos: this._dir });
+            const ball = UnitFactory.Instance.CreateBall({ speed: 50, dirPos: this._dir });
             ball.worldPosition = this.shootPoint.worldPosition;
+            await Utils.delay(0.2);
         }
     }
 

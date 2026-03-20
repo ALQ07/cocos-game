@@ -13,7 +13,7 @@ export class GameMgr extends Component {
         this.generateBlocks();
     }
 
-    async generateBlocks() {
+    generateBlocks() {
         const width = DataManager.Instance.stageRightWorldPos.x - DataManager.Instance.stageLeftWorldPos.x;
         const minX = DataManager.Instance.stageLeftWorldPos.x;
         const baseY = DataManager.Instance.stageBottomWorldPos.y;
@@ -51,7 +51,7 @@ export class GameMgr extends Component {
 
         // 创建所有块
         for (let i = 0; i < actualCount; i++) {
-            const block = await UnitFactory.Instance.CreateBlock({});
+            const block = UnitFactory.Instance.CreateBlock({});
             block.setWorldPosition(positions[i], baseY, baseZ);
         }
     }

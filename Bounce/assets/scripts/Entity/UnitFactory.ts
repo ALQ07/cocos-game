@@ -9,15 +9,15 @@ export class UnitFactory extends Singleton {
         return super.GetInstance<UnitFactory>();
     }
 
-    public async CreateBall(params: BallParams) {
-        const ball = await ObjectPoolManager.Instance.get(EntityTypeEnum.Ball);
+    public CreateBall(params: BallParams) {
+        const ball = ObjectPoolManager.Instance.get(EntityTypeEnum.Ball);
         const ballComp = ball.getComponent(BallEntity) || ball.addComponent(BallEntity);
         ballComp.init(params);
         return ball;
     }
 
-    public async CreateBlock(params: BlockParams) {
-        const block = await ObjectPoolManager.Instance.get(EntityTypeEnum.Block);
+    public CreateBlock(params: BlockParams) {
+        const block = ObjectPoolManager.Instance.get(EntityTypeEnum.Block);
         const blocklComp = block.getComponent(BlockEntity) || block.addComponent(BlockEntity);
         blocklComp.init(params);
         return block;

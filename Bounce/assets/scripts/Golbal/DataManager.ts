@@ -32,8 +32,8 @@ export class DataManager extends Component {
         this.init();
     }
 
-    init() {
-        ObjectPoolManager.Instance.init();
+    async init() {
+        await ObjectPoolManager.Instance.init();
         this.gameMgr.init();
     }
 

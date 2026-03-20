@@ -3,10 +3,6 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
 
   var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, _decorator, Component, DataManager, UnitFactory, _dec, _class, _crd, ccclass, property, GameMgr;
 
-  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
   function _reportPossibleCrUseOfDataManager(extras) {
     _reporterNs.report("DataManager", "../Golbal/DataManager", _context.meta, extras);
   }
@@ -49,56 +45,54 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2"], fu
         }
 
         generateBlocks() {
-          return _asyncToGenerator(function* () {
-            var width = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+          var width = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+            error: Error()
+          }), DataManager) : DataManager).Instance.stageRightWorldPos.x - (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+            error: Error()
+          }), DataManager) : DataManager).Instance.stageLeftWorldPos.x;
+          var minX = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+            error: Error()
+          }), DataManager) : DataManager).Instance.stageLeftWorldPos.x;
+          var baseY = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+            error: Error()
+          }), DataManager) : DataManager).Instance.stageBottomWorldPos.y;
+          var baseZ = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+            error: Error()
+          }), DataManager) : DataManager).Instance.stageLeftWorldPos.z; // 随机生成1~6个块
+
+          var blockCount = Math.floor(Math.random() * 6) + 1; // 块的宽度（假设方块宽度为50，可根据实际调整）
+
+          var blockWidth = 100; // 块之间的最小间距
+
+          var minGap = 20; // 最小可放置位置到边界距离
+
+          var margin = blockWidth / 2 + minGap; // 计算有效放置范围
+
+          var effectiveWidth = width - margin * 2; // 每个块占据的最小宽度
+
+          var perBlockSpace = blockWidth + minGap; // 最大可放置块数
+
+          var maxBlocks = Math.floor(effectiveWidth / perBlockSpace) + 1; // 实际可放置块数为 blockCount 和 maxBlocks 的较小值
+
+          var actualCount = Math.min(blockCount, maxBlocks); // 预先随机生成所有块的x坐标位置（确保不重叠）
+
+          var positions = [];
+          var step = effectiveWidth / actualCount;
+
+          for (var i = 0; i < actualCount; i++) {
+            // 每个块在step范围内随机偏移
+            var basePos = minX + margin + i * step;
+            var randomOffset = Math.random() * (step - perBlockSpace);
+            positions.push(basePos + randomOffset + blockWidth / 2);
+          } // 创建所有块
+
+
+          for (var _i = 0; _i < actualCount; _i++) {
+            var block = (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
               error: Error()
-            }), DataManager) : DataManager).Instance.stageRightWorldPos.x - (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
-              error: Error()
-            }), DataManager) : DataManager).Instance.stageLeftWorldPos.x;
-            var minX = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
-              error: Error()
-            }), DataManager) : DataManager).Instance.stageLeftWorldPos.x;
-            var baseY = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
-              error: Error()
-            }), DataManager) : DataManager).Instance.stageBottomWorldPos.y;
-            var baseZ = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
-              error: Error()
-            }), DataManager) : DataManager).Instance.stageLeftWorldPos.z; // 随机生成1~6个块
-
-            var blockCount = Math.floor(Math.random() * 6) + 1; // 块的宽度（假设方块宽度为50，可根据实际调整）
-
-            var blockWidth = 100; // 块之间的最小间距
-
-            var minGap = 20; // 最小可放置位置到边界距离
-
-            var margin = blockWidth / 2 + minGap; // 计算有效放置范围
-
-            var effectiveWidth = width - margin * 2; // 每个块占据的最小宽度
-
-            var perBlockSpace = blockWidth + minGap; // 最大可放置块数
-
-            var maxBlocks = Math.floor(effectiveWidth / perBlockSpace) + 1; // 实际可放置块数为 blockCount 和 maxBlocks 的较小值
-
-            var actualCount = Math.min(blockCount, maxBlocks); // 预先随机生成所有块的x坐标位置（确保不重叠）
-
-            var positions = [];
-            var step = effectiveWidth / actualCount;
-
-            for (var i = 0; i < actualCount; i++) {
-              // 每个块在step范围内随机偏移
-              var basePos = minX + margin + i * step;
-              var randomOffset = Math.random() * (step - perBlockSpace);
-              positions.push(basePos + randomOffset + blockWidth / 2);
-            } // 创建所有块
-
-
-            for (var _i = 0; _i < actualCount; _i++) {
-              var block = yield (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
-                error: Error()
-              }), UnitFactory) : UnitFactory).Instance.CreateBlock({});
-              block.setWorldPosition(positions[_i], baseY, baseZ);
-            }
-          })();
+            }), UnitFactory) : UnitFactory).Instance.CreateBlock({});
+            block.setWorldPosition(positions[_i], baseY, baseZ);
+          }
         }
 
       }) || _class));

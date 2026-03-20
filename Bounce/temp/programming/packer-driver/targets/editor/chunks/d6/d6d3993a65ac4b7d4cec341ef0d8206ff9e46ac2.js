@@ -57,16 +57,26 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           return super.GetInstance();
         }
 
-        init() {
+        async init() {
           if (!this.objectPool) {
             this.objectPool = new Node("ObjectPool");
             this.objectPool.parent = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
               error: Error()
             }), DataManager) : DataManager).Instance.stage;
           }
+
+          try {
+            await Promise.all([(_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+              error: Error()
+            }), GM) : GM).ResMgr.asyncLoadDir('Prefabs/entity/ball', () => {}), (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+              error: Error()
+            }), GM) : GM).ResMgr.asyncLoadDir('Prefabs/entity/block', () => {})]);
+          } catch (error) {
+            console.error('预制体资源加载失败:', error);
+          }
         }
 
-        async get(type, name) {
+        get(type, name) {
           if (!this.objectPool) console.error('ObjectPool未成功初始化');
 
           if (!this.map.has(type)) {
@@ -79,9 +89,15 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
 
           if (name && nodes.findIndex(i => i.name == name) === -1) {
             const path = `Prefabs/entity/${type}/${name}`;
-            const prefab = await (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+            const prefab = (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
               error: Error()
-            }), GM) : GM).ResMgr.asyncLoad(path, () => {});
+            }), GM) : GM).ResMgr.Res.get(path);
+
+            if (!prefab) {
+              console.error(`Prefab 加载失败: ${path}, name: ${name}`);
+              return null;
+            }
+
             const parent = this.objectPool.getChildByName(type + 'Pool');
             const node = instantiate(prefab);
             node.name = name;
@@ -96,9 +112,15 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
             return node;
           } else if (!nodes.length) {
             const path = `Prefabs/entity/${type}/${type}`;
-            const prefab = await (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+            const prefab = (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
               error: Error()
-            }), GM) : GM).ResMgr.asyncLoad(path, () => {});
+            }), GM) : GM).ResMgr.Res.get(path);
+
+            if (!prefab) {
+              console.error(`Prefab 加载失败: ${path}, type: ${type}`);
+              return null;
+            }
+
             const node = instantiate(prefab);
             node.name = type;
             node.parent = this.objectPool.getChildByName(type + 'Pool');

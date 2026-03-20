@@ -30,4 +30,18 @@ export class ResMgr {
             });
         });
     }
+
+    public async asyncLoadDir<T extends Asset[]>(path: string, callBack: (finished: number, total: number) => void): Promise<T> {
+        return new Promise<T>((resolve, reject) => {
+            GM.ResMgr.Res.loadDir(path, (finished: number, total: number) => {
+                callBack(finished, total);
+            }, (error, asset) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(asset as T);
+                }
+            });
+        });
+    }
 }

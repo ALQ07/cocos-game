@@ -60,6 +60,22 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           });
         }
 
+        async asyncLoadDir(path, callBack) {
+          return new Promise((resolve, reject) => {
+            (_crd && GM === void 0 ? (_reportPossibleCrUseOfGM({
+              error: Error()
+            }), GM) : GM).ResMgr.Res.loadDir(path, (finished, total) => {
+              callBack(finished, total);
+            }, (error, asset) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(asset);
+              }
+            });
+          });
+        }
+
       });
 
       ResMgr._instance = null;
