@@ -40,7 +40,7 @@
       "uuid": "7efcd054-484b-48ed-9711-15da6ebc414b"
     },
     "scripts\\Stage\\ShootMgr.ts": {
-      "time": 1773975560950.5916,
+      "time": 1773995400621.1172,
       "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
     },
     "scripts\\Base.meta": {
@@ -110,7 +110,7 @@
       "uuid": "a98456b5-95d3-438f-9d83-5bbd6fac0980"
     },
     "static\\UI\\Game": {
-      "time": 1773827238487.6985,
+      "time": 1773988364554.5608,
       "uuid": "16b7072c-4018-4be9-bd61-324c9fbcf334"
     },
     "static\\UI\\Game\\ball.png.meta": {
@@ -194,7 +194,7 @@
       "time": 1772703338012.7256
     },
     "GM\\GM.scene": {
-      "time": 1773909209709.279,
+      "time": 1773979010382.1702,
       "uuid": "2b49be7a-12c8-4327-b216-5c54ff73290d"
     },
     "scripts\\Golbal\\ObjectPoolManager.ts.meta": {
@@ -215,7 +215,7 @@
       "uuid": "9cb350e1-a437-46b1-9bf6-1c6836372364"
     },
     "scripts\\Enum\\index.ts": {
-      "time": 1773822525241.017,
+      "time": 1773991838418.2566,
       "uuid": "bdcdef1c-9f20-445c-880c-c64a774dedff"
     },
     "res\\Prefabs\\entity.meta": {
@@ -264,7 +264,7 @@
       "uuid": "fa2e797e-e2af-4067-b6ca-dd8bba969092"
     },
     "scripts\\Entity\\Ball\\BallEntity.ts": {
-      "time": 1773911267774.707,
+      "time": 1773992588140.4373,
       "uuid": "edd2d18c-9fb5-4157-a16e-980c36ed364f"
     },
     "static\\UI\\Game\\block0.png.meta": {
@@ -299,14 +299,14 @@
       "time": 1773825009184.7642
     },
     "scripts\\Golbal\\DataManager.ts": {
-      "time": 1773974804527.093,
+      "time": 1773995136656.2146,
       "uuid": "143bcdb6-d0c3-4f08-b75c-6c5f6518c7e8"
     },
     "scripts\\Stage\\GameMgr.ts.meta": {
       "time": 1773825060349.1482
     },
     "scripts\\Stage\\GameMgr.ts": {
-      "time": 1773972637362.27,
+      "time": 1773995408205.9185,
       "uuid": "bd807673-1690-47b9-a0f5-960d7877657e"
     },
     "scripts\\Golbal\\GameConfig.ts.meta": {
@@ -317,24 +317,24 @@
       "uuid": "072944d7-e1a4-4cf4-91fb-d155d5d5cd89"
     },
     "static\\UI\\Game\\block1.png.meta": {
-      "time": 1773827251646.2424
+      "time": 1773988372596.921
     },
     "static\\UI\\Game\\block1.png": {
-      "time": 1773827238485.6985,
+      "time": 1773988364557.5515,
       "uuid": "002f7c5b-e8e9-44dc-bc8c-32fc901ad898"
     },
     "scripts\\Entity\\Block\\BlockEntity.ts.meta": {
       "time": 1773828404939.268
     },
     "scripts\\Entity\\Block\\BlockEntity.ts": {
-      "time": 1773977456513.0688,
+      "time": 1773992528397.689,
       "uuid": "02b6c11c-894f-43c9-be07-efb2c66f1810"
     },
     "res\\Prefabs\\entity\\block\\block.prefab.meta": {
       "time": 1773828407629.207
     },
     "res\\Prefabs\\entity\\block\\block.prefab": {
-      "time": 1773977388672.5176,
+      "time": 1773995416962.4734,
       "uuid": "0f60b24a-1eda-4ceb-a5f6-b9280fe26138"
     }
   },

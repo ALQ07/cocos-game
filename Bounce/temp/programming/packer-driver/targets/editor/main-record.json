@@ -997,7 +997,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 657864.9669,
+      "mTimestamp": 18431073.2841,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
@@ -2195,7 +2195,7 @@
     },
     "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/ShootMgr.ts": {
       "mTimestamp": {
-        "mtime": 1773975560950.5916,
+        "mtime": 1773995400621.1172,
         "uuid": "36d2b8e6-885a-4970-b644-ca4d25a48904"
       },
       "chunkId": "8b2148fd20fb88ad6207913d799111fdfdae8c87",
@@ -2712,7 +2712,7 @@
     },
     "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Golbal/DataManager.ts": {
       "mTimestamp": {
-        "mtime": 1773974804527.093,
+        "mtime": 1773995136656.2146,
         "uuid": "143bcdb6-d0c3-4f08-b75c-6c5f6518c7e8"
       },
       "chunkId": "1e8f4101a2728ecce188c1ba201a3d5be61b214a",
@@ -2732,11 +2732,11 @@
           "loc": {
             "start": {
               "line": 1,
-              "column": 44
+              "column": 50
             },
             "end": {
               "line": 1,
-              "column": 48
+              "column": 54
             }
           }
         },
@@ -2964,17 +2964,27 @@
     },
     "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Enum/index.ts": {
       "mTimestamp": {
-        "mtime": 1773822525241.017,
+        "mtime": 1773991838418.2566,
         "uuid": "bdcdef1c-9f20-445c-880c-c64a774dedff"
       },
       "chunkId": "63d1e81710188a3243f4555563d3c8756f885176",
       "imports": [
         {
           "value": "cc"
+        },
+        {
+          "value": "cc"
         }
       ],
       "type": "esm",
       "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
         {
           "resolved": {
             "type": "module",
@@ -3038,7 +3048,7 @@
     },
     "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Entity/Ball/BallEntity.ts": {
       "mTimestamp": {
-        "mtime": 1773911267774.707,
+        "mtime": 1773992588140.4373,
         "uuid": "edd2d18c-9fb5-4157-a16e-980c36ed364f"
       },
       "chunkId": "e4a0d0b7ed281aeaf8caba5d39251a453d466b46",
@@ -3079,6 +3089,34 @@
               "column": 42
             }
           }
+        },
+        {
+          "value": "../../Golbal/DataManager",
+          "resolved": "__unresolved_2",
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 28
+            },
+            "end": {
+              "line": 3,
+              "column": 54
+            }
+          }
+        },
+        {
+          "value": "../../Golbal/ObjectPoolManager",
+          "resolved": "__unresolved_3",
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 34
+            },
+            "end": {
+              "line": 4,
+              "column": 66
+            }
+          }
         }
       ],
       "type": "esm",
@@ -3115,6 +3153,20 @@
           "resolved": {
             "type": "module",
             "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Entity.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Golbal/DataManager.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Golbal/ObjectPoolManager.ts"
           },
           "messages": []
         }
@@ -3482,7 +3534,7 @@
     },
     "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Stage/GameMgr.ts": {
       "mTimestamp": {
-        "mtime": 1773972637362.27,
+        "mtime": 1773995408205.9185,
         "uuid": "bd807673-1690-47b9-a0f5-960d7877657e"
       },
       "chunkId": "3adbefb69e79203244f940198701f64eb935bbd9",
@@ -3516,11 +3568,11 @@
           "loc": {
             "start": {
               "line": 2,
-              "column": 28
+              "column": 43
             },
             "end": {
               "line": 2,
-              "column": 51
+              "column": 66
             }
           }
         },
@@ -3535,6 +3587,20 @@
             "end": {
               "line": 3,
               "column": 51
+            }
+          }
+        },
+        {
+          "value": "../Golbal/GameConfig",
+          "resolved": "__unresolved_3",
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 23
+            },
+            "end": {
+              "line": 4,
+              "column": 45
             }
           }
         }
@@ -3582,6 +3648,13 @@
             "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Entity/UnitFactory.ts"
           },
           "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Golbal/GameConfig.ts"
+          },
+          "messages": []
         }
       ]
     },
@@ -3609,7 +3682,7 @@
     },
     "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Entity/Block/BlockEntity.ts": {
       "mTimestamp": {
-        "mtime": 1773977456513.0688,
+        "mtime": 1773992528397.689,
         "uuid": "02b6c11c-894f-43c9-be07-efb2c66f1810"
       },
       "chunkId": "6c6a2a952652c51baa3820013b9e051f2434cbaf",
@@ -3629,11 +3702,11 @@
           "loc": {
             "start": {
               "line": 1,
-              "column": 40
+              "column": 108
             },
             "end": {
               "line": 1,
-              "column": 44
+              "column": 112
             }
           }
         },
@@ -3648,6 +3721,20 @@
             "end": {
               "line": 2,
               "column": 42
+            }
+          }
+        },
+        {
+          "value": "../../Golbal/ObjectPoolManager",
+          "resolved": "__unresolved_2",
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 34
+            },
+            "end": {
+              "line": 4,
+              "column": 66
             }
           }
         }
@@ -3686,6 +3773,13 @@
           "resolved": {
             "type": "module",
             "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Base/Entity.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///E:/GitHub/cocos-game/Bounce/assets/scripts/Golbal/ObjectPoolManager.ts"
           },
           "messages": []
         }

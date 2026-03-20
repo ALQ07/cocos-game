@@ -1,5 +1,7 @@
 import { RigidBody2D, Vec2, Vec3 } from "cc";
 import { Entity } from "../../Base/Entity";
+import { DataManager } from "../../Golbal/DataManager";
+import { ObjectPoolManager } from "../../Golbal/ObjectPoolManager";
 
 export interface BallParams {
     dirPos?: Vec3;
@@ -43,5 +45,12 @@ export class BallEntity extends Entity {
         // const currentPos = this.node.position.clone();
         // const delta = this._dirPos.clone().multiplyScalar(this._speed * dt);
         // this.node.position = currentPos.add(delta);
+
+        // 检测球是否超出底部边界
+        const bottomY = DataManager.Instance.stageBottomWorldPos.y;
+        if (this.node.worldPosition.y < bottomY) {
+            DataManager.Instance.shootMgr.onBallOver();
+            ObjectPoolManager.Instance.ret(this.node);
+        }
     }
 }

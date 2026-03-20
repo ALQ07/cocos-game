@@ -43,7 +43,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
 
       _cclegacy._RF.push({}, "143bc220MNPCLdcbF9lGMfo", "DataManager", undefined);
 
-      __checkObsolete__(['_decorator', 'Component', 'Node']);
+      __checkObsolete__(['_decorator', 'Component', 'Node', 'Vec3']);
 
       ({
         ccclass,
@@ -58,6 +58,8 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
         constructor(...args) {
           super(...args);
           this._curBallNum = 5;
+          this._curMaxRows = 0;
+          this.blockRankList = new Map();
 
           _initializerDefineProperty(this, "stage", _descriptor, this);
 
@@ -115,6 +117,16 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
 
         set curBallNum(value) {
           this.curBallNum = value;
+        }
+        /**当前块的最大行数 */
+
+
+        get curMaxRows() {
+          return this._curMaxRows;
+        }
+
+        set curMaxRows(value) {
+          this._curMaxRows = value;
         }
 
       }, _class3._instance = null, _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "stage", [_dec2], {

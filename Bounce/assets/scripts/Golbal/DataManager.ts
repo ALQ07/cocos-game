@@ -1,9 +1,14 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, Vec3 } from "cc";
 import Singleton from "../Base/Singleton";
 import { ObjectPoolManager } from "./ObjectPoolManager";
 import { ShootMgr } from "../Stage/ShootMgr";
 import { GameMgr } from "../Stage/GameMgr";
 const { ccclass, property } = _decorator;
+
+export interface blockRankInfo {
+    blocks: Node[]   // 该排的所有块节点
+    rowIndex: number // 排索引（0为底部，向上递增）
+}
 
 @ccclass('DataManager')
 export class DataManager extends Component {
@@ -18,6 +23,8 @@ export class DataManager extends Component {
     }
 
     private _curBallNum: number = 5;
+    private _curMaxRows: number = 0;
+    public blockRankList: Map<number, blockRankInfo> = new Map();
 
     @property(Node)
     stage: Node = null;
@@ -63,5 +70,14 @@ export class DataManager extends Component {
 
     public set curBallNum(value: number) {
         this.curBallNum = value;
+    }
+
+    /**当前块的最大行数 */
+    public get curMaxRows() {
+        return this._curMaxRows;
+    }
+
+    public set curMaxRows(value: number) {
+        this._curMaxRows = value;
     }
 }

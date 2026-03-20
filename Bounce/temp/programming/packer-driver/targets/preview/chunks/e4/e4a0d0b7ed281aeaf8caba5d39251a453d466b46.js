@@ -1,10 +1,18 @@
-System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _context) {
+System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__unresolved_3"], function (_export, _context) {
   "use strict";
 
-  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, RigidBody2D, Vec2, Entity, BallEntity, _crd;
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, RigidBody2D, Vec2, Entity, DataManager, ObjectPoolManager, BallEntity, _crd;
 
   function _reportPossibleCrUseOfEntity(extras) {
     _reporterNs.report("Entity", "../../Base/Entity", _context.meta, extras);
+  }
+
+  function _reportPossibleCrUseOfDataManager(extras) {
+    _reporterNs.report("DataManager", "../../Golbal/DataManager", _context.meta, extras);
+  }
+
+  function _reportPossibleCrUseOfObjectPoolManager(extras) {
+    _reporterNs.report("ObjectPoolManager", "../../Golbal/ObjectPoolManager", _context.meta, extras);
   }
 
   _export("BallEntity", void 0);
@@ -20,6 +28,10 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
       Vec2 = _cc.Vec2;
     }, function (_unresolved_2) {
       Entity = _unresolved_2.Entity;
+    }, function (_unresolved_3) {
+      DataManager = _unresolved_3.DataManager;
+    }, function (_unresolved_4) {
+      ObjectPoolManager = _unresolved_4.ObjectPoolManager;
     }],
     execute: function () {
       _crd = true;
@@ -67,9 +79,23 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           this.rigidBody.linearVelocity = new Vec2(delta.x, delta.y);
         }
 
-        update(dt) {// const currentPos = this.node.position.clone();
+        update(dt) {
+          // const currentPos = this.node.position.clone();
           // const delta = this._dirPos.clone().multiplyScalar(this._speed * dt);
           // this.node.position = currentPos.add(delta);
+          // 检测球是否超出底部边界
+          var bottomY = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+            error: Error()
+          }), DataManager) : DataManager).Instance.stageBottomWorldPos.y;
+
+          if (this.node.worldPosition.y < bottomY) {
+            (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+              error: Error()
+            }), DataManager) : DataManager).Instance.shootMgr.onBallOver();
+            (_crd && ObjectPoolManager === void 0 ? (_reportPossibleCrUseOfObjectPoolManager({
+              error: Error()
+            }), ObjectPoolManager) : ObjectPoolManager).Instance.ret(this.node);
+          }
         }
 
       });

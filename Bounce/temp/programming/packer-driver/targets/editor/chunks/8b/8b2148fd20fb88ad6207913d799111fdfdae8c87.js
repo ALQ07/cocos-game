@@ -60,6 +60,9 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           _initializerDefineProperty(this, "shootPoint", _descriptor, this);
 
           this.isShooting = false;
+
+          /**正在飞行的球数量 */
+          this._shootingBallCount = 0;
           this._dir = new Vec3();
         }
 
@@ -87,6 +90,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
         }
 
         calculateAngle(event) {
+          if (this.isShooting) return;
           const uiLocation = event.getUILocation();
           const originPos = this.node.worldPosition;
           const dx = uiLocation.x - originPos.x;
@@ -108,6 +112,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
           } = (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
             error: Error()
           }), DataManager) : DataManager).Instance;
+          this._shootingBallCount = curBallNum;
 
           for (let i = 0; i < curBallNum; i++) {
             const ball = (_crd && UnitFactory === void 0 ? (_reportPossibleCrUseOfUnitFactory({
@@ -120,6 +125,19 @@ System.register(["__unresolved_0", "cc", "__unresolved_1", "__unresolved_2", "__
             await (_crd && Utils === void 0 ? (_reportPossibleCrUseOfUtils({
               error: Error()
             }), Utils) : Utils).delay(0.2);
+          }
+        }
+        /**球越界时调用 */
+
+
+        onBallOver() {
+          this._shootingBallCount--;
+
+          if (this._shootingBallCount <= 0) {
+            this.isShooting = false;
+            (_crd && DataManager === void 0 ? (_reportPossibleCrUseOfDataManager({
+              error: Error()
+            }), DataManager) : DataManager).Instance.gameMgr.generateBlocks();
           }
         }
 

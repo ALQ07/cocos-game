@@ -11,6 +11,9 @@ export class ShootMgr extends Component {
 
     public isShooting: boolean = false;
 
+    /**正在飞行的球数量 */
+    private _shootingBallCount: number = 0;
+
     private _dir = new Vec3();
 
     public get dir(): Vec3 {
@@ -37,6 +40,7 @@ export class ShootMgr extends Component {
     }
 
     calculateAngle(event: EventTouch) {
+        if (this.isShooting) return;
         const uiLocation = event.getUILocation();
         const originPos = this.node.worldPosition;
         const dx = uiLocation.x - originPos.x;
@@ -52,10 +56,20 @@ export class ShootMgr extends Component {
         if (this.isShooting) return;
         this.isShooting = true;
         const { curBallNum } = DataManager.Instance;
+        this._shootingBallCount = curBallNum;
         for (let i = 0; i < curBallNum; i++) {
             const ball = UnitFactory.Instance.CreateBall({ speed: 50, dirPos: this._dir });
             ball.worldPosition = this.shootPoint.worldPosition;
             await Utils.delay(0.2);
+        }
+    }
+
+    /**球越界时调用 */
+    onBallOver(): void {
+        this._shootingBallCount--;
+        if (this._shootingBallCount <= 0) {
+            this.isShooting = false;
+            DataManager.Instance.gameMgr.generateBlocks();
         }
     }
 
