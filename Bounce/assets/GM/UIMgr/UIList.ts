@@ -10,5 +10,17 @@ export const UIEnum = {
     UIGame: {
         name: 'UIGame',
         prefab: 'Prefabs/pages/UIGame',
+    },
+
+    /** 游戏结束界面 */
+    UIGameover: {
+        name: 'UIGameover',
+        prefab: 'Prefabs/pages/UIGameover',
+    },
+
+    /** 游戏主界面 */
+    UIMain: {
+        name: 'UIMain',
+        prefab: 'Prefabs/pages/UIMain',
     }
 }

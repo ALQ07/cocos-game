@@ -1,8 +1,10 @@
-import { _decorator, Component, Node, Vec3 } from "cc";
+import { _decorator, Component, Node, Vec3, PhysicsSystem2D, Label, tween, director, PhysicsSystem } from "cc";
 import Singleton from "../Base/Singleton";
 import { ObjectPoolManager } from "./ObjectPoolManager";
 import { ShootMgr } from "../Stage/ShootMgr";
 import { GameMgr } from "../Stage/GameMgr";
+import GM from "../../GM/GM";
+import { excel } from "../../GM/DataMgr/ExcelData/excel";
 const { ccclass, property } = _decorator;
 
 export interface blockRankInfo {
@@ -22,9 +24,13 @@ export class DataManager extends Component {
         DataManager._instance = this;
     }
 
-    private _curBallNum: number = 5;
+    private _gameSpeed: number = 1;
+
     private _curMaxRows: number = 0;
     public blockRankList: Map<number, blockRankInfo> = new Map();
+
+    @property(Node)
+    speedAddBtn: Node = null;
 
     @property(Node)
     stage: Node = null;
@@ -35,17 +41,45 @@ export class DataManager extends Component {
     @property(GameMgr)
     gameMgr: GameMgr = null;
 
+    @property(Label)
+    scoreLabel: Label = null;
+
     protected start(): void {
         this.init();
     }
 
     async init() {
+        this.initData();
         await ObjectPoolManager.Instance.init();
         this.gameMgr.init();
     }
 
+    initData() {
+        this.Score = GM.CacheMgr.get<number>('score') || 0;
+        this.Round = GM.CacheMgr.get<number>('round') || 1;
+        this.curBallNum = GM.CacheMgr.get<number>('curBallNum') || 1;
+    }
+
     public get shootDirPos() {
         return this.shootMgr.dir;
+    }
+
+    public get Score() {
+        return GM.CacheMgr.get<number>('score') || 0;
+    }
+
+    public set Score(value: number) {
+        GM.CacheMgr.set('score', value);
+        this.scoreLabel.string = `${value}`;
+    }
+
+    public get Round() {
+        return GM.CacheMgr.get<number>('round') || 1;
+    }
+
+    public set Round(value: number) {
+        GM.CacheMgr.set('round', value);
+        // 您如果需要在UI上显示回合数，可以在这里更新UI
     }
 
     /**弹球场景底部边界 */
@@ -65,11 +99,12 @@ export class DataManager extends Component {
 
     /**当前拥有的球的总数 */
     public get curBallNum() {
-        return this._curBallNum;
+        return GM.CacheMgr.get<number>('curBallNum') || 1;
     }
 
     public set curBallNum(value: number) {
-        this.curBallNum = value;
+        GM.CacheMgr.set('curBallNum', value);
+        // 如果需要更新UI（比如顶部显示当前拥有的球数），可以在这里加上 UI 更新逻辑
     }
 
     /**当前块的最大行数 */
@@ -79,5 +114,10 @@ export class DataManager extends Component {
 
     public set curMaxRows(value: number) {
         this._curMaxRows = value;
+    }
+
+
+    protected update(dt: number): void {
+
     }
 }

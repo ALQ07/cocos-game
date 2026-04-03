@@ -1,7 +1,11 @@
-import { RigidBody2D, Vec2, Vec3 } from "cc";
+import { CircleCollider2D, Collider2D, Contact2DType, IPhysics2DContact, RigidBody2D, Sprite, Vec2, Vec3, tween, v3, Tween } from "cc";
 import { Entity } from "../../Base/Entity";
 import { DataManager } from "../../Golbal/DataManager";
 import { ObjectPoolManager } from "../../Golbal/ObjectPoolManager";
+import GameConfig from "../../Golbal/GameConfig";
+import Utils from "../../Utils";
+import { ColliderType } from "../../Enum";
+import { UnitFactory } from "../UnitFactory";
 
 export interface BallParams {
     dirPos?: Vec3;
@@ -10,6 +14,8 @@ export interface BallParams {
 
 export class BallEntity extends Entity {
     private rigidBody: RigidBody2D = null;
+    private sprite: Sprite = null;
+    private collider: ColliderType;
 
     private _speed: number = 0;
     private _dirPos: Vec3 = null;
@@ -32,25 +38,107 @@ export class BallEntity extends Entity {
 
     protected onLoad(): void {
         this.rigidBody = this.node.getComponent(RigidBody2D);
+        this.sprite = this.node.getComponent(Sprite);
     }
 
     init(params: BallParams): void {
+        // 重置小球的缩放和缓动状态，防止从对象池取出时因之前的动画导致状态异常
+        Tween.stopAllByTarget(this.node);
+        this.node.setScale(v3(1, 1, 1));
+
         this._speed = params.speed;
         this._dirPos = params.dirPos
         const delta = this._dirPos.clone().multiplyScalar(this._speed);
         this.rigidBody.linearVelocity = new Vec2(delta.x, delta.y);
+
+        // 重置刚体的阻尼，防止从对象池复用时依然保留着上次触碰奶油时的减速效果
+        this.rigidBody.linearDamping = GameConfig.Ball.linearDamping;
+        this.rigidBody.angularDamping = GameConfig.Ball.angularDamping;
+
+        const random = Math.floor(Math.random() * 27);
+        Utils.setSpriteFrame(this.sprite, `Sprites/ball/${random}`);
+
+        this.collider = this.node.getComponent(CircleCollider2D);
+        // 监听碰撞回调
+        this.collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+        this.collider.on(Contact2DType.END_CONTACT, this.onEndContact, this);
     }
 
     protected update(dt: number): void {
-        // const currentPos = this.node.position.clone();
-        // const delta = this._dirPos.clone().multiplyScalar(this._speed * dt);
-        // this.node.position = currentPos.add(delta);
-
         // 检测球是否超出底部边界
-        const bottomY = DataManager.Instance.stageBottomWorldPos.y;
-        if (this.node.worldPosition.y < bottomY) {
-            DataManager.Instance.shootMgr.onBallOver();
-            ObjectPoolManager.Instance.ret(this.node);
+        // const bottomY = DataManager.Instance.stageBottomWorldPos.y;
+        // if (this.node.worldPosition.y < bottomY) {
+        //     DataManager.Instance.shootMgr.onBallOver();
+        //     ObjectPoolManager.Instance.ret(this.node);
+        // }
+    }
+
+    protected onDestroy(): void {
+        this.collider.off(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+        this.collider.off(Contact2DType.END_CONTACT, this.onEndContact, this);
+    }
+
+    /**
+     * 碰撞开始回调
+     * @param contact 碰撞信息
+     * @param selfCollider 自身的碰撞器
+     * @param otherCollider 碰撞对象的碰撞器
+     */
+    onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact): void {
+        // console.log(`BlockEntity: ${this.node.name} 碰撞开始 with ${otherCollider.node.name}`);
+        const body = selfCollider.node.getComponent(BallEntity).rigidBody;
+        if (otherCollider && otherCollider.group === GameConfig.CollisionGroup.Cream) {
+            // body.linearVelocity = new Vec2(0, 0);
+            // 设置极大的线性阻尼和角阻尼，使小球进入后快速失去速度（数值可根据手感调节，越大停得越快）
+            body.linearDamping = 3;
+            // body.angularDamping = 10;
+            // otherCollider.friction = 2;
+
+            // 立即移除碰撞监听，防止在下沉过程中与其他物体发生二次碰撞
+            this.collider.off(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+            this.collider.off(Contact2DType.END_CONTACT, this.onEndContact, this);
+
+            Tween.stopAllByTarget(this.node);
+
+            // 延迟 1 秒后播放爆炸特效
+            tween(this.node)
+                .delay(0.1)
+                .call(() => {
+                    DataManager.Instance.shootMgr.onBallOver();
+                    ObjectPoolManager.Instance.ret(this.node);
+
+                    const effect = UnitFactory.Instance.CreateEffect('BallExplosion');
+                    if (effect) effect.worldPosition = this.node.worldPosition;
+                })
+                .start();
+        } else {
+            if (body) {
+                const velocity = body.linearVelocity;
+                const speed = velocity.length();
+
+                // 只要小球在运动中（避免将静止的小球启动）
+                if (speed > 0) {
+                    // 如果速度低于配置的最小速度
+                    if (speed < GameConfig.BallSpeed.minSpeed) {
+                        // 等比缩放速度向量，使其大小等于最小速度
+                        velocity.multiplyScalar(GameConfig.BallSpeed.minSpeed / speed);
+                        body.linearVelocity = velocity;
+                    } else if (speed > GameConfig.BallSpeed.maxSpeed) {
+                        // （可选）限制最大速度，防止穿透
+                        velocity.multiplyScalar(GameConfig.BallSpeed.maxSpeed / speed);
+                        body.linearVelocity = velocity;
+                    }
+                }
+            }
         }
+    }
+
+    /**
+     * 碰撞结束回调
+     * @param selfCollider 自身的碰撞器
+     * @param otherCollider 碰撞对象的碰撞器
+     */
+    onEndContact(selfCollider: Collider2D, otherCollider: Collider2D): void {
+        // console.log(`BlockEntity: ${this.node.name} 碰撞结束 with ${otherCollider.node.name}`);
     }
 }

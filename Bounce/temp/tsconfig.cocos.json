@@ -15,7 +15,7 @@
         "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.8\\resources\\resources\\3d\\engine\\editor\\assets\\*"
       ],
       "db://assets/*": [
-        "E:\\GitHub\\cocos-game\\Bounce\\assets\\*"
+        "E:\\code\\GitHub\\cocos-game\\Bounce\\assets\\*"
       ]
     },
     "experimentalDecorators": true,

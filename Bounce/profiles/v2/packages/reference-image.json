@@ -1,23 +1,16 @@
 {
   "__version__": "1.0.0",
   "config": {
-    "images": [
-      {
-        "path": "C:\\Users\\Administrator\\Desktop\\1234a3253d61a19563680cde608f547e.jpg",
-        "x": 1788.7,
-        "y": 0,
-        "sx": 1,
-        "sy": 1,
-        "opacity": 255,
-        "missing": false
-      }
-    ],
+    "images": [],
     "sceneUUID": {
       "2b49be7a-12c8-4327-b216-5c54ff73290d": {
-        "path": "C:\\Users\\Administrator\\Desktop\\1234a3253d61a19563680cde608f547e.jpg"
+        "path": ""
+      },
+      "0f60b24a-1eda-4ceb-a5f6-b9280fe26138": {
+        "path": ""
       }
     },
-    "scene": "0f60b24a-1eda-4ceb-a5f6-b9280fe26138"
+    "scene": "2b49be7a-12c8-4327-b216-5c54ff73290d"
   },
   "show": true,
   "root-path": "C:\\Users\\Administrator\\Desktop",

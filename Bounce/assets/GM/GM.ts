@@ -1,7 +1,9 @@
-import { _decorator, assetManager, AssetManager, Component, director, DynamicAtlasManager, log, macro, Node } from 'cc';
+import { _decorator, assetManager, AssetManager, Component, director, DynamicAtlasManager, log, macro, Node, TextAsset } from 'cc';
 import { UIMgr } from './UIMgr/UIMgr';
 import { ResMgr } from './ResMgr/ResMgr';
 import { UIEnum } from './UIMgr/UIList';
+import { CacheMgr } from './CacheMgr/CacheMgr';
+import { excel } from './DataMgr/ExcelData/excel';
 const { ccclass, property } = _decorator;
 
 @ccclass('GM')
@@ -15,6 +17,7 @@ export default class GM extends Component {
     // static DataMgr: DataMgr;
     // static ProtocolMgr: ProtocolMgr;
     static ResMgr: ResMgr;
+    static CacheMgr: CacheMgr;
     // static AudioMgr: AudioMgr;
     // static GuideMgr: GuideMgr;
     // static PlayerPM: PlayerPrefsMgr;
@@ -22,18 +25,17 @@ export default class GM extends Component {
 
     protected async start(): Promise<void> {
 
-        // 初始化插件plugin
-        // initExcel(excel);
-
         // 先加载 res bundle
         const bundle = await this.LoadAssetsBundle('res');
 
         //初始化框架
         GM.Init(this.node, bundle);
 
-        //加载第一个UI
-        await GM.UIMgr.Open(UIEnum.UIGame);
+        // 初始化excel数据
+        await this.initExcel();
 
+        //加载第一个UI
+        await GM.UIMgr.Open(UIEnum.UIMain);
     }
 
     /**
@@ -42,12 +44,15 @@ export default class GM extends Component {
     public static Init(mainNode: Node, bundle: AssetManager.Bundle) {
         director.addPersistRootNode(mainNode);
         macro.CLEANUP_IMAGE_CACHE = false;
-        DynamicAtlasManager.instance.enabled = true;
-        DynamicAtlasManager.instance.maxFrameSize = 512;
+
+        // 在开发预览阶段建议关闭动态合图，否则动态加载图片时易引发 @f9941.json 404 报错
+        // DynamicAtlasManager.instance.enabled = true;
+        // DynamicAtlasManager.instance.maxFrameSize = 512;
 
         window["GM"] = GM;
 
         GM.ResMgr = ResMgr.getInstance(bundle);
+        GM.CacheMgr = CacheMgr.getInstance();
         // GM.ConfigMgr = ConfigMgr.getInstance();
         // GM.LogMgr = LogMgr.getInstance();
         // GM.EventMgr = EventMgr.getInstance();
@@ -82,6 +87,15 @@ export default class GM extends Component {
             })
         });
     }
+
+    async initExcel() {
+        try {
+            const data = await GM.ResMgr.asyncLoad<TextAsset>('ExcelData/excel.json', () => { });
+            if (data) {
+                excel.parse(JSON.parse(data.text));
+            }
+        } catch (error) {
+            console.error("Excel 数据加载失败:", error);
+        }
+    }
 }
-
-

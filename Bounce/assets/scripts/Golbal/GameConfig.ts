@@ -10,7 +10,7 @@ export default class GameConfig {
     /**水平方向上能容纳的最多的块数量 */
     public static readonly HORIZONTAL_BLOCK_MAXNUM = 6
     /**垂直方向上的块最多能排到第几排 */
-    public static readonly VERTICAL_BLOCK_ROWS = 9
+    public static readonly VERTICAL_BLOCK_ROWS = 8
 
     // ==================== 小球(Ball)物理配置 ====================
     public static readonly Ball = {
@@ -33,7 +33,7 @@ export default class GameConfig {
         /** 是否使用连续碰撞检测 (防止穿透) */
         bullet: true,
         /** 刚体类型: 0-Static, 1-Kinematic, 2-Dynamic */
-        rigidBodyType: 0,
+        rigidBodyType: 2,
         /** 是否允许休眠 */
         allowSleep: false,
     } as const;
@@ -73,9 +73,9 @@ export default class GameConfig {
     // ==================== 速度配置 ====================
     public static readonly BallSpeed = {
         /** 小球初始发射速度 */
-        initialSpeed: 500,
+        initialSpeed: 70,
         /** 小球最小速度 (防止停止) */
-        minSpeed: 200,
+        minSpeed: 5,
         /** 小球最大速度 (防止过快) */
         maxSpeed: 1000,
     } as const;
@@ -90,5 +90,7 @@ export default class GameConfig {
         Block: 8,
         /** 墙壁组 */
         Wall: 1,
+        /** cream 组 */
+        Cream: 16,
     } as const;
 }

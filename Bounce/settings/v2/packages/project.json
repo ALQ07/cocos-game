@@ -20,13 +20,18 @@
       {
         "index": 3,
         "name": "block"
+      },
+      {
+        "index": 4,
+        "name": "cream"
       }
     ],
     "collisionMatrix": {
       "0": 0,
-      "1": 12,
+      "1": 28,
       "2": 2,
-      "3": 2
+      "3": 2,
+      "4": 2
     },
     "gravity": {
       "y": -50
