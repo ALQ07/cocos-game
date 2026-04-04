@@ -4,6 +4,7 @@ import { ResMgr } from './ResMgr/ResMgr';
 import { UIEnum } from './UIMgr/UIList';
 import { CacheMgr } from './CacheMgr/CacheMgr';
 import { excel } from './DataMgr/ExcelData/excel';
+import AudioMgr from './AudioMgr/AudioMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('GM')
@@ -18,7 +19,7 @@ export default class GM extends Component {
     // static ProtocolMgr: ProtocolMgr;
     static ResMgr: ResMgr;
     static CacheMgr: CacheMgr;
-    // static AudioMgr: AudioMgr;
+    static AudioMgr: AudioMgr;
     // static GuideMgr: GuideMgr;
     // static PlayerPM: PlayerPrefsMgr;
     // static RPM: RedPointMgr;
@@ -61,18 +62,18 @@ export default class GM extends Component {
         // GM.Network = Network.getInstance();
         // GM.DataMgr = DataMgr.getInstance();
         // GM.ProtocolMgr = ProtocolMgr.getInstance();
-        // GM.AudioMgr = AudioMgr.getInstance();
+        GM.AudioMgr = AudioMgr.getInstance();
         // GM.GuideMgr = GuideMgr.getInstance();
         // GM.PlayerPM = PlayerPrefsMgr.getInstance();
         // GM.RPM = RedPointMgr.getInstance();
 
 
         UIMgr.getInstance().init(mainNode);
-        // AudioMgr.getInstance().Init(mianNode);
+        AudioMgr.getInstance().Init(mainNode);
         // DataMgr.getInstance().TestToolMgr.init(mianNode);
         log("GM inited");
 
-        // GM.AudioMgr.SetButtonSound();
+        GM.AudioMgr.SetButtonSound();
     }
 
 

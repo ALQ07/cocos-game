@@ -1499,7 +1499,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "name",
+    "_name": "title",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -1742,6 +1742,9 @@
     "_enabled": true,
     "__prefab": {
       "__id__": 72
+    },
+    "titile": {
+      "__id__": 59
     },
     "_id": ""
   },

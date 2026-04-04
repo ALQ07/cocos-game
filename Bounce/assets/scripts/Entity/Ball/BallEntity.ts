@@ -6,6 +6,7 @@ import GameConfig from "../../Golbal/GameConfig";
 import Utils from "../../Utils";
 import { ColliderType } from "../../Enum";
 import { UnitFactory } from "../UnitFactory";
+import GM from "db://assets/GM/GM";
 
 export interface BallParams {
     dirPos?: Vec3;
@@ -19,6 +20,8 @@ export class BallEntity extends Entity {
 
     private _speed: number = 0;
     private _dirPos: Vec3 = null;
+
+    private static lastHitSoundTime: number = 0;
 
     public set speed(v: number) {
         this._speed = v;
@@ -112,6 +115,25 @@ export class BallEntity extends Entity {
                 })
                 .start();
         } else {
+            if (otherCollider && otherCollider.group == GameConfig.CollisionGroup.Block) {
+                const now = Date.now();
+                if (now - BallEntity.lastHitSoundTime > 50) { // 增加 50ms 冷却，防止多球并发碰撞引发移动端静音或卡顿
+                    GM.AudioMgr.playOneShot(GM.AudioMgr.AudioData.BALLCOLLIDER, 0.5);
+                    BallEntity.lastHitSoundTime = now;
+
+                    // 添加手机短促震动（兼容 H5 及微信小游戏平台）
+                    try {
+                        const wxObj = (globalThis as any).wx || (window as any).wx;
+                        if (wxObj && wxObj.vibrateShort) {
+                            wxObj.vibrateShort({ type: 'medium' }); // 微信小游戏震动强度可选：'light'（轻）、'medium'（中）、'heavy'（重）
+                        } else if (typeof navigator !== 'undefined' && navigator.vibrate) {
+                            navigator.vibrate(30); // H5 无法直接控制幅度，只能通过增加震动时长（如改成 30 或 50 毫秒）来让玩家感觉“震得更重”
+                        }
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
+            }
             if (body) {
                 const velocity = body.linearVelocity;
                 const speed = velocity.length();

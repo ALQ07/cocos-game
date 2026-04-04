@@ -6,10 +6,12 @@
             "res",
             "scripts",
             "static",
+            "GM\\AudioMgr",
             "GM\\CacheMgr",
             "GM\\DataMgr",
             "GM\\ResMgr",
             "GM\\UIMgr",
+            "res\\Audio",
             "res\\ExcelData",
             "res\\Prefabs",
             "res\\Sprites",
@@ -23,6 +25,8 @@
             "static\\animate",
             "static\\UI",
             "GM\\DataMgr\\ExcelData",
+            "res\\Audio\\Game",
+            "res\\Audio\\UI",
             "res\\Prefabs\\entity",
             "res\\Prefabs\\pages",
             "res\\Sprites\\ball",
@@ -42,6 +46,7 @@
             "res\\Sprites\\block\\square",
             "res\\Sprites\\block\\triangle",
             "GM\\GM.ts",
+            "GM\\AudioMgr\\AudioMgr.ts",
             "GM\\CacheMgr\\CacheMgr.ts",
             "GM\\ResMgr\\ResMgr.ts",
             "GM\\UIMgr\\UIComponent.ts",
@@ -66,6 +71,11 @@
             "GM\\GM.scene",
             "res\\ExcelData\\excel.json.txt",
             "static\\animate\\bg.anim",
+            "res\\Audio\\Game\\球球碰撞.mp3",
+            "res\\Audio\\Game\\球球碰撞0.mp3",
+            "res\\Audio\\Game\\球球碰撞1.mp3",
+            "res\\Audio\\Game\\球球碰撞3.mp3",
+            "res\\Audio\\UI\\按钮.mp3",
             "res\\Prefabs\\pages\\UIGame.prefab",
             "res\\Prefabs\\pages\\UIGameover.prefab",
             "res\\Prefabs\\pages\\UIMain.prefab",
@@ -139,7 +149,8 @@
             "res\\Sprites\\block\\triangle\\3.png",
             "res\\Sprites\\block\\triangle\\4.png",
             "res\\Sprites\\block\\triangle\\5.png",
-            "res\\Sprites\\block\\triangle\\6.png"
+            "res\\Sprites\\block\\triangle\\6.png",
+            "res\\Audio\\UI\\背景音乐.mp3"
         ]
     }
 }

@@ -1,10 +1,10 @@
-2026-4-3 16:35:01 - log: Load engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine
-2026-4-3 16:35:03 - log: Register native engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\native
-2026-4-3 16:35:03 - log: Request namespace: device-list
-2026-4-3 16:35:18 - log: [Scene] meshopt wasm decoder initialized
-2026-4-3 16:35:18 - log: [Scene] [box2d]:box2d wasm lib loaded.
-2026-4-3 16:35:18 - log: [Scene] [bullet]:bullet wasm lib loaded.
-2026-4-3 16:35:18 - log: [Scene] [PHYSICS]: using builtin.
-2026-4-3 16:35:18 - log: [Scene] Cocos Creator v3.8.8
-2026-4-3 16:35:19 - log: [Scene] Using custom pipeline: Builtin
-2026-4-3 16:35:19 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
+2026-4-4 13:38:59 - log: Load engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine
+2026-4-4 13:39:00 - log: Register native engine in C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\native
+2026-4-4 13:39:01 - log: Request namespace: device-list
+2026-4-4 13:39:14 - log: [Scene] meshopt wasm decoder initialized
+2026-4-4 13:39:14 - log: [Scene] [box2d]:box2d wasm lib loaded.
+2026-4-4 13:39:14 - log: [Scene] [bullet]:bullet wasm lib loaded.
+2026-4-4 13:39:14 - log: [Scene] [PHYSICS]: using builtin.
+2026-4-4 13:39:14 - log: [Scene] Cocos Creator v3.8.8
+2026-4-4 13:39:15 - log: [Scene] Using custom pipeline: Builtin
+2026-4-4 13:39:15 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
