@@ -92,7 +92,10 @@ export default class AudioMgr {
   }
 
   private EffectVolume = 1;
-  private BgmVolume = 1;
+  private _BgmVolume = 1;
+  public get BgmVolume() {
+    return this._BgmVolume;
+  }
   public setEffectVolume(volume: number) {
     this.EffectVolume = volume;
     this._loopEffects.forEach(audioSource => {
@@ -100,7 +103,7 @@ export default class AudioMgr {
     })
   }
   public setBgmVolume(volume: number) {
-    this.BgmVolume = volume;
+    this._BgmVolume = volume;
     if (volume == 0) {
       this.pause();
     } else {
@@ -141,13 +144,13 @@ export default class AudioMgr {
    * @param sound clip or url for the sound
    * @param volume 
    */
-  play(sound: AudioClip | string, loop = true, volume: number = this.BgmVolume) {
+  play(sound: AudioClip | string, loop = true, volume: number = this._BgmVolume) {
     this._audioSource.stop();
     if (sound instanceof AudioClip) {
       this._audioSource.clip = sound;
       this.audioSource.volume = volume;
       this.audioSource.loop = loop;
-      if (this.BgmVolume > 0) {
+      if (this._BgmVolume > 0) {
         this._audioSource.play();
       }
     }
@@ -160,7 +163,7 @@ export default class AudioMgr {
           this._audioSource.clip = clip;
           this.audioSource.volume = volume;
           this.audioSource.loop = loop;
-          if (this.BgmVolume > 0) {
+          if (this._BgmVolume > 0) {
             this._audioSource.play();
           }
         }
@@ -178,7 +181,7 @@ export default class AudioMgr {
   }
 
   resume() {
-    this.audioSource.volume = this.BgmVolume;
+    this.audioSource.volume = this._BgmVolume;
     this._audioSource.play();
   }
 

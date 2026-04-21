@@ -89,7 +89,7 @@ export default class GameConfig {
         /** 方块组 */
         Block: 8,
         /** 墙壁组 */
-        Wall: 1,
+        Wall: 4,
         /** cream 组 */
         Cream: 16,
     } as const;

@@ -22,5 +22,23 @@ export const UIEnum = {
     UIMain: {
         name: 'UIMain',
         prefab: 'Prefabs/pages/UIMain',
-    }
+    },
+
+    /** 排行榜界面 */
+    UIRankList: {
+        name: 'UIRankList',
+        prefab: 'Prefabs/pages/UIRankList',
+    },
+
+    /** 游戏设置界面 */
+    UISetting: {
+        name: 'UISetting',
+        prefab: 'Prefabs/pages/UISetting',
+    },
+
+    /** 提示信息界面 */
+    UITips: {
+        name: 'UITips',
+        prefab: 'Prefabs/pages/UITips',
+    },
 }

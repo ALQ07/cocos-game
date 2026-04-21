@@ -1,4 +1,4 @@
-import { _decorator, Component, director, Node, PhysicsSystem, PhysicsSystem2D } from 'cc';
+import { _decorator, Component, director, Node, PhysicsSystem, PhysicsSystem2D, sys, game, Game } from 'cc';
 import { DataManager, blockRankInfo } from '../Golbal/DataManager';
 import { UnitFactory } from '../Entity/UnitFactory';
 import GameConfig from '../Golbal/GameConfig';
@@ -9,6 +9,7 @@ import Utils from '../Utils';
 import { UIEnum } from '../../GM/UIMgr/UIList';
 import { ObjectPoolManager } from '../Golbal/ObjectPoolManager';
 import { UIGameoverArg } from '../Modules/UIGameover/UIGameover';
+import { WxCloudManager } from '../Golbal/WxCloudManager';
 const { ccclass, property } = _decorator;
 
 interface CachedBlock {
@@ -38,9 +39,17 @@ export class GameMgr extends Component {
 
     protected onLoad(): void {
         GameMgr._instance = this;
+
+        // 监听 Web 浏览器关闭/刷新
+        // if (sys.isBrowser) {
+        //     window.addEventListener('beforeunload', this.onGameHide);
+        // }
+        // 监听微信小游戏（及其他原生平台）切入后台事件
+        // game.on(Game.EVENT_HIDE, this.onGameHide, this);
     }
 
-    init() {
+    async init() {
+        WxCloudManager.Instance.init();
         const cachedData = GM.CacheMgr.get<CachedRank[]>('blockRankList');
         if (cachedData && cachedData.length > 0) {
             this.restoreFromCache(cachedData);
@@ -59,8 +68,6 @@ export class GameMgr extends Component {
      * 当行数超过VERTICAL_BLOCK_ROWS时，游戏结束
      */
     generateBlocks() {
-        DataManager.Instance.Round += 1;
-
         // 如果 blockRankList 为空，说明是新游戏的第一回合
         if (DataManager.Instance.blockRankList.size === 0) {
             DataManager.Instance.Round = 1;
@@ -111,6 +118,12 @@ export class GameMgr extends Component {
                 blocks: blocks,
                 rowIndex: rankData.rowIndex
             });
+            // 如果已经到达警戒行（最大行数限制的前一行），播放摇摇欲坠动画
+            if (rankData.rowIndex === GameConfig.VERTICAL_BLOCK_ROWS - 1) {
+                blocks.forEach(blockNode => {
+                    blockNode.getComponent(BlockEntity)?.playRockAni();
+                });
+            }
         }
         DataManager.Instance.curMaxRows = Math.max(...Array.from(blockRankList.keys()));
     }
@@ -164,6 +177,11 @@ export class GameMgr extends Component {
                 const currentPos = blockNode.worldPosition.clone();
                 currentPos.y += GameMgr.MOVE_DISTANCE;
                 blockNode.setWorldPosition(currentPos);
+
+                // 如果已经到达警戒行（最大行数限制的前一行），播放摇摇欲坠动画
+                if (newRowIndex === GameConfig.VERTICAL_BLOCK_ROWS - 1) {
+                    blockNode.getComponent(BlockEntity)?.playRockAni();
+                }
             });
 
             // 如果该排还有存活的块，才更新排索引信息
@@ -232,7 +250,7 @@ export class GameMgr extends Component {
             blindIndex = Math.floor(Math.random() * actualCount);
         }
 
-        const normalShapes = [BlockShape.Triangle, BlockShape.Square];
+        const normalShapes = [BlockShape.Triangle, BlockShape.Square, BlockShape.Heart, BlockShape.Circle];
 
         for (let i = 0; i < actualCount; i++) {
             let shape: BlockShape;
@@ -286,12 +304,39 @@ export class GameMgr extends Component {
         // GM.CacheMgr.delete('blockRankList');
         // TODO: 可以在这里触发游戏结束界面或其他处理逻辑
         GM.UIMgr.Open(UIEnum.UIGameover, { isDead: true } as UIGameoverArg);
+        GM.CacheMgr.set('isDead', true);
+    }
+
+    /**
+    * 游戏倍速
+    */
+    gameSpeedAdd() {
+        Utils.setGlobalTimeScale(2.0);
+        DataManager.Instance.speedAddBtn.active = false;
+    }
+
+    /**
+     * 跳转设置界面
+     */
+    toSetting() {
+        GM.UIMgr.Open(UIEnum.UISetting);
     }
 
     /**
      * 清除缓存
      */
-    clearCache() {
+    async clearCache() {
+        // 上传排行榜数据
+        const userInfo = await WxCloudManager.Instance.getWxUserInfo().catch(() => null);
+        if (userInfo) WxCloudManager.Instance.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score') || 0 });
+        // 清除缓存中的所有游戏状态，确保init时不会加载旧数据
+        GM.CacheMgr.delete('blockRankList');
+        GM.CacheMgr.delete('score');
+        GM.CacheMgr.delete('round');
+        GM.CacheMgr.delete('curBallNum');
+    }
+
+    clearGame() {
         // 重置游戏状态
         DataManager.Instance.Score = 0;
         DataManager.Instance.curBallNum = 1; // 重置球的数量
@@ -310,55 +355,66 @@ export class GameMgr extends Component {
         // 清除DataManager中的块排信息和最大行数
         DataManager.Instance.blockRankList.clear();
         DataManager.Instance.curMaxRows = 0;
-
-        // 清除缓存中的所有游戏状态，确保init时不会加载旧数据
-        GM.CacheMgr.delete('blockRankList');
-        GM.CacheMgr.delete('score');
-        GM.CacheMgr.delete('round');
-        GM.CacheMgr.delete('curBallNum');
     }
 
     /**
      * 重新开始游戏
      */
-    restartGame() {
-        this.clearCache();
+    async restartGame() {
+        GM.CacheMgr.set('isDead', false);
+        await this.clearCache();
+        this.clearGame();
         this.init();
     }
 
-    /**
-     * 关闭游戏
-     */
     exitGame() {
         ObjectPoolManager.Instance.clear();
-        // this.saveToCache();
-        DataManager.Instance.blockRankList.forEach((rankInfo) => {
-            rankInfo.blocks.forEach(block => {
-                if (block && block.isValid && block.active) {
-                    ObjectPoolManager.Instance.ret(block);
-                }
-            });
-        });
-
-        DataManager.Instance.blockRankList.clear();
-        DataManager.Instance.curMaxRows = 0;
-
         Utils.setGlobalTimeScale(1.0);
-        if (DataManager.Instance.speedAddBtn) {
-            DataManager.Instance.speedAddBtn.active = true;
-        }
-        GM.UIMgr.Close(this.node);
     }
 
     /**
-     * 游戏倍速
+     * 游戏切入后台、网页刷新或关闭时触发
+     * 注意：这里不能调用 exitGame() 等销毁节点的逻辑，因为玩家可能还会切回前台 (EVENT_SHOW)
      */
-    gameSpeedAdd() {
-        Utils.setGlobalTimeScale(2.0);
-        DataManager.Instance.speedAddBtn.active = false;
-    }
+    private onGameHide = () => {
+        if (GM.CacheMgr.get<boolean>('isDead', false)) {
+            // 同步优先执行本地缓存清理，防止被浏览器/微信强杀导致异步中断
+            GM.CacheMgr.delete('blockRankList');
+            GM.CacheMgr.delete('score');
+            GM.CacheMgr.delete('round');
+            GM.CacheMgr.delete('curBallNum');
 
-    protected onDestroy(): void {
-        // this.exitGame();
+            // 尽力发起上传请求，不等待返回
+            WxCloudManager.Instance.getWxUserInfo()
+                .then((userInfo) => {
+                    if (userInfo) WxCloudManager.Instance.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score') || 0 });
+                })
+                .catch(() => null);
+        } else {
+            WxCloudManager.Instance.getWxUserInfo()
+                .then((userInfo) => {
+                    if (userInfo) WxCloudManager.Instance.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score') || 0 });
+                })
+                .catch(() => null);
+        }
+    };
+
+    protected async onDestroy() {
+        // if (sys.isBrowser) {
+        //     window.removeEventListener('beforeunload', this.onGameHide);
+        // }
+        // game.off(game.EVENT_HIDE, this.onGameHide, this);
+
+        if (GM.CacheMgr.get<boolean>('isDead', false)) {
+            await this.clearCache();
+        } else {
+            // 上传排行榜数据
+            WxCloudManager.Instance.getWxUserInfo()
+                .then((userInfo) => {
+                    if (userInfo) WxCloudManager.Instance.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score') || 0 });
+                })
+                .catch(() => null);
+        }
+        this.exitGame();
     }
 }

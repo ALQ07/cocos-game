@@ -17,5 +17,7 @@ export type ColliderType = BoxCollider2D | CircleCollider2D | PolygonCollider2D;
 export enum BlockShape {
     Triangle = 'triangle',
     Square = 'square',
-    Blind = 'blind'
+    Blind = 'blind',
+    Heart = 'heart',
+    Circle = 'circle'
 }

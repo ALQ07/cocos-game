@@ -1,10 +1,13 @@
-import { BoxCollider2D, CircleCollider2D, Collider2D, Contact2DType, IPhysics2DContact, Label, PolygonCollider2D, RigidBody2D, Vec3, tween, v3, Tween, Sprite } from "cc";
+import { BoxCollider2D, CircleCollider2D, Collider2D, Contact2DType, IPhysics2DContact, Label, PolygonCollider2D, RigidBody2D, Vec3, tween, v3, Tween, Sprite, resources, SpriteFrame } from "cc";
 import { Entity } from "../../Base/Entity";
 import { ObjectPoolManager } from "../../Golbal/ObjectPoolManager";
 import { BlockShape, ColliderType, EntityTypeEnum } from "../../Enum";
 import { UnitFactory } from "../UnitFactory";
 import Utils from "../../Utils";
 import { DataManager } from "../../Golbal/DataManager";
+import GameConfig from "../../Golbal/GameConfig";
+import { ShootMgr } from "../../Stage/ShootMgr";
+import GM from "db://assets/GM/GM";
 
 export interface BlockParams {
     shape?: BlockShape
@@ -50,9 +53,7 @@ export class BlockEntity extends Entity {
     }
 
     protected onLoad(): void {
-        this.rigidBody = this.node.getComponent(RigidBody2D);
-        this.nLabel = this.node.getChildByName('Label').getComponent(Label);
-        this.sprite = this.node.getComponentInChildren(Sprite);
+
     }
 
     protected onDestroy(): void {
@@ -61,6 +62,10 @@ export class BlockEntity extends Entity {
     }
 
     init(params: BlockParams): void {
+        this.rigidBody = this.node.getComponent(RigidBody2D);
+        this.nLabel = this.node.getChildByName('Label').getComponent(Label);
+        this.sprite = this.node.getComponentInChildren(Sprite);
+
         this._shape = params.shape;
         this.setSpriteFrame(params.shape);
         const angle = Math.random() * 360;
@@ -101,6 +106,23 @@ export class BlockEntity extends Entity {
         }
     }
 
+    playRockAni() {
+        if (!this.sprite) return;
+        // 停止可能存在的其他动画，并重置角度
+        Tween.stopAllByTarget(this.sprite.node);
+
+        // 播放摇摇欲坠的左右晃动动画
+        tween(this.sprite.node)
+            .to(0.05, { angle: this.sprite.node.angle + 15 })
+            .to(0.1, { angle: this.sprite.node.angle - 15 })
+            .to(0.08, { angle: this.sprite.node.angle + 10 })
+            .to(0.08, { angle: this.sprite.node.angle - 10 })
+            .to(0.05, { angle: this.sprite.node.angle + 0 })
+            .union()
+            .repeatForever()
+            .start();
+    }
+
     /**
      * 碰撞开始回调
      * @param contact 碰撞信息
@@ -117,6 +139,14 @@ export class BlockEntity extends Entity {
         if (this._shape === BlockShape.Blind) {
             // 拾取道具：下回合球数+1，不增加分数
             DataManager.Instance.curBallNum += 1;
+            const worldPos = this.node.worldPosition.clone();
+            // 延迟到下一帧创建小球，以避免在物理回调中操作刚体导致引擎报错
+            this.scheduleOnce(() => {
+                ShootMgr.Instance.shootingBallCount += 1;
+                const dirPos = v3(Math.random() * 2 - 1, Math.random() * 0.8 + 0.2, 0).normalize();
+                const ball = UnitFactory.Instance.CreateBall({ speed: GameConfig.BallSpeed.initialSpeed, dirPos });
+                if (ball) ball.worldPosition = worldPos;
+            });
         } else {
             // 普通块被击中：扣除血量，增加得分
             DataManager.Instance.Score += 1;
@@ -140,7 +170,7 @@ export class BlockEntity extends Entity {
 
             // 播放爆炸碎片粒子特效
             const effect = UnitFactory.Instance.CreateEffect('BlockExplosion');
-            effect.worldPosition = this.node.worldPosition;
+            if (effect) effect.worldPosition = this.node.worldPosition;
 
             Tween.stopAllByTarget(this.sprite.node);
             // 优化消失效果：在0.1秒内迅速缩小到0，然后再回收到对象池
@@ -164,7 +194,12 @@ export class BlockEntity extends Entity {
 
     setSpriteFrame(shape?: BlockShape) {
         if (shape !== undefined) {
-            const random = Math.floor(Math.random() * 6);
+            // 读取 resources 包下目标目录的 SpriteFrame 资源数组
+            const infos = GM.ResMgr.Res.getDirWithPath(`Sprites/block/${shape}`, SpriteFrame);
+            // 拿到实际图片数量，若获取不到则兜底为 9 避免报错
+            const actualCount = infos.length > 0 ? infos.length : 9;
+
+            const random = Math.floor(Math.random() * actualCount);
             const path = `Sprites/block/${shape}/${random}`;
             Utils.setSpriteFrame(this.sprite, path);
         }

@@ -59,9 +59,9 @@ export class UIComponent extends Component {
 
     start() {
         //遮罩
-        // if (this.mask) {
-        //     this.ShowMask();
-        // }
+        if (this.mask) {
+            this.ShowMask();
+        }
         // //如果勾选了点击穿透;
         if (this.blockInputEvents) {
             this.node.addComponent(BlockInputEvents);
@@ -72,16 +72,16 @@ export class UIComponent extends Component {
         //     GM.SDKMgr.AD.ShowBanner();
         // }
 
-        // if (this.onClose && this.mask) {
-        //     this.maskbg.on(Node.EventType.TOUCH_START, (event: EventTouch) => {
-        //         GM.UIMgr.Close(this.node);
-        //     }, this)
-        // }
-        // if (this.onClose && !this.mask) {
-        //     this.node.on(Node.EventType.TOUCH_START, (event: EventTouch) => {
-        //         GM.UIMgr.Close(this.node);
-        //     }, this)
-        // }
+        if (this.onClose && this.mask) {
+            this.maskbg.on(Node.EventType.TOUCH_START, (event: EventTouch) => {
+                GM.UIMgr.Close(this.node);
+            }, this)
+        }
+        if (this.onClose && !this.mask) {
+            this.node.on(Node.EventType.TOUCH_START, (event: EventTouch) => {
+                GM.UIMgr.Close(this.node);
+            }, this)
+        }
     }
 
     onDestroy() {

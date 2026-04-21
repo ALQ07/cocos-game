@@ -130,8 +130,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 120,
-      "height": 107
+      "width": 100,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -167,7 +167,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "4a8aa1c5-6105-4ffb-96e0-f5339288cc46@f9941",
+      "__uuid__": "e636e8e3-ef77-4cc7-8c44-2c4950cd184d@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -305,20 +305,23 @@
     "_string": "5",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 35,
+    "_fontSize": 35,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 46.3,
     "_overflow": 2,
-    "_enableWrapText": true,
-    "_font": null,
-    "_isSystemFontUsed": true,
+    "_enableWrapText": false,
+    "_font": {
+      "__uuid__": "0965cb42-7730-4bab-971d-4e505762a657",
+      "__expectedType__": "cc.BitmapFont"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 2,
+    "_cacheMode": 0,
     "_enableOutline": true,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -429,7 +432,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100.68500000000002,
-      "height": 89.97
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -462,13 +465,13 @@
     "_restitution": 0.8,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": -0.1,
+      "y": -0.9
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 100.8,
-      "height": 90.4
+      "width": 83.5,
+      "height": 85.1
     },
     "_id": ""
   },
@@ -537,8 +540,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 120,
-      "height": 107
+      "width": 100,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

@@ -43,7 +43,9 @@ export class UIMgr {
         const barHeight = 0;
 
         Object.keys(eUIType).filter(key => isNaN(Number(key))).forEach((one, index) => {
-            console.assert(parseInt(eUIType[one]) == index, "UIMgr error: eUIType 不是连续的枚举！");
+            if (parseInt(eUIType[one as any]) !== index) {
+                error("UIMgr error: eUIType 不是连续的枚举！");
+            }
             const uiTypeNode = new Node();
             uiTypeNode.name = one;
             this.layers.push(uiTypeNode);
@@ -86,70 +88,46 @@ export class UIMgr {
                     }
                 }
                 uiNode = instantiate(uiPrefab);
-                uiComp = uiNode.getComponent(UIComponent);
-                if (uiComp && uiComp.cache) {
-                    if (!this.uiCache[uiOpt.prefab]) {
-                        this.uiCache[uiOpt.prefab] = new NodePool(uiOpt.prefab);
+            }
+
+            uiComp = uiNode.getComponent(UIComponent);
+
+            if (!uiComp) {
+                errStr = "[UIMgr.Open] error: invalid ui, have no UIComponent! " + uiOpt.prefab;
+                throw new Error(errStr);
+            }
+
+            uiNode.name = uiOpt.name;
+            uiComp.arg = data as UIArg;
+            uiComp.prefabUrl = uiOpt.prefab;
+            uiComp.afterClose = afterClose;
+
+            if (this.layers[uiComp.uiType]) {
+                let layer = this.layers[uiComp.uiType];
+                this.CheckUIPropertyOnUIOpen(uiNode);//在UI打开时检查属性，并处理相应逻辑
+                if (this.uiInfos[uiNode.uuid]) {
+                    if (!uiNode.parent) {
+                        error("Must have parent node!");
                     }
-                    this.uiCache[uiOpt.prefab].put(uiNode);
-                    console.log(`[UIMgr.Open] cache, name:${uiOpt.name} prefab:${uiComp.prefabUrl}`);
-                    return await this.Open(uiOpt, data);
-                }
-
-                if (!uiComp) {
-                    uiComp = uiNode.getComponent(UIComponent);
-                }
-
-                if (!uiComp) {
-                    errStr = "[UIMgr.Open] error: invalid ui, have no UIComponent! " + uiOpt.prefab;
-                    throw new Error(errStr);
-                }
-
-                uiNode.name = uiOpt.name;
-                uiComp.arg = data as UIArg;
-                uiComp.prefabUrl = uiOpt.prefab;
-                uiComp.afterClose = afterClose;
-
-                if (this.layers[uiComp.uiType]) {
-                    let layer = this.layers[uiComp.uiType];
-                    this.CheckUIPropertyOnUIOpen(uiNode);//在UI打开时检查属性，并处理相应逻辑
-                    if (this.uiInfos[uiNode.uuid]) {
-                        console.assert(!!uiNode.parent, "Must have parent node!");
-                        console.assert(!uiComp.multipleInstance, "Must be false == multipleInstance !");
-                    } else {
-                        this.uiInfos[uiNode.uuid] = uiNode;
-                        if (!this.uiList[uiOpt.name]) {
-                            this.uiList[uiOpt.name] = {};
-                        }
-                        this.uiList[uiOpt.name][uiNode.uuid] = uiNode;
-                        let ui = null;
-                        // if (uiOpt.script) {
-                        //   ui = uiNode.addComponent(uiOpt.script);
-                        // }
-                        ui = uiNode.getComponent(UIComponent);
-                        layer.addChild(uiNode);
-                        ret.ui = ui;
-                        ret.completed(ui);
-
-                        // GM.EventMgr.Emit(GM.EventMgr.EventList.UI_TYPE_UI_OPEN, uiNode);
-
-                        // if (GM.SDKMgr.AD.IsShowBanner() && ui.showBannerAD) {
-                        //     GM.SDKMgr.AD.ShowBanner();
-                        // }
+                    if (uiComp.multipleInstance) {
+                        error("Must be false == multipleInstance !");
                     }
-                    this.uiInfos[uiNode.uuid] = uiNode;
-                    let ui = null;
-                    if (uiOpt.name) {
-                        ui = uiNode.getComponent(uiOpt.name);
-                    }
-                    layer.addChild(uiNode);
-                    console.log(`[UIMgr.Open] opened, name:${uiOpt.name} prefab:${uiComp.prefabUrl}`);
                 } else {
-                    uiNode.destroy();
-                    uiNode = null;
-                    errStr = "[UIMgr.Open] error: invalid ui type! " + uiComp.prefabUrl;
-                    throw new Error(errStr);
+                    this.uiInfos[uiNode.uuid] = uiNode;
+                    if (!this.uiList[uiOpt.name]) {
+                        this.uiList[uiOpt.name] = {};
+                    }
+                    this.uiList[uiOpt.name][uiNode.uuid] = uiNode;
+                    layer.addChild(uiNode);
+                    ret.ui = uiComp;
+                    ret.completed(uiComp);
                 }
+                console.log(`[UIMgr.Open] opened, name:${uiOpt.name} prefab:${uiComp.prefabUrl}`);
+            } else {
+                uiNode.destroy();
+                uiNode = null;
+                errStr = "[UIMgr.Open] error: invalid ui type! " + uiComp.prefabUrl;
+                throw new Error(errStr);
             }
         } catch (err) {
             console.error(err);
@@ -232,6 +210,9 @@ export class UIMgr {
                 delete this.uiInfos[uiNode.uuid];
 
                 if (uiBase.cache) {
+                    if (!this.uiCache[uiBase.prefabUrl]) {
+                        this.uiCache[uiBase.prefabUrl] = new NodePool(uiBase.prefabUrl);
+                    }
                     this.uiCache[uiBase.prefabUrl].put(uiNode);
                 } else {
                     uiNode.removeFromParent();
@@ -249,6 +230,3 @@ export class UIMgr {
         }
     }
 }
-
-
-

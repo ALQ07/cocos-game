@@ -24,9 +24,10 @@ export class CacheMgr {
     /**
      * 获取缓存
      * @param key 缓存键
-     * @returns 返回对应的值，如果不存在则返回 null
+     * @param defaultValue 默认值
+     * @returns 返回对应的值，如果不存在则返回默认值
      */
-    public get<T>(key: string): T | null {
+    public get<T>(key: string, defaultValue: T = null): T | null {
         if (this._cache.has(key)) {
             return this._cache.get(key) as T;
         }
@@ -41,7 +42,7 @@ export class CacheMgr {
                 console.error(`解析本地缓存失败，key: ${key}`, error);
             }
         }
-        return null;
+        return defaultValue;
     }
 
     /**

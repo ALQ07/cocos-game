@@ -5,7 +5,11 @@ import { ShootMgr } from "../Stage/ShootMgr";
 import { GameMgr } from "../Stage/GameMgr";
 import GM from "../../GM/GM";
 import { excel } from "../../GM/DataMgr/ExcelData/excel";
+import { WxCloudManager } from "./WxCloudManager";
 const { ccclass, property } = _decorator;
+
+declare const wx: any;
+declare const canvas: any;
 
 export interface blockRankInfo {
     blocks: Node[]   // 该排的所有块节点

@@ -1,7 +1,12 @@
-import { director, game, Node, PhysicsSystem, PhysicsSystem2D, Sprite, SpriteFrame, Vec3 } from "cc";
+import { assetManager, director, game, ImageAsset, Node, PhysicsSystem, PhysicsSystem2D, Sprite, SpriteFrame, Texture2D, Vec3, isValid } from "cc";
 import GM from "../../GM/GM";
+import { UIEnum } from "../../GM/UIMgr/UIList";
+import { UIArg } from "../../GM/UIMgr/UIMgr";
 
 export default class Utils {
+    private static remoteSpriteFrameCache: Map<string, SpriteFrame> = new Map();
+    private static spriteToRemoteURL: WeakMap<Sprite, string> = new WeakMap();
+
     /**
      * 计算点到点的单位向量
      * @param p1 起点
@@ -45,6 +50,50 @@ export default class Utils {
     }
 
 
+
+    /**
+     * 设置远程图片
+     * @param node 图片节点
+     * @param path 远程图片路径
+     */
+    public static setRemoteSpriteFrame = (node: Node | Sprite, path: string) => {
+        const targetNode = node instanceof Node ? node : node.node;
+        const sprite = targetNode.getComponent(Sprite) || targetNode.addComponent(Sprite);
+
+        if (sprite) {
+            Utils.spriteToRemoteURL.set(sprite, path);
+        }
+
+        if (Utils.remoteSpriteFrameCache.has(path)) {
+            if (sprite && isValid(sprite.node)) {
+                sprite.spriteFrame = Utils.remoteSpriteFrameCache.get(path);
+            }
+            return;
+        }
+
+        // 远程 url 不带图片后缀名，此时必须指定远程图片文件的类型
+        assetManager.loadRemote<ImageAsset>(path, { ext: '.jpg' }, (err, imageAsset) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            let spriteFrame = Utils.remoteSpriteFrameCache.get(path);
+            if (!spriteFrame) {
+                spriteFrame = new SpriteFrame();
+                const texture = new Texture2D();
+                texture.image = imageAsset;
+                spriteFrame.texture = texture;
+                Utils.remoteSpriteFrameCache.set(path, spriteFrame);
+            }
+            if (sprite && isValid(sprite.node)) {
+                if (Utils.spriteToRemoteURL.get(sprite) === path) {
+                    sprite.spriteFrame = spriteFrame;
+                }
+            }
+        });
+    }
+
+
     /**
     * 全局控制游戏速率（包含物理引擎）
     * @param scale 时间缩放倍率，1 为正常，0.5 为半速，2 为双倍速
@@ -66,4 +115,12 @@ export default class Utils {
         };
     }
 
+
+    /**
+    * 弹窗信息
+    * @param msg 提示内容
+    */
+    public static ShowTip(msg: string, itemId?: number) {
+        GM.UIMgr.Open(UIEnum.UITips, { text: msg, itemId } as UIArg)
+    }
 }

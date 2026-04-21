@@ -10,13 +10,31 @@ export class ShootMgr extends Component {
     @property(Node)
     shootPoint: Node = null;
 
+    @property(Node)
+    settingBtn: Node = null;
+
     @property(Graphics)
     trajectoryGraphics: Graphics = null;
 
+    public static _instance: ShootMgr = null;
+    public static get Instance() {
+        return ShootMgr._instance;
+    }
+
     public isShooting: boolean = false;
+    private canShoot: boolean = false;
 
     /**正在飞行的球数量 */
     private _shootingBallCount: number = 0;
+
+    public set shootingBallCount(value: number) {
+        this._shootingBallCount = value;
+    }
+
+    public get shootingBallCount() {
+        return this._shootingBallCount;
+    }
+
 
     private _dir = new Vec3();
 
@@ -25,10 +43,11 @@ export class ShootMgr extends Component {
     }
 
     protected onLoad(): void {
-        this.node.parent.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        this.node.parent.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
-        this.node.parent.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.node.parent.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
+        ShootMgr._instance = this;
+        DataManager.Instance.node.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        DataManager.Instance.node.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        DataManager.Instance.node.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+        DataManager.Instance.node.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
     }
 
     onTouchEnd(event: EventTouch): void {
@@ -46,20 +65,36 @@ export class ShootMgr extends Component {
     calculateAngle(event: EventTouch) {
         if (this.isShooting) return;
         const uiLocation = event.getUILocation();
-        const originPos = this.node.worldPosition;
-        const dx = uiLocation.x - originPos.x;
-        const dy = uiLocation.y - originPos.y;
+
+        // 1. 将手指坐标转换到炮台的同一局部坐标系下，彻底免疫各种全面屏/宽屏的适配缩放畸变
+        const uiTrans = this.node.parent.getComponent(UITransform);
+        const touchLocal = uiTrans.convertToNodeSpaceAR(v3(uiLocation.x, uiLocation.y, 0));
+        const originLocal = this.node.position;
+
+        const dx = touchLocal.x - originLocal.x;
+        const dy = touchLocal.y - originLocal.y;
         const radians = Math.atan2(dx, -dy);
         const angle = radians * 180 / Math.PI;
         if (Math.abs(angle) > 80) return;
+        this.canShoot = true;
         this.node.angle = angle;
-        this._dir = Utils.getUnitVector(originPos, v3(uiLocation.x, uiLocation.y, 0));
+
+        // 2. 直接根据旋转弧度计算出绝对物理方向，无视距离长短，杜绝任何坐标刷新滞后造成的平行线偏移
+        this._dir.x = Math.sin(radians);
+        this._dir.y = -Math.cos(radians);
+        this._dir.z = 0;
+        this._dir.normalize();
+
         this.setLine();
     }
 
     async shoot() {
         if (this.isShooting) return;
+        if (!this.canShoot) return;
+        this.canShoot = false;
         this.isShooting = true;
+        this.settingBtn.active = false;
+
         if (this.trajectoryGraphics) {
             this.trajectoryGraphics.clear();
         }
@@ -90,7 +125,7 @@ export class ShootMgr extends Component {
         const p1 = v2(startWorldPos.x, startWorldPos.y);
         const p2 = v2(endWorldPos.x, endWorldPos.y);
         // 根据 GameConfig.CollisionGroup 的配置过滤，只检测墙壁(1)和方块(8)
-        const mask = GameConfig.CollisionGroup.Wall | GameConfig.CollisionGroup.Block;
+        const mask = GameConfig.CollisionGroup.Wall | GameConfig.CollisionGroup.Block | GameConfig.CollisionGroup.Cream;
         const results = PhysicsSystem2D.instance.raycast(p1, p2, ERaycast2DType.Closest, mask);
 
         if (results && results.length > 0) {
@@ -103,8 +138,6 @@ export class ShootMgr extends Component {
         const startPos = uiTrans.convertToNodeSpaceAR(startWorldPos);
         const endPos = uiTrans.convertToNodeSpaceAR(endWorldPos);
 
-        const dashLength = 20; // 实线段长度
-        const gapLength = 15;  // 空白段长度
         const delta = new Vec3();
         Vec3.subtract(delta, endPos, startPos);
         const totalLength = delta.length();
@@ -112,30 +145,21 @@ export class ShootMgr extends Component {
         if (totalLength === 0) return;
         delta.normalize();
 
+        const dotSpacing = 70; // 点与点之间的间距
+        const dotRadius = 8;   // 小圆点的半径
         let currentLen = 0;
-        let isDraw = true;
-
-        this.trajectoryGraphics.moveTo(startPos.x, startPos.y);
 
         while (currentLen < totalLength) {
-            currentLen += isDraw ? dashLength : gapLength;
-            if (currentLen > totalLength) currentLen = totalLength;
-
-            const nextPos = new Vec3(
+            const dotPos = new Vec3(
                 startPos.x + delta.x * currentLen,
                 startPos.y + delta.y * currentLen,
                 0
             );
 
-            if (isDraw) {
-                this.trajectoryGraphics.lineTo(nextPos.x, nextPos.y);
-            } else {
-                this.trajectoryGraphics.moveTo(nextPos.x, nextPos.y);
-            }
-
-            isDraw = !isDraw;
+            this.trajectoryGraphics.circle(dotPos.x, dotPos.y, dotRadius);
+            currentLen += dotSpacing;
         }
-        this.trajectoryGraphics.stroke();
+        this.trajectoryGraphics.fill();
     }
 
     /**球越界时调用 */
@@ -143,6 +167,7 @@ export class ShootMgr extends Component {
         this._shootingBallCount--;
         if (this._shootingBallCount <= 0) {
             this.isShooting = false;
+            this.settingBtn.active = true;
             DataManager.Instance.gameMgr.generateBlocks();
             Utils.setGlobalTimeScale(1.0);
             DataManager.Instance.speedAddBtn.active = true;

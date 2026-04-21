@@ -5,6 +5,7 @@ import { UIEnum } from './UIMgr/UIList';
 import { CacheMgr } from './CacheMgr/CacheMgr';
 import { excel } from './DataMgr/ExcelData/excel';
 import AudioMgr from './AudioMgr/AudioMgr';
+import { Start } from '../start/Start';
 const { ccclass, property } = _decorator;
 
 @ccclass('GM')
@@ -26,11 +27,8 @@ export default class GM extends Component {
 
     protected async start(): Promise<void> {
 
-        // 先加载 res bundle
-        const bundle = await this.LoadAssetsBundle('res');
-
         //初始化框架
-        GM.Init(this.node, bundle);
+        GM.Init(this.node, assetManager.getBundle("res"));
 
         // 初始化excel数据
         await this.initExcel();
@@ -47,8 +45,8 @@ export default class GM extends Component {
         macro.CLEANUP_IMAGE_CACHE = false;
 
         // 在开发预览阶段建议关闭动态合图，否则动态加载图片时易引发 @f9941.json 404 报错
-        // DynamicAtlasManager.instance.enabled = true;
-        // DynamicAtlasManager.instance.maxFrameSize = 512;
+        DynamicAtlasManager.instance.enabled = false;
+        DynamicAtlasManager.instance.maxFrameSize = 512;
 
         window["GM"] = GM;
 
@@ -97,6 +95,13 @@ export default class GM extends Component {
             }
         } catch (error) {
             console.error("Excel 数据加载失败:", error);
+        }
+    }
+
+    protected update(dt: number): void {
+        if (this.node.parent.getChildByName('InspectorCanvas')) {
+            const inspectorCanvas = this.node.parent.getChildByName('InspectorCanvas');
+            inspectorCanvas.parent = this.node;
         }
     }
 }

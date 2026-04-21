@@ -6,11 +6,8 @@ const { ccclass, property } = _decorator;
 export class EffectEntity extends Component {
     private particle: ParticleSystem2D = null;
 
-    onLoad() {
-        this.particle = this.node.getComponentInChildren(ParticleSystem2D);
-    }
-
     onEnable() {
+        this.particle = this.node.getComponentInChildren(ParticleSystem2D);
         if (this.particle) {
             this.particle.resetSystem(); // 重置并播放粒子
             // 根据粒子生命周期自动计算回收时间

@@ -1,9 +1,10 @@
 import { _decorator, Component, Node } from 'cc';
 import { GameMgr } from '../../Stage/GameMgr';
-import GM from 'db://assets/GM/GM';
-import { UIEnum } from 'db://assets/GM/UIMgr/UIList';
-import { UIArg } from 'db://assets/GM/UIMgr/UIMgr';
-import { UIComponent } from 'db://assets/GM/UIMgr/UIComponent';
+import GM from '../../../GM/GM';
+import { UIEnum } from '../../../GM/UIMgr/UIList';
+import { UIArg } from '../../../GM/UIMgr/UIMgr';
+import { UIComponent } from '../../../GM/UIMgr/UIComponent';
+import { DataManager } from '../../Golbal/DataManager';
 const { ccclass, property } = _decorator;
 
 export interface UIGameoverArg extends UIArg {
@@ -14,9 +15,9 @@ export interface UIGameoverArg extends UIArg {
 export class UIGameover extends Component {
     private arg: UIGameoverArg;
 
-
     protected onLoad(): void {
         this.arg = this.node.getComponent(UIComponent).arg as UIGameoverArg;
+        this.node.getChildByPath('clickBg').on(Node.EventType.TOUCH_START, this.onCLose, this);
     }
 
     update(deltaTime: number) {
@@ -35,13 +36,20 @@ export class UIGameover extends Component {
      * 返回主页
      */
     backToMain() {
-        if (this.arg.isDead) {
-            GameMgr.Instance.clearCache();
-        }
-        GameMgr.Instance.exitGame();
+        GM.UIMgr.Close(GameMgr.Instance.node);
         GM.UIMgr.Close(this.node);
         GM.UIMgr.Open(UIEnum.UIMain);
     }
+
+    /**
+     * 前往排行榜
+     */
+    toRankingList() {
+        GM.UIMgr.Open(UIEnum.UIRankList);
+    }
+
+    onCLose() {
+        if (this.arg.isDead) return;
+        GM.UIMgr.Close(this.node);
+    }
 }
-
-
