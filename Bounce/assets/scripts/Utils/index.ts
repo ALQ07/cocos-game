@@ -103,9 +103,9 @@ export default class Utils {
     public static setGlobalTimeScale = (scale: number) => {
         Utils.timeScale = scale;
         // 保存原始的 tick 函数，防止重复挂载导致内存泄漏或死循环
-        // if (!(director as any).originalTick) {
-        //     (director as any).originalTick = director.tick;
-        // }
+        if (!(director as any).originalTick) {
+            (director as any).originalTick = director.tick;
+        }
         // 1. 根据倍率动态计算需要的最大子步数
         // 如果是 2倍速，至少需要允许 1帧算 2~3 次。为了安全可以稍微给大一点。
         if (PhysicsSystem2D.instance) {
@@ -113,10 +113,10 @@ export default class Utils {
             PhysicsSystem2D.instance.fixedTimeStep = (1 / 60) * scale;
         }
         // 2. 重写 tick，在传入原始逻辑前将底层 dt 缩放
-        // director.tick = function (dt: number) {
-        //     dt *= scale;
-        //     (director as any).originalTick.call(director, dt);
-        // };
+        director.tick = function (dt: number) {
+            dt *= scale;
+            (director as any).originalTick.call(director, dt);
+        };
     }
 
 
