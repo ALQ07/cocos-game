@@ -75,6 +75,9 @@ export class DataManager extends Component {
     public set Score(value: number) {
         GM.CacheMgr.set('score', value);
         this.scoreLabel.string = `${value}`;
+        if (value > GM.CacheMgr.get('maxScore', 0)) {
+            GM.CacheMgr.set('maxScore', value);
+        }
     }
 
     public get Round() {

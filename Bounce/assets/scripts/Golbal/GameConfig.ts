@@ -75,9 +75,11 @@ export default class GameConfig {
         /** 小球初始发射速度 */
         initialSpeed: 70,
         /** 小球最小速度 (防止停止) */
-        minSpeed: 5,
+        minSpeed: 1,
         /** 小球最大速度 (防止过快) */
         maxSpeed: 1000,
+        /** 重置速度 */
+        resetSpeed: 5,
     } as const;
 
     // ==================== 碰撞组配置 ====================

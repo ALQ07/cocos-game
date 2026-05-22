@@ -7,6 +7,8 @@ export default class Utils {
     private static remoteSpriteFrameCache: Map<string, SpriteFrame> = new Map();
     private static spriteToRemoteURL: WeakMap<Sprite, string> = new WeakMap();
 
+    public static timeScale: number = 1.0;
+
     /**
      * 计算点到点的单位向量
      * @param p1 起点
@@ -99,20 +101,22 @@ export default class Utils {
     * @param scale 时间缩放倍率，1 为正常，0.5 为半速，2 为双倍速
     */
     public static setGlobalTimeScale = (scale: number) => {
+        Utils.timeScale = scale;
         // 保存原始的 tick 函数，防止重复挂载导致内存泄漏或死循环
-        if (!(director as any).originalTick) {
-            (director as any).originalTick = director.tick;
-        }
+        // if (!(director as any).originalTick) {
+        //     (director as any).originalTick = director.tick;
+        // }
         // 1. 根据倍率动态计算需要的最大子步数
         // 如果是 2倍速，至少需要允许 1帧算 2~3 次。为了安全可以稍微给大一点。
         if (PhysicsSystem2D.instance) {
-            PhysicsSystem2D.instance.maxSubSteps = Math.max(2, Math.ceil(scale * 2));
+            // [性能优化] 放大物理单步时间跨度，避免同一帧内多次模拟碰撞导致 CPU 爆炸
+            PhysicsSystem2D.instance.fixedTimeStep = (1 / 60) * scale;
         }
         // 2. 重写 tick，在传入原始逻辑前将底层 dt 缩放
-        director.tick = function (dt: number) {
-            dt *= scale;
-            (director as any).originalTick.call(director, dt);
-        };
+        // director.tick = function (dt: number) {
+        //     dt *= scale;
+        //     (director as any).originalTick.call(director, dt);
+        // };
     }
 
 

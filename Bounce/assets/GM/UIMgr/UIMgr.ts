@@ -1,4 +1,4 @@
-import { _decorator, error, instantiate, Node, NodePool, Prefab, Widget } from 'cc';
+import { _decorator, Component, error, instantiate, Node, NodePool, Prefab, Widget } from 'cc';
 import GM from '../GM';
 import { eUIType, UIComponent } from './UIComponent';
 const { ccclass, property } = _decorator;
@@ -194,6 +194,30 @@ export class UIMgr {
         if (uiBase.allInactive) {//需要显示下级ui
             this.UpdateUIActiveByUIProperty(uiNode, true);
         }
+    }
+
+    /**
+     * 查找UI
+     * @param c 类型 如 UIHome
+     */
+    public FindByClass(c: { new(data: any): Component; }): Node {
+        let retNode = this.uiRoot.getComponentInChildren(c)?.node;
+        return retNode;
+    }
+
+    /**
+     * 查找UI（只能查找单例UI，即UIComponent.multipleInstance = false的UI）
+     * @param p 资源路径名 如 Module/Login/UILogin
+     */
+    public FindByClassByPrefabeUrl(p: string): Node {
+        for (const key in this.uiInfos) {
+            const uiNode = this.uiInfos[key];
+            const uiBase = uiNode.getComponent(UIComponent);
+            if (!uiBase.multipleInstance && uiBase.prefabUrl == p) {
+                return uiNode;
+            }
+        }
+        return null;
     }
 
     /**

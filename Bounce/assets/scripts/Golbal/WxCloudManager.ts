@@ -1,6 +1,9 @@
 import { Node, Vec3, view, UITransform, director, Canvas, Sprite, assetManager, SpriteFrame, isValid, Texture2D, ImageAsset, path } from "cc";
 import Singleton from "../Base/Singleton";
 import GM from "../../GM/GM";
+import { UIMain } from "../Modules/UIMain/UIMain";
+import { UIEnum } from "../../GM/UIMgr/UIList";
+import Utils from "../Utils";
 
 declare const wx: any;
 
@@ -24,65 +27,24 @@ export class WxCloudManager extends Singleton {
         if (!btnNode) return;
         this.btnWorldPos = btnNode.worldPosition;
         this.btnNode = btnNode;
-
+        wx.showShareMenu({
+            menus: ['shareAppMessage', 'shareTimeline']
+        })
     }
 
-    async getUsers() {
+    async getFuncFromCloud(funcName: string, data?: any, showLoading: boolean = true, showTip: boolean = true) {
         if (typeof wx === 'undefined') {
             console.log('当前不是微信环境，跳过微信云数据库查询');
             return;
         }
-        try {
-            const db = wx.cloud.database();
-            const res = await db.collection('user').get();
-            console.log('微信云数据库查询用户结果:', res.data);  // 查询结果
-        } catch (error) {
-            console.error('微信云数据库查询失败:', error);
-        }
-    }
-
-    async addDateToCloud(data: any) {
-        if (typeof wx === 'undefined') {
-            console.log('当前不是微信环境，跳过微信云数据库添加');
-            return;
-        }
-        try {
-            const db = wx.cloud.database();
-            const res = await db.collection('user').add({
-                data: data
-            });
-            console.log('微信云数据库添加用户结果:', res);  // 添加结果
-        } catch (error) {
-            console.error('微信云数据库添加失败:', error);
-        }
-    }
-
-    async updateDateToCloud(data: any) {
-        if (typeof wx === 'undefined') {
-            console.log('当前不是微信环境，跳过微信云数据库更新');
-            return;
-        }
-        try {
-            const db = wx.cloud.database();
-            const res = await db.collection('user').doc(data._id).update({
-                data: data
-            });
-            console.log('微信云数据库更新用户结果:', res);  // 更新结果
-        } catch (error) {
-            console.error('微信云数据库更新失败:', error);
-        }
-    }
-
-    async getFuncFromCloud(funcName: string, data?: any) {
-        if (typeof wx === 'undefined') {
-            console.log('当前不是微信环境，跳过微信云数据库查询');
-            return;
-        }
+        if (showLoading) await GM.UIMgr.Open(UIEnum.UILoading, { showTip });
         let res: any = null;
         try {
-            res = await wx.cloud.callFunction({ name: funcName, data: { ...data } })
+            res = await wx.cloud.callFunction({ name: funcName, data: { ...data } });
+            if (showLoading) GM.UIMgr.Close(GM.UIMgr.FindByClassByPrefabeUrl(UIEnum.UILoading.prefab));
             console.log(`${funcName}`, res);  // 查询结果
         } catch (error) {
+            if (showLoading) GM.UIMgr.Close(GM.UIMgr.FindByClassByPrefabeUrl(UIEnum.UILoading.prefab));
             console.error(`${funcName}`, error);
         }
         return res;
@@ -250,11 +212,15 @@ export class WxCloudManager extends Singleton {
         });
 
         button.onTap((res: any) => {
+            const uiMain = GM.UIMgr.FindByClass(UIMain);
+            if (uiMain) {
+                uiMain.getComponent(UIMain).imitateBtnClick();
+            }
             if (res.errMsg.indexOf(':ok') > -1 && !!res.rawData) {
                 const userInfo = JSON.parse(res.rawData);
                 console.log('用户信息:', userInfo);
                 button.destroy();
-                this.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score') || 0 });
+                this.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score') || 0 }, false, false);
             } else {
                 console.log('获取用户信息失败:', res.errMsg);
             }

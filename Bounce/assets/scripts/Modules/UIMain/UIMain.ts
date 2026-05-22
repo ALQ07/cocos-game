@@ -50,10 +50,10 @@ export class UIMain extends Component {
                 this.userInfoBtn = WxCloudManager.Instance.createUserInfoBtn();
             }
         }
-        if (GM.CacheMgr.get<boolean>('isDead', false)) {
-            await this.clearCache();
-            GM.CacheMgr.set('isDead', false);
-        }
+        // if (GM.CacheMgr.get<boolean>('isDead', false)) {
+        //     await this.clearCache();
+        //     GM.CacheMgr.set('isDead', false);
+        // }
     }
 
     beginGame() {
@@ -74,6 +74,14 @@ export class UIMain extends Component {
         this.musicOpen.active = GM.CacheMgr.get('isMusicOpen');
         this.musicClose.active = !GM.CacheMgr.get('isMusicOpen');
         GM.AudioMgr.setBgmVolume(GM.CacheMgr.get('isMusicOpen') ? 1 : 0);
+    }
+
+    imitateBtnClick() {
+        if (!this.rankListBtn) return;
+        tween(this.rankListBtn)
+            .to(0.1, { scale: v3(1.2, 1.2, 1.2) })
+            .to(0.1, { scale: v3(1, 1, 1) })
+            .start();
     }
 
     setTitleAni() {
@@ -99,16 +107,16 @@ export class UIMain extends Component {
             .start();
     }
 
-    async clearCache() {
-        // 上传排行榜数据
-        const userInfo = await WxCloudManager.Instance.getWxUserInfo().catch(() => null);
-        if (userInfo) WxCloudManager.Instance.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score') || 0 });
-        // 清除缓存中的所有游戏状态，确保init时不会加载旧数据
-        GM.CacheMgr.delete('blockRankList');
-        GM.CacheMgr.delete('score');
-        GM.CacheMgr.delete('round');
-        GM.CacheMgr.delete('curBallNum');
-    }
+    // async clearCache() {
+    //     // 上传排行榜数据
+    //     const userInfo = await WxCloudManager.Instance.getWxUserInfo().catch(() => null);
+    //     if (userInfo) WxCloudManager.Instance.getFuncFromCloud('upLoadUserInfo', { ...userInfo, score: GM.CacheMgr.get<number>('score', 0) });
+    //     // 清除缓存中的所有游戏状态，确保init时不会加载旧数据
+    //     GM.CacheMgr.delete('blockRankList');
+    //     GM.CacheMgr.delete('score');
+    //     GM.CacheMgr.delete('round');
+    //     GM.CacheMgr.delete('curBallNum');
+    // }
 
     protected onDestroy(): void {
         Tween.stopAllByTarget(this.titile);

@@ -51,6 +51,8 @@ export class InfiniteScrollView extends Component {
     frameLoad: boolean = false
     @property({ type: Number, tooltip: '分帧加载间隔时间（秒）', visible: function (this: InfiniteScrollView) { return this.frameLoad; } })
     frameLoadInterval: number = 0.02
+    @property({ type: Number, tooltip: '下拉/右滑刷新触发的越界距离阈值（0表示不开启）' })
+    pullDownRefreshThreshold: number = 0
 
     private itemLength: number = 0
     private itemWidth: number = 0
@@ -81,6 +83,13 @@ export class InfiniteScrollView extends Component {
     private dragThreshold: number = 10 // 拖动阈值（像素）
     private _frameLoadState: any = null;
     private _completeCB: (() => void) | null = null;
+    private _pullDownCallback: (() => void) | null = null;
+    private _isRefreshing: boolean = false;
+    private _pullDownStateCallback: ((isReady: boolean, offset: number, isTouching: boolean, isRefreshing: boolean) => void) | null = null;
+    private _isPullDownReady: boolean = false;
+    private _lastOverOffset: number = 0;
+    private _lastIsTouching: boolean = false;
+    private _lastIsRefreshing: boolean = false;
 
     protected onLoad(): void {
         // this.initData()
@@ -142,6 +151,8 @@ export class InfiniteScrollView extends Component {
         const reboundNow = canRebound ? this.getReboundOffset() : 0
         if (Math.abs(v) < this.speedThreshold && Math.abs(reboundNow) < 0.001) v = 0
         this.scrollSpeed = v === 0 ? 0 : -v
+
+        this.checkPullDownState();
     }
 
     /**
@@ -728,6 +739,7 @@ export class InfiniteScrollView extends Component {
         }, this, true)
         this.node.on(Node.EventType.TOUCH_END, (event: EventTouch) => {
             this.isTouching = false
+            this.checkPullDownRefresh()
             if (!this.isDragging) {
                 this.scrollSpeed = 0
                 return
@@ -748,6 +760,7 @@ export class InfiniteScrollView extends Component {
         }, this, true)
         this.node.on(Node.EventType.TOUCH_CANCEL, (event: EventTouch) => {
             this.isTouching = false
+            this.checkPullDownRefresh()
             if (this.isDragging) {
                 this.stopEvent(event)
                 if (this.inertia) {
@@ -788,10 +801,15 @@ export class InfiniteScrollView extends Component {
         }
         const lastItem = this.items[lastValidItemIndex];
 
-        const leftLimit = this.paddingLeft + this.itemLength / 2
-        const rightLimit = this.contentLength - this.paddingRight - this.itemLength / 2
-        const topLimit = -this.paddingTop - this.itemLength / 2
-        const bottomLimit = -(this.contentLength - this.paddingBottom - this.itemLength / 2)
+        let leftLimit = this.paddingLeft + this.itemLength / 2
+        let rightLimit = this.contentLength - this.paddingRight - this.itemLength / 2
+        let topLimit = -this.paddingTop - this.itemLength / 2
+        let bottomLimit = -(this.contentLength - this.paddingBottom - this.itemLength / 2)
+
+        if (this._isRefreshing) {
+            if (this.scrollDir) topLimit -= this.pullDownRefreshThreshold;
+            else leftLimit += this.pullDownRefreshThreshold;
+        }
 
         if (this.scrollDir) {
             if (this.items.length >= this.maxIndex + 1) {
@@ -840,10 +858,15 @@ export class InfiniteScrollView extends Component {
         }
         const lastItem = this.items[lastValidItemIndex];
 
-        const leftLimit = this.paddingLeft + this.itemLength / 2
-        const rightLimit = this.contentLength - this.paddingRight - this.itemLength / 2
-        const topLimit = -this.paddingTop - this.itemLength / 2
-        const bottomLimit = -(this.contentLength - this.paddingBottom - this.itemLength / 2)
+        let leftLimit = this.paddingLeft + this.itemLength / 2
+        let rightLimit = this.contentLength - this.paddingRight - this.itemLength / 2
+        let topLimit = -this.paddingTop - this.itemLength / 2
+        let bottomLimit = -(this.contentLength - this.paddingBottom - this.itemLength / 2)
+
+        if (this._isRefreshing) {
+            if (this.scrollDir) topLimit -= this.pullDownRefreshThreshold;
+            else leftLimit += this.pullDownRefreshThreshold;
+        }
 
         // Check if content is smaller than view
         let isContentShort = false
@@ -1196,6 +1219,85 @@ export class InfiniteScrollView extends Component {
                 this.startIndex -= groupSize;
                 this.lastIndex -= groupSize;
             }
+        }
+    }
+
+    /**
+     * 设置下拉（或右滑）刷新回调
+     * @param callback 刷新回调函数
+     */
+    public setPullDownCallback(callback: () => void) {
+        this._pullDownCallback = callback;
+    }
+
+    /**
+     * 设置下拉状态改变的回调（用于UI提示“下拉刷新”与“松开刷新”的切换）
+     * @param callback 回调函数。参数 isReady: 是否超过阈值；offset: 越界距离；isTouching: 是否触摸中；isRefreshing: 是否正在刷新
+     */
+    public setPullDownStateCallback(callback: (isReady: boolean, offset: number, isTouching: boolean, isRefreshing: boolean) => void) {
+        this._pullDownStateCallback = callback;
+    }
+
+    /**
+     * 结束刷新状态，并回弹列表
+     */
+    public stopRefresh() {
+        this._isRefreshing = false;
+    }
+
+    private checkPullDownRefresh() {
+        if (!this._pullDownCallback || this.pullDownRefreshThreshold <= 0 || this._isRefreshing) return;
+
+        if (this.items.length === 0) return;
+        const firstItem = this.items[0];
+
+        const leftLimit = this.paddingLeft + this.itemLength / 2;
+        const topLimit = -this.paddingTop - this.itemLength / 2;
+
+        let over = 0;
+        if (this.scrollDir) {
+            if (this.startIndex <= 0 && firstItem.position.y < topLimit) {
+                over = topLimit - firstItem.position.y;
+            }
+        } else {
+            if (this.startIndex <= 0 && firstItem.position.x > leftLimit) {
+                over = firstItem.position.x - leftLimit;
+            }
+        }
+
+        if (over >= this.pullDownRefreshThreshold) {
+            this._isRefreshing = true;
+            this._pullDownCallback();
+        }
+    }
+
+    private checkPullDownState() {
+        // 取消 || this._isRefreshing 的拦截，让刷新状态也能实时抛出
+        if (!this._pullDownStateCallback || this.pullDownRefreshThreshold <= 0) return;
+        if (this.items.length === 0) return;
+
+        const firstItem = this.items[0];
+        const leftLimit = this.paddingLeft + this.itemLength / 2;
+        const topLimit = -this.paddingTop - this.itemLength / 2;
+
+        let over = 0;
+        if (this.scrollDir) {
+            if (this.startIndex <= 0 && firstItem.position.y < topLimit) {
+                over = topLimit - firstItem.position.y;
+            }
+        } else {
+            if (this.startIndex <= 0 && firstItem.position.x > leftLimit) {
+                over = firstItem.position.x - leftLimit;
+            }
+        }
+
+        const isReady = over >= this.pullDownRefreshThreshold;
+        if (isReady !== this._isPullDownReady || over !== this._lastOverOffset || this.isTouching !== this._lastIsTouching || this._isRefreshing !== this._lastIsRefreshing) {
+            this._isPullDownReady = isReady;
+            this._lastOverOffset = over;
+            this._lastIsTouching = this.isTouching;
+            this._lastIsRefreshing = this._isRefreshing;
+            this._pullDownStateCallback(isReady, over, this.isTouching, this._isRefreshing);
         }
     }
 }

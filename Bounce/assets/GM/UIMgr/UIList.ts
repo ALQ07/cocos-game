@@ -41,4 +41,10 @@ export const UIEnum = {
         name: 'UITips',
         prefab: 'Prefabs/pages/UITips',
     },
+
+    /** 游戏loading界面 */
+    UILoading: {
+        name: 'UILoading',
+        prefab: 'Prefabs/pages/UILoading',
+    },
 }

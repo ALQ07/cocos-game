@@ -1,4 +1,4 @@
-import { CircleCollider2D, Collider2D, Contact2DType, IPhysics2DContact, RigidBody2D, Sprite, Vec2, Vec3, tween, v3, Tween } from "cc";
+import { CircleCollider2D, Collider2D, Contact2DType, IPhysics2DContact, RigidBody2D, Sprite, Vec2, Vec3, tween, v3, Tween, SpriteFrame } from "cc";
 import { Entity } from "../../Base/Entity";
 import { DataManager } from "../../Golbal/DataManager";
 import { ObjectPoolManager } from "../../Golbal/ObjectPoolManager";
@@ -21,6 +21,7 @@ export class BallEntity extends Entity {
     private _speed: number = 0;
     private _dirPos: Vec3 = null;
     private _hasCollider: boolean = false;
+    private _timeElapsed: number = 0;
 
     private static lastHitSoundTime: number = 0;
 
@@ -58,6 +59,7 @@ export class BallEntity extends Entity {
         this.rigidBody.linearVelocity = new Vec2(delta.x, delta.y);
         this.rigidBody.gravityScale = 0;
         this._hasCollider = false;
+        this._timeElapsed = 0;
 
 
         // 给小球一个随机的初始角速度（旋转），让它一发射就带着自转
@@ -72,22 +74,47 @@ export class BallEntity extends Entity {
         this.rigidBody.linearDamping = GameConfig.Ball.linearDamping;
         this.rigidBody.angularDamping = GameConfig.Ball.angularDamping;
 
-        const random = Math.floor(Math.random() * 27);
-        Utils.setSpriteFrame(this.sprite, `Sprites/ball/${random}`);
+        this.setSpriteFrame();
 
         this.collider = this.node.getComponent(CircleCollider2D);
+        // 先移除监听，防止重复添加
+        this.collider.off(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+        this.collider.off(Contact2DType.END_CONTACT, this.onEndContact, this);
         // 监听碰撞回调
         this.collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
         this.collider.on(Contact2DType.END_CONTACT, this.onEndContact, this);
     }
 
     protected update(dt: number): void {
-        // 检测球是否超出底部边界
-        // const bottomY = DataManager.Instance.stageBottomWorldPos.y;
-        // if (this.node.worldPosition.y < bottomY) {
-        //     DataManager.Instance.shootMgr.onBallOver();
-        //     ObjectPoolManager.Instance.ret(this.node);
-        // }
+        if (this.node.active) {
+            this._timeElapsed += dt;
+            //避免每帧都获取 linearVelocity 造成过多 Vec2 对象的内存分配（GC）和 CPU 负担
+            if (this._timeElapsed < 1.5) return;
+            this._timeElapsed = 0;
+
+            const body = this.rigidBody;
+            const velocity = body.linearVelocity;
+            const speedSqr = velocity.x * velocity.x + velocity.y * velocity.y;
+            const minSpeedSqr = GameConfig.BallSpeed.minSpeed * GameConfig.BallSpeed.minSpeed;
+
+            if (speedSqr < minSpeedSqr) {
+                // 等比缩放速度向量，使其大小等于重置速度
+                const speed = Math.sqrt(speedSqr);
+                velocity.multiplyScalar(GameConfig.BallSpeed.resetSpeed / speed);
+                body.linearVelocity = velocity;
+            }
+        }
+    }
+
+    setSpriteFrame() {
+        // 读取 resources 包下目标目录的 SpriteFrame 资源数组
+        const infos = GM.ResMgr.Res.getDirWithPath(`Sprites/ball`, SpriteFrame);
+        // 拿到实际图片数量，若获取不到则兜底为 9 避免报错
+        const actualCount = infos.length > 0 ? infos.length : 9;
+
+        const random = Math.floor(Math.random() * actualCount);
+        const path = `Sprites/ball/${random}`;
+        Utils.setSpriteFrame(this.sprite, path);
     }
 
     protected onDestroy(): void {
@@ -153,24 +180,24 @@ export class BallEntity extends Entity {
                     }
                 }
             }
-            if (body) {
-                const velocity = body.linearVelocity;
-                const speed = velocity.length();
+            // if (body) {
+            //     const velocity = body.linearVelocity;
+            //     const speed = velocity.length();
 
-                // 只要小球在运动中（避免将静止的小球启动）
-                if (speed > 0) {
-                    // 如果速度低于配置的最小速度
-                    if (speed < GameConfig.BallSpeed.minSpeed) {
-                        // 等比缩放速度向量，使其大小等于最小速度
-                        velocity.multiplyScalar(GameConfig.BallSpeed.minSpeed / speed);
-                        body.linearVelocity = velocity;
-                    } else if (speed > GameConfig.BallSpeed.maxSpeed) {
-                        // （可选）限制最大速度，防止穿透
-                        velocity.multiplyScalar(GameConfig.BallSpeed.maxSpeed / speed);
-                        body.linearVelocity = velocity;
-                    }
-                }
-            }
+            //     // 只要小球在运动中（避免将静止的小球启动）
+            //     if (speed > 0) {
+            //         // 如果速度低于配置的最小速度
+            //         if (speed < GameConfig.BallSpeed.minSpeed) {
+            //             // 等比缩放速度向量，使其大小等于最小速度
+            //             velocity.multiplyScalar(GameConfig.BallSpeed.minSpeed / speed);
+            //             body.linearVelocity = velocity;
+            //         } else if (speed > GameConfig.BallSpeed.maxSpeed) {
+            //             // （可选）限制最大速度，防止穿透
+            //             velocity.multiplyScalar(GameConfig.BallSpeed.maxSpeed / speed);
+            //             body.linearVelocity = velocity;
+            //         }
+            //     }
+            // }
         }
     }
 

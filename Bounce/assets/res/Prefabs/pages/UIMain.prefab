@@ -96,7 +96,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 3
@@ -187,10 +187,7 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "d423057e-28de-4ede-b47a-2f0b725987ba@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
@@ -648,13 +645,10 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "6f9869f6-e28c-47ce-8180-8a42cdc7564f@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 1,
     "_fillType": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -930,7 +924,7 @@
     "_isBold": true,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 1,
+    "_cacheMode": 0,
     "_enableOutline": true,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -1434,7 +1428,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "d23f9fde-2910-4129-b556-01149649644c@f9941",
+      "__uuid__": "f3845877-3116-426c-b4f8-298dc06a01b4@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,

@@ -31,7 +31,7 @@ export default class GM extends Component {
         GM.Init(this.node, assetManager.getBundle("res"));
 
         // 初始化excel数据
-        await this.initExcel();
+        // await this.initExcel();
 
         //加载第一个UI
         await GM.UIMgr.Open(UIEnum.UIMain);
@@ -44,7 +44,6 @@ export default class GM extends Component {
         director.addPersistRootNode(mainNode);
         macro.CLEANUP_IMAGE_CACHE = false;
 
-        // 在开发预览阶段建议关闭动态合图，否则动态加载图片时易引发 @f9941.json 404 报错
         DynamicAtlasManager.instance.enabled = false;
         DynamicAtlasManager.instance.maxFrameSize = 512;
 

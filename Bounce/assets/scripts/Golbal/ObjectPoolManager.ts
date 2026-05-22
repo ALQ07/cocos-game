@@ -2,7 +2,7 @@ import { instantiate, Node, Prefab } from "cc";
 import Singleton from "../Base/Singleton";
 import { DataManager } from "./DataManager";
 import GM from "../../GM/GM";
-import { EntityTypeEnum } from "../Enum";
+import { BlockShape, EntityTypeEnum } from "../Enum";
 
 export class ObjectPoolManager extends Singleton {
     public static get Instance() {
@@ -21,8 +21,36 @@ export class ObjectPoolManager extends Singleton {
                 GM.ResMgr.asyncLoadDir('Sprites/ball', () => { }),
                 GM.ResMgr.asyncLoadDir('Sprites/block', () => { })
             ]);
+
+            // 预热小球
+            const ballNum = 100;
+            this.preWarm(EntityTypeEnum.Ball, ballNum);
+            // 预热砖块
+            this.preWarm(EntityTypeEnum.Block, 10, BlockShape.Circle);
+            this.preWarm(EntityTypeEnum.Block, 10, BlockShape.Square);
+            this.preWarm(EntityTypeEnum.Block, 10, BlockShape.Triangle);
+            this.preWarm(EntityTypeEnum.Block, 5, BlockShape.Blind);
         } catch (error) {
             console.error('资源加载失败:', error);
+        }
+    }
+
+    /**
+     * 预热对象池
+     * @param type 实体类型
+     * @param count 预热数量
+     * @param name 可选的具体名称
+     */
+    public preWarm(type: EntityTypeEnum, count: number, name?: string) {
+        const tempNodes: Node[] = [];
+        for (let i = 0; i < count; i++) {
+            const node = this.get(type, name);
+            if (node) {
+                tempNodes.push(node);
+            }
+        }
+        for (let i = 0; i < tempNodes.length; i++) {
+            this.ret(tempNodes[i]);
         }
     }
 

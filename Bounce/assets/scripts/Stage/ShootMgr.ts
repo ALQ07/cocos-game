@@ -1,4 +1,4 @@
-import { _decorator, Component, EventTouch, Input, input, Node, v3, Vec3, Graphics, UITransform, PhysicsSystem2D, ERaycast2DType, v2 } from 'cc';
+import { _decorator, Component, EventTouch, Input, input, Node, v3, Vec3, Graphics, UITransform, PhysicsSystem2D, ERaycast2DType, v2, Label } from 'cc';
 import { UnitFactory } from '../Entity/UnitFactory';
 import { DataManager } from '../Golbal/DataManager';
 import Utils from '../Utils';
@@ -15,6 +15,9 @@ export class ShootMgr extends Component {
 
     @property(Graphics)
     trajectoryGraphics: Graphics = null;
+
+    @property(Label)
+    ballNumLabel: Label = null;
 
     public static _instance: ShootMgr = null;
     public static get Instance() {
@@ -48,6 +51,16 @@ export class ShootMgr extends Component {
         DataManager.Instance.node.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
         DataManager.Instance.node.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         DataManager.Instance.node.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
+        this.ballNumLabel.string = DataManager.Instance.curBallNum.toString();
+    }
+
+    protected onDestroy(): void {
+        if (DataManager.Instance && DataManager.Instance.node) {
+            DataManager.Instance.node.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+            DataManager.Instance.node.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
+            DataManager.Instance.node.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+            DataManager.Instance.node.off(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
+        }
     }
 
     onTouchEnd(event: EventTouch): void {
@@ -88,7 +101,7 @@ export class ShootMgr extends Component {
         this.setLine();
     }
 
-    async shoot() {
+    shoot() {
         if (this.isShooting) return;
         if (!this.canShoot) return;
         this.canShoot = false;
@@ -98,12 +111,23 @@ export class ShootMgr extends Component {
         if (this.trajectoryGraphics) {
             this.trajectoryGraphics.clear();
         }
+
         const { curBallNum } = DataManager.Instance;
         this._shootingBallCount = curBallNum;
-        for (let i = 0; i < curBallNum; i++) {
+
+        let shootCount = 0;
+        const fireOneBall = () => {
+            if (!this.isValid) return; // 检查节点是否已被销毁，防止报错
+            this.ballNumLabel.string = (curBallNum - shootCount - 1).toString();
             const ball = UnitFactory.Instance.CreateBall({ speed: GameConfig.BallSpeed.initialSpeed, dirPos: this._dir });
-            ball.worldPosition = this.shootPoint.worldPosition;
-            await Utils.delay(0.2);
+            if (ball) ball.worldPosition = this.shootPoint.worldPosition;
+            shootCount++;
+        };
+
+        // 立即发射第一颗球
+        fireOneBall();
+        if (curBallNum > 1) {
+            this.schedule(fireOneBall, 0.2, curBallNum - 2, 0);
         }
     }
 
@@ -149,14 +173,14 @@ export class ShootMgr extends Component {
         const dotRadius = 8;   // 小圆点的半径
         let currentLen = 0;
 
-        while (currentLen < totalLength) {
-            const dotPos = new Vec3(
-                startPos.x + delta.x * currentLen,
-                startPos.y + delta.y * currentLen,
-                0
-            );
+        // 提取循环外的临时变量，彻底杜绝 while 内部由于 new 造成的内存碎片和 GC 压力
+        let dotPosX = 0;
+        let dotPosY = 0;
 
-            this.trajectoryGraphics.circle(dotPos.x, dotPos.y, dotRadius);
+        while (currentLen < totalLength) {
+            dotPosX = startPos.x + delta.x * currentLen;
+            dotPosY = startPos.y + delta.y * currentLen;
+            this.trajectoryGraphics.circle(dotPosX, dotPosY, dotRadius);
             currentLen += dotSpacing;
         }
         this.trajectoryGraphics.fill();
@@ -171,6 +195,7 @@ export class ShootMgr extends Component {
             DataManager.Instance.gameMgr.generateBlocks();
             Utils.setGlobalTimeScale(1.0);
             DataManager.Instance.speedAddBtn.active = true;
+            this.ballNumLabel.string = DataManager.Instance.curBallNum.toString();
         }
     }
 

@@ -81,9 +81,37 @@
             "png": {
               "quality": 80
             }
+          },
+          "miniGame": {
+            "astc_8x8": {
+              "quality": "medium"
+            },
+            "png": {
+              "quality": 80
+            }
+          }
+        },
+        "overwrite": {
+          "wechatgame": {
+            "astc_8x8": {
+              "quality": "medium"
+            },
+            "png": {
+              "quality": 80
+            }
           }
         }
       }
     }
+  },
+  "splash-setting": {
+    "logo": {
+      "type": "default"
+    },
+    "background": {
+      "type": "default",
+      "image": "project://settings/mainBG.jpg"
+    },
+    "totalTime": 500
   }
 }

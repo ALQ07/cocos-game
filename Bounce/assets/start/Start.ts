@@ -1,10 +1,16 @@
-import { _decorator, AssetManager, assetManager, Component, director, Node, Scene } from 'cc';
+import { _decorator, AssetManager, assetManager, Component, director, Label, Node, ProgressBar, RenderTexture, Scene, Sprite, SpriteFrame } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('start')
 export class Start extends Component {
     public static _instance: Start = null;
     public static Bg: Node;
+
+    @property(ProgressBar)
+    progressBar: ProgressBar = null;
+    @property(Label)
+    progressLabel: Label = null;
+
 
     public static get Instance() {
         return Start._instance;
@@ -22,10 +28,15 @@ export class Start extends Component {
         //const staticResBundle = await this.LoadAssetsBundle("static_res");
         //加载框架包
         // const plugin = await this.LoadAssetsBundle("plugin");
+        this.setProgress(0.1);
         const gmBundle = await this.LoadAssetsBundle("GM");
+        this.setProgress(0.6);
         const scriptBundle = await this.LoadAssetsBundle("scripts");
-
+        // const bg = await this.loadBg(resBundle);
+        // Start.Bg.getComponent(Sprite).spriteFrame = bg;
+        this.setProgress(0.8);
         const resBundle = await this.LoadAssetsBundle("res");
+        this.setProgress(0.9);
 
         gmBundle.preloadScene("GM", (error) => {
             if (error) {
@@ -39,6 +50,7 @@ export class Start extends Component {
                 }
             });
         });
+
     }
 
     public static showBg() {
@@ -48,6 +60,20 @@ export class Start extends Component {
 
     public static hideBg() {
         Start.Bg.active = false;
+    }
+
+    loadBg(bundle: AssetManager.Bundle): Promise<SpriteFrame> {
+        return new Promise((resolve, reject) => {
+            const path = `UI/Start/mainBG/spriteFrame`
+            bundle.load(path, SpriteFrame, (finished: number, total: number) => {
+            }, (error, asset) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(asset as SpriteFrame);
+                }
+            });
+        })
     }
 
     LoadAssetsBundle(bundleName: string): Promise<AssetManager.Bundle> {
@@ -60,5 +86,10 @@ export class Start extends Component {
                 }
             })
         });
+    }
+
+    setProgress(value: number) {
+        this.progressBar.progress = value;
+        this.progressLabel.string = `资源加载中（${Math.floor(value * 100)}%）`;
     }
 }

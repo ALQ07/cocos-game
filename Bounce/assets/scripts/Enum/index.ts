@@ -18,6 +18,6 @@ export enum BlockShape {
     Triangle = 'triangle',
     Square = 'square',
     Blind = 'blind',
-    Heart = 'heart',
+    // Heart = 'heart',
     Circle = 'circle'
 }

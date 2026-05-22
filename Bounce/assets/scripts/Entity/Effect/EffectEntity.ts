@@ -7,6 +7,7 @@ export class EffectEntity extends Component {
     private particle: ParticleSystem2D = null;
 
     onEnable() {
+        this.unschedule(this.recycle);
         this.particle = this.node.getComponentInChildren(ParticleSystem2D);
         if (this.particle) {
             this.particle.resetSystem(); // 重置并播放粒子
@@ -17,6 +18,10 @@ export class EffectEntity extends Component {
             // 如果没有挂载粒子组件，默认1秒后回收
             this.scheduleOnce(this.recycle, 1);
         }
+    }
+
+    onDisable() {
+        this.unschedule(this.recycle);
     }
 
     recycle() {
