@@ -99,9 +99,7 @@ export class BallEntity extends Entity {
 
             if (speedSqr < minSpeedSqr) {
                 // 等比缩放速度向量，使其大小等于重置速度
-                const speed = Math.sqrt(speedSqr);
-                velocity.multiplyScalar(GameConfig.BallSpeed.resetSpeed / speed);
-                body.linearVelocity = velocity;
+                body.linearVelocity = new Vec2(GameConfig.BallSpeed.resetSpeed, GameConfig.BallSpeed.resetSpeed);
             }
         }
     }

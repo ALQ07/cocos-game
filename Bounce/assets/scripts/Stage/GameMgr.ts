@@ -44,11 +44,13 @@ export class GameMgr extends Component {
 
         // 1. 降低速度迭代次数（默认通常是 10，直接砍半）
         // 这决定了物理引擎计算碰撞反弹的精细度，越低越省 CPU
-        physicsManager.velocityIterations = 3;
+        physicsManager.velocityIterations = 1;
 
-        // 2. 降低位置迭代次数（默认通常是 10，直接砍半）
-        // 这决定了重叠挤压时的分离速度
-        physicsManager.positionIterations = 4;
+        // // 2. 降低位置迭代次数（默认通常是 10，直接砍半）
+        // // 这决定了重叠挤压时的分离速度
+        physicsManager.positionIterations = 1;
+
+        // game.frameRate = 30;
         // 监听 Web 浏览器关闭/刷新
         // if (sys.isBrowser) {
         //     window.addEventListener('beforeunload', this.onGameHide);
@@ -255,7 +257,7 @@ export class GameMgr extends Component {
         // 并非每回合都生成道具块，设定一个概率（例如这里设为 65% 的概率生成）
         // 同时确保 actualCount > 1，避免出现这一排只有一个道具块而没有普通阻挡块的情况
         let blindIndex = -1;
-        if (actualCount > 1 && Math.random() < 0.5) {
+        if (actualCount > 1 && Math.random() < 0.55) {
             blindIndex = Math.floor(Math.random() * actualCount);
         }
 
@@ -322,7 +324,7 @@ export class GameMgr extends Component {
     * 游戏倍速
     */
     gameSpeedAdd() {
-        Utils.setGlobalTimeScale(2.0);
+        Utils.setGlobalTimeScale(3.0);
         DataManager.Instance.speedAddBtn.active = false;
     }
 

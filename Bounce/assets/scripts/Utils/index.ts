@@ -106,11 +106,14 @@ export default class Utils {
         if (!(director as any).originalTick) {
             (director as any).originalTick = director.tick;
         }
-        // 1. 根据倍率动态计算需要的最大子步数
-        // 如果是 2倍速，至少需要允许 1帧算 2~3 次。为了安全可以稍微给大一点。
         if (PhysicsSystem2D.instance) {
-            // [性能优化] 放大物理单步时间跨度，避免同一帧内多次模拟碰撞导致 CPU 爆炸
-            PhysicsSystem2D.instance.fixedTimeStep = (1 / 60) * scale;
+            // 1. 根据倍率动态计算需要的最大子步数
+            // 避免高倍速时 dt 过大，超过默认的 maxSubSteps 导致物理引擎“丢帧/丢失时间”，从而改变轨迹
+            const baseSubSteps = 1; // 默认的基础子步数
+            PhysicsSystem2D.instance.maxSubSteps = Math.ceil(scale) * baseSubSteps;
+
+            // 2. 必须保持 fixedTimeStep 不变，以保证所有物理碰撞的时机和结果与1倍速时完全一致
+            PhysicsSystem2D.instance.fixedTimeStep = 1 / 60;
         }
         // 2. 重写 tick，在传入原始逻辑前将底层 dt 缩放
         director.tick = function (dt: number) {
